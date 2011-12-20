@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Craqua" default="run">
-	
-	<property name="playerVersion" value="10.1"/>
+<project name="bc-craqua" default="debug">
+
+	<property name="playerVersion" value="10.1" />
 	<property name="project.name" value="${ant.project.name}" />
+
+	<!-- Source set -->
+	<property name="dir.src" value="src" />	
 	
-	<property name="dir.src" value="src" />
 	<property name="dir.build" value="out" />
-	
-	<import file="prepare_build.xml"/>
+
+	<property name="project.main.class" value="bc/game/init/BitCaptains" />
+
+	<import file="prepare_build.xml" />
 
 	<!-- Targets for use -->
 
@@ -16,18 +20,13 @@
 	</target>
 
 	<target name="clean" depends="compile_buildsystem">
-		<delete dir="${dir.build}"/>
+		<delete dir="${dir.build}" />
 	</target>
 
 	<target name="compile" depends="compile_buildsystem">
-		<mkdir dir="${dir.build}"/>
-		
-		<property name="project.main.class" value="bc/game/init/BitCaptains" />
+		<mkdir dir="${dir.build}" />
 
-		<mxmlc file="${dir.src}/${project.main.class}.as" output="${dir.build}/${project.name}.swf" fork="false"
-            static-link-runtime-shared-libraries="true"
-			actionscript-file-encoding="UTF-8"
-            >
+		<mxmlc file="${dir.src}/${project.main.class}.as" output="${dir.build}/${project.name}.swf" fork="false" static-link-runtime-shared-libraries="true" actionscript-file-encoding="UTF-8">
 			<!--<classpath refid="flexLibs" />-->
 			<!-- As3 source path -->
 			<source-path path-element="${dir.src}" />
@@ -56,6 +55,24 @@
 		<exec executable="${flex.player.exe}">
 			<arg value="${dir.build}/${project.name}.swf" />
 		</exec>
+	</target>
+
+	<target name="debug">
+		<mkdir dir="${dir.build}"/>
+		
+		<fdt.launch.application 
+			debug="true" 
+			mainclass="${dir.src}/${project.main.class}.as" 
+			startswf="false" 
+			target="${dir.build}/${project.name}.swf" 
+			projectname="${project.name}" 
+			compilerarguments="-static-link-runtime-shared-libraries=true -strict=true -optimize=true -debug=true -use-network=false" 
+		/>
+		<fdt.startDebugger projectname="${project.name}" />
+		<exec executable="${flex.player.exe}" spawn="false">
+			<arg line="'${dir.build}/${project.name}.swf'" />
+		</exec>
+
 	</target>
 
 </project>
