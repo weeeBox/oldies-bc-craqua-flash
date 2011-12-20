@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+
+	<bitmap 
+		id="ui_bg"
+		scale="1" />
+
+	<bitmap 
+		id="sponsor_logo_back"
+		scale="0.99"
+		pivot="128" />
+
+	<bitmap 
+		id="sponsor_logo"
+		scale="0.99" 
+		pivot="128"/>
+	
+</data>

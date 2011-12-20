@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+
+	<bitmap id="player_eyes" pivot="8; 4" scale="0.99" />
+	<bitmap id="player_body" pivot="16" scale="0.99" />
+	<bitmap id="player_jaw" pivot="16; 9" scale="0.99" />
+	<bitmap id="player_claw_front" scale="0.99" pivot="12; 8" />
+	<bitmap id="player_claw_back" scale="0.99" pivot="12; 8" />
+	<bitmap id="player_claw_link" scale="0.99" pivot="28; 6" />
+	<bitmap id="player_marker" pivot="16" />
+	
+	<particle id="player_wave_32" bitmap="fx_wave">
+		<properties time="0.25" />
+		<scale begin="0" end="1"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	<particle id="player_wave_64" bitmap="fx_wave">
+		<properties time="0.25" />
+		<scale begin="0" end="2"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	<particle id="player_wave_96" bitmap="fx_wave">
+		<properties time="0.25" />
+		<scale begin="0" end="3"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	<particle id="player_wave_128" bitmap="fx_wave">
+		<properties time="0.25" />
+		<scale begin="0" end="4"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	<!-- A1 -->
+	
+	<bitmap id="player_bullet_a1" data="player_bullet_a1" scale="0.99" pivot="8; 4" />
+	<bitmap id="player_bullet_a2" data="player_bullet_a2" scale="0.99" pivot="8; 4" />
+	<bitmap id="player_bullet_a3" data="player_bullet_a3" scale="0.99" pivot="8; 4" />
+
+
+	<bullet id="player_a1">
+		<properties size="16"/>
+		<shape type="aabb" w="8" h="46"/>
+		<velocity launch="700"/>
+		
+		<hit damage="1" particle="fx_burst_star"/>
+		
+		<body bitmap="player_bullet_a1" oriented="true"/>
+	</bullet>
+	
+	<!-- A2 -->
+		
+	<explosion id="player_a2" damage="1" radius="32" impulse="700">
+		<particles>
+			<wave particle="player_wave_32"/>
+			<bubbles count="2" radius="16" particle="exp_air_16"/>
+		</particles>
+	</explosion>
+	
+	<bullet id="player_a2">
+		<properties size="16"/>
+		<shape type="aabb" w="8" h="46"/>
+		<velocity launch="700"/>
+		
+		<hit explosion="player_a2" particle="fx_burst_star"/>
+		
+		<body bitmap="player_bullet_a2" oriented="true"/>
+	</bullet>
+	
+	<!-- A3 -->
+	
+	<explosion id="player_a3" damage="1" radius="32" impulse="700">
+		<particles>
+			<wave particle="player_wave_32"/>
+		</particles>
+	</explosion>
+	
+	<bullet id="player_a3">
+		<properties size="16"/>
+		<shape type="aabb" w="8" h="46"/>
+		<velocity launch="700"/>
+		
+		<hit enemy="false"/>
+		<timer speed="10" explosion="player_a3"/>
+		<body bitmap="player_bullet_a3" oriented="true"/>
+	</bullet>
+	
+	<bitmap id="player_plasma" scale="0.99" pivot="12" />
+	<bitmap id="player_plasma_trail" scale="0.99" pivot="12" />
+	<bitmap id="player_missle" scale="0.75" pivot="12" />
+	<bitmap id="player_missle_trail" scale="0.99" pivot="12" />
+	
+	<explosion id="player_plasma" damage="10" radius="128" impulse="700" flash="0.25" shake="0.5" sfx="player_plasma">
+		<particles>
+			<wave particle="player_wave_128"/>
+			<bubbles count="10" radius="64" particle="exp_air_32"/>
+		</particles>
+	</explosion>
+	
+	<particle id="player_plasma_trail" bitmap="player_plasma_trail">
+		<properties velocity="50; 100" friction="6" gravity="0" time="0.25; 0.75"/>
+		<scale begin="0.2; 1" end="0"/>
+	</particle>
+	
+	<bullet id="player_plasma">
+	
+		<properties size="16" time="10"/>
+		<shape type="aabb" w="12" h="12"/>
+		
+		<velocity launch="0" max="200" force="-1000"/>
+		<impulse launch="400" friction="6"/>
+		
+		<hit explosion="player_plasma" wall="true"/>
+		<reflect/>
+	
+		<body bitmap="player_plasma" oriented="false" pulse_a="0.1" pulse_w="50"/>
+		<trail particle="player_plasma_trail" speed="0.05"/>
+	</bullet>
+	
+	<explosion id="player_missle" damage="5" radius="64" impulse="700" shake="0.1" flash="0.1" sfx="player_missle">
+		<particles>
+			<wave particle="player_wave_64"/>
+			<bubbles count="5" radius="32" particle="exp_air_16"/>
+		</particles>
+	</explosion>
+	
+	<particle id="player_missle_trail" bitmap="player_missle_trail">
+		<properties velocity="50; 100" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0" end="0.5; 1"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<bullet id="player_missle">
+	
+		<properties size="16" time="10"/>
+		<shape type="aabb" w="12" h="12"/>
+		
+		<velocity launch="200" max="400" force="-2000"/>
+		<impulse launch="200" friction="6"/>
+		
+		<hit explosion="player_missle" wall="true"/>
+		<reflect/>
+	
+		<body bitmap="player_missle" oriented="true"/>
+		<trail particle="player_missle_trail" speed="0.1"/>
+	</bullet>
+	
+	
+	
+	
+	
+	
+	
+	
+	<bitmap id="player_drop" data="fx_drop" pivot="10; 5" scale="0.99" color="0xff902c"/>
+	<bitmap id="player_star" data="fx_star" pivot="8" scale="0.99"/>
+	
+	
+	<particle id="player_hit" bitmap="player_drop">
+		<properties time="0.5; 0.75" velocity="100; 300" friction="6" gravity="600"/>
+		<scale begin="0.8; 1" end="0"/>
+		<rotation oriented="true"/>
+	</particle>
+	
+	<particle id="player_down" bitmap="player_star">
+		<properties time="0.5; 0.75" velocity="100; 300" friction="6" gravity="600"/>
+		<scale begin="0.8; 1.2" end="0"/>
+		<rotation angle="0; 360" speed="-600; 600"/>
+	</particle>
+	
+	<particle id="player_tail" bitmap="fx_air_16">
+		<properties time="0.2; 0.5" friction="6" gravity="-600"/>
+		<scale begin="0.5; 1" end="0"/>
+	</particle>
+	
+	<particle id="player_death_wave" bitmap="fx_wave">
+		<properties time="0.25" />
+		<scale begin="0" end="2"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<particle id="player_death_bubble" bitmap="fx_air_32">
+		<properties velocity="0; 200" friction="6" gravity="-100" time="0.45; 0.5"/>
+		<scale begin="0.4; 1" end="0"/>
+	</particle>
+	
+	<particle id="player_death_jip" bitmap="player_claw_front">
+		<properties velocity="200; 400" friction="6" gravity="600" time="0.7; 1"/>
+		<alpha begin="1" end="0"/>
+		<rotation angle="0; 360" speed="-500; 500"/>
+	</particle>	
+	
+</data>

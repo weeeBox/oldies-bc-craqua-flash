@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bitmaps>
+
+
+
+
+
+	
+
+
+
+	<bitmap id="fx_wave" pivot="16" scale="0.99" />
+
+	<bitmap id="ui_title" pivot="320; -24" scale="0.99"/>
+	<bitmap id="ui_btn" pivot="118; 41"/>
+	<bitmap id="ui_btn_back" pivot="118; 41"/>
+	
+	<bitmap id="ui_q" pivot="16; 14"/>
+	<bitmap id="ui_qb" pivot="16; 14"/>
+	<bitmap id="ui_m1" pivot="16"/>
+	<bitmap id="ui_m2" pivot="16"/>
+	<bitmap id="ui_m1b" pivot="16"/>
+	<bitmap id="ui_m2b" pivot="16"/>
+	<bitmap id="ui_s1" pivot="16"/>
+	<bitmap id="ui_s2" pivot="16"/>
+	<bitmap id="ui_s1b" pivot="16"/>
+	<bitmap id="ui_s2b" pivot="16"/>
+	
+	<bitmap id="ui_ddg" pivot="128"/>
+
+</bitmaps>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<music>
+
+	<music id="menu" data="music_menu" loop="true"/>
+	<music id="stage" data="music_stage" loop="true"/>
+	<music id="boss" data="music_boss" loop="true"/>
+	<music id="gameover" data="music_gameover"/>
+	<music id="victory" data="music_victory" loop="true"/>
+
+</music>

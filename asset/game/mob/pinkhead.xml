@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pinkhead>
+
+	<bitmap id="mob_pinkhead_body" pivot="16; 12" scale="0.99"/>
+	<bitmap id="mob_pinkhead_spear" pivot="4; 3" scale="0.99"/>
+	<bitmap id="mob_pinkhead_body_metal" pivot="21; 18" scale="0.99"/>
+	<bitmap id="mob_pinkhead_spear_metal" pivot="5; 4" scale="0.99"/>
+	
+	<model id="pinkhead">
+		<sprite id="body" position="0; 0">
+			<sprite id="spear1" position="-4; 8">
+				<bitmap data="mob_pinkhead_spear"/>
+			</sprite>
+			<sprite id="spear2" position="1.5; 8">
+				<bitmap data="mob_pinkhead_spear"/>
+			</sprite>
+			<sprite id="spear3" position="7; 8">
+				<bitmap data="mob_pinkhead_spear"/>
+			</sprite>
+			<bitmap data="mob_pinkhead_body"/>
+		</sprite>
+	</model>
+	
+	<model id="metalhead">
+		<sprite id="body" position="0; 0">
+			<sprite id="spear1" position="-7; 12">
+				<bitmap data="mob_pinkhead_spear_metal"/>
+			</sprite>
+			<sprite id="spear2" position="1.5; 12">
+				<bitmap data="mob_pinkhead_spear_metal"/>
+			</sprite>
+			<sprite id="spear3" position="10; 12">
+				<bitmap data="mob_pinkhead_spear_metal"/>
+			</sprite>
+			<bitmap data="mob_pinkhead_body_metal"/>
+		</sprite>
+	</model>
+	
+	<animation id="pinkhead">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.1" ease="sine.in.out" tween="scale" start="1; 0.95" change="-0.05; 0.05"/>
+			<key node="body" time="0.1; 0.2" ease="sine.in.out" tween="scale" start="0.95; 1" change="0.05; -0.05"/>
+		</motion>
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="spear1" time="0.0; 0.2" ease="sine.in" tween="scale" start="1; 0.5" change="0; 0.5"/>
+			<key node="spear1" time="0.2; 0.4" ease="sine.out" tween="scale" start="1; 1" change="0; -0.5"/>
+			<key node="spear2" time="0.0; 0.1" ease="sine.in" tween="scale" start="1; 0.75" change="0; 0.25"/>
+			<key node="spear2" time="0.1; 0.3" ease="sine.out" tween="scale" start="1; 1" change="0; -0.5"/>
+			<key node="spear2" time="0.3; 0.4" ease="sine.in" tween="scale" start="1; 1" change="0; -0.25"/>
+			<key node="spear3" time="0.0; 0.2" ease="sine.in" tween="scale" start="1; 1" change="0; -0.5"/>
+			<key node="spear3" time="0.2; 0.4" ease="sine.out" tween="scale" start="1; 0.5" change="0; 0.5"/>
+		</motion>
+	</animation>
+	
+	<enemy id="pinkhead">
+		
+		<properties health="2" fail="10" mod="1" gems="1" money="1" mass="5" size="16"/>
+		
+		<shape type="circle" r="12"/>
+		
+		<hit particle="enemy_hit"/>
+		<death sfx="enemy_death">
+			<circle_particles particle="enemy_cell_gray" count="10" radius="12"/>
+		</death>
+		
+		<sprite model="pinkhead" animation="pinkhead"/>
+		
+	</enemy>
+	
+	<enemy id="metalhead">
+		
+		<properties health="50" fail="20" mod="1" gems="1" money="1" mass="0" size="20"/>
+		
+		<shape type="circle" r="17"/>
+		
+		<hit particle="vision_hit"/>
+		<death sfx="tech_death">
+			<circle_particles particle="vision_hit" count="5" radius="6"/>
+		</death>
+		
+		<sprite model="metalhead" animation="pinkhead"/>
+		
+	</enemy>
+
+</pinkhead>

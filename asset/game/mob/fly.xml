@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fly>
+	<bitmap id="mob_fly_body" pivot="12; 12" scale="0.99"/>
+	<bitmap id="mob_fly_head" pivot="12; 12" scale="0.99"/>
+	<bitmap id="mob_fly_wing" pivot="30; 12" scale="0.99"/>
+	
+	<model id="fly">
+		
+		<sprite id="wing1" position="-4; -12">
+			<bitmap data="mob_fly_wing"/>
+		</sprite>
+		<sprite id="wing2" position="4; -12" scale="-1; 1">
+			<bitmap data="mob_fly_wing"/>
+		</sprite>
+		
+		<sprite id="body" position="0; -12">
+			<bitmap data="mob_fly_body"/>			
+		</sprite>
+		
+		<sprite id="head" position="-2; 0">
+			<bitmap data="mob_fly_head"/>			
+		</sprite>
+		
+	</model>
+	
+	<animation id="fly">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.2" ease="sine.in.out" tween="scale" start="1.2; 1.1" change="-0.1; 0.1"/>
+			<key node="body" time="0.2; 0.4" ease="sine.in.out" tween="scale" start="1.1; 1.2" change="0.1; -0.1"/>
+			
+			<key node="head" time="0; 0.4" ease="sine.in.out" tween="angle" start="-5" change="10"/>
+			
+			<key node="wing1" time="0.0; 0.2" ease="sine.in" tween="angle" start="30" change="-60"/>
+			<key node="wing1" time="0.2; 0.4" tween="angle" start="-30" change="60"/>
+			
+			<key node="wing2" time="0.0; 0.2" ease="sine.in" tween="angle" start="-30" change="60"/>
+			<key node="wing2" time="0.2; 0.4" tween="angle" start="30" change="-60"/>
+		</motion>
+		<motion id="shot" playback="forward">
+			<key node="head" time="0; 0.2" tween="scale" ease="sine.in" start="1; 0.9" change="0; 0.1"/>
+			<key node="head" time="0; 0.5" tween="property" property="y" start="-6" change="6"/>
+			<key node="wing1" time="0; 0.5" ease="sine.in" tween="angle" start="0" change="45"/>
+			<key node="wing2" time="0; 0.5" ease="sine.in" tween="angle" start="0" change="-45"/>
+			<weight time="0" value="0"/>
+			<weight time="0.1" value="1"/>
+			<weight time="0.45" value="1"/>
+			<weight time="0.5" value="0"/>
+		</motion>
+		<motion id="velocity_direction" data="velocity_direction_full"/>
+	</animation>
+	
+	<enemy id="fly">
+		
+		<properties health="10" fail="10" mod="1" gems="3" money="3" mass="2" size="20"/>
+		
+		<shape type="circle" r="12"/>
+		
+		<sprite model="fly" animation="fly"/>
+		
+		<hit particle="enemy_hit"/>
+		<death sfx="enemy_death">
+			<circle_particles particle="enemy_cell_gray" count="10" radius="12"/>
+		</death>
+		
+		<timer pause="1" period="2">
+			<sfx data="enemy_shot"/>
+			<motion play="shot"/>
+			<bullets direction="velocity" bullet="mob_jelly_bullet" n="1"/>
+		</timer>
+		
+	</enemy>
+
+</fly>

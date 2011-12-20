@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level exp="0" wave="0">
+	
+	<wave night="false">
+                     <!--  
+		<enemies id="pig" count="20" begin="0" time="40"/>
+		
+		<enemies id="nuke" count="100" begin="0" time="50">
+			<bomb/>
+		</enemies>
+
+		
+		<enemies id="metalhead" count="40" begin="0" time="40" fall="1" path="hori">
+			<x begin="90" spread="300" flipping="true" side="true"/>
+		</enemies>
+		
+		
+		
+		<enemies id="fish" count="4" begin="0" time="20" fall="1" path="fish_sin">
+			<x begin="100" spread="200" flipping="true" side="true"/>
+		</enemies>
+	
+		<enemies id="nuke" count="100" begin="0" time="100">
+			<bomb/>
+		</enemies>
+			 -->
+			 
+		<offset time="0"/>
+		<enemies id="shrimp" count="20" begin="0" time="20" path="shrimp_sin"/>
+		<enemies id="pinkhead" count="10" begin="10.33" time="10"/>
+		
+		<offset time="22"/>
+		<enemies id="shrimp" count="5" begin="0" time="1" path="shrimp_saw">
+			<x begin="20" spread="600"/>
+		</enemies>
+		<enemies id="shrimp" count="5" begin="2.5" time="1" path="shrimp_saw2">
+			<x begin="620" spread="-600"/>
+		</enemies>
+		
+		<offset time="27"/>
+		<enemies id="shrimp" count="20" begin="0" time="20" path="shrimp_sin"/>
+		<enemies id="pinkhead" count="20" begin="0.5" time="20"/>
+		
+		<offset time="50"/>
+		<enemies id="fish" count="2" begin="0" time="10" fall="1" path="fish_sin">
+			<x begin="200" spread="100" flipping="true" side="true"/>
+		</enemies>		
+		
+		<offset time="57"/>
+		<enemies id="shrimp_big" count="2" begin="0" time="8" path="shrimp_big_start"/>
+		
+		<offset time="65"/>
+		<enemies id="shrimp_big" count="7" begin="0" time="30" path="shrimp_big_start"/>
+		<enemies id="shrimp" count="25" begin="8" time="30" path="shrimp_sin"/>
+		<enemies id="pinkhead" count="25" begin="0.33" time="30"/>
+	</wave>
+	
+	<wave night="false" boss="boss_goo" boss_name="boss1">
+		
+		<offset time="0"/>
+		<enemies id="pinkhead" count="30" begin="0" time="10" fall="1" path="hori">
+			<x begin="40" spread="300" random="true" flipping="true" side="true"/>
+		</enemies>
+		<enemies id="shrimp" count="30" begin="5" time="10" fall="1" path="hori_circle">
+			<x begin="40" spread="300" random="true" flipping="true" side="true"/>
+		</enemies>
+		
+		<offset time="15"/>
+		<enemies id="pig" count="10" begin="0" time="20"/>
+		<enemies id="shrimp_big" count="5" begin="0" time="20" path="shrimp_big_start"/>
+		<enemies id="nuke" count="3" begin="10" time="10">
+			<bomb/>
+		</enemies>
+		
+		<offset time="35"/>
+		<enemies id="fish" count="2" begin="0" time="10" fall="1" path="fish_sin">
+			<x begin="200" spread="100" flipping="true" side="true"/>
+		</enemies>	
+		
+		<offset time="45"/>
+		<enemies id="pig" count="8" begin="0" time="10"/>
+		<enemies id="jelly" count="8" begin="0" time="10"/>
+		
+		<offset time="60"/>
+		<enemies id="shrimp" count="8" begin="0" time="1" path="shrimp_saw">
+			<x begin="20" spread="600"/>
+		</enemies>
+		<enemies id="shrimp" count="8" begin="2.5" time="1" path="shrimp_saw2">
+			<x begin="620" spread="-600"/>
+		</enemies>
+		
+		<offset time="67"/>
+		<enemies id="shrimp" count="30" begin="0" time="20" path="shrimp_sin"/>
+		<enemies id="shrimp_big" count="10" begin="1" time="19" path="shrimp_big_start"/>
+		<enemies id="jelly" count="8" begin="2" time="18"/>		
+		
+		<offset time="90"/>
+		<enemies id="jelly_latex" count="5" begin="0" time="2" path="normal_run">
+			<x begin="50" spread="540"/>
+		</enemies>
+	</wave>
+	
+	<wave night="true">
+	
+		<enemies id="fly" count="20" begin="0" time="30"/>
+		<enemies id="pinkhead" count="30" begin="0.5" time="30"/>
+		
+		<enemies id="shrimp" count="20" begin="35" time="5" path="shrimp_sin"/>
+		<enemies id="pinkhead" count="20" begin="40" time="5" path="shrimp_sin"/>
+		
+		<enemies id="shrimp_big" count="10" begin="45" time="40" path="shrimp_big_start"/>
+		<enemies id="jelly_latex" count="15" begin="46" time="40" path="normal_run"/>
+		<enemies id="vision" count="5" begin="47" time="40"/>
+
+		<enemies id="shrimp_big" count="5" begin="90" time="1" path="shrimp_saw">
+			<x begin="20" spread="600"/>
+		</enemies>
+		<enemies id="shrimp_big" count="5" begin="95" time="1" path="shrimp_saw2">
+			<x begin="620" spread="-600"/>
+		</enemies>		
+		
+		<enemies id="jelly" count="5" begin="120" time="15"/>
+		<enemies id="fly" count="20" begin="100" time="35"/>
+		<enemies id="pinkhead" count="30" begin="100.5" time="35"/>
+		
+		<enemies id="jelly" count="20" begin="140" time="50"/>
+		<enemies id="tooth_small" count="10" begin="140.5" time="50"/>
+		<enemies id="shrimp" count="10" begin="140.2" time="50" path="shrimp_sin"/>
+		
+	</wave>
+	
+	<wave night="true" boss="boss_h1n1" boss_name="boss2">
+		
+		<enemies id="shrimp" count="10" begin="0" time="1" path="shrimp_saw">
+			<x begin="20" spread="600"/>
+		</enemies>
+		<enemies id="shrimp" count="10" begin="2" time="1" path="shrimp_saw2">
+			<x begin="620" spread="-600"/>
+		</enemies>
+		
+		<enemies id="thorn" count="5" begin="4" time="40"/>
+		<enemies id="thorn" count="5" begin="40" time="30"/>
+		
+		<enemies id="fly" count="10" begin="5" time="20"/>
+		<enemies id="jelly" count="10" begin="24" time="20"/>
+		<enemies id="fly" count="20" begin="46" time="20"/>
+		
+		<enemies id="vision" count="5" begin="70" time="20"/>
+		<enemies id="fly" count="20" begin="70.5" time="20"/>
+		
+		<enemies id="jelly" count="5" begin="95.5" time="10"/>
+		<enemies id="tooth_small" count="5" begin="95" time="10"/>
+		
+		<enemies id="shrimp_big" count="15" begin="110" time="30" path="shrimp_big_start"/>
+		<enemies id="thorn" count="25" begin="110" time="30" path="shrimp_sin"/>
+
+	</wave>
+	
+	
+	
+	<wave night="false">
+	
+		
+		<enemies id="shrimp" count="20" begin="0" time="30" path="shrimp_saw"/>
+		<enemies id="shrimp" count="20" begin="0.25" time="30" path="shrimp_saw2"/>
+		<enemies id="pinkhead" count="30" begin="0.5" time="30" path="shrimp_sin"/>
+		<enemies id="shrimp_big" count="10" begin="10" time="20" path="shrimp_big_start"/>
+		
+		<enemies id="shrimp_big" count="5" begin="32" time="1" path="shrimp_saw">
+			<x begin="20" spread="600"/>
+		</enemies>
+		<enemies id="shrimp_big" count="5" begin="34" time="1" path="shrimp_saw2">
+			<x begin="620" spread="-600"/>
+		</enemies>
+		
+		<enemies id="vision" count="10" begin="35" time="20"/>
+		<enemies id="thorn" count="20" begin="36" time="20"/>
+		<enemies id="jelly_latex" count="5" begin="37" time="20" path="normal_run"/>
+		
+		<enemies id="shrimp" count="10" begin="55" time="1" path="shrimp_sin"/>
+		<enemies id="pinkhead" count="10" begin="55.5" time="1"/>
+		
+		
+		
+		
+		<enemies id="tooth" count="10" begin="60" time="30"/>
+		<enemies id="tooth_small" count="10" begin="60" time="30"/>
+		<enemies id="shrimp_big" count="10" begin="60" time="30" path="shrimp_big_start"/>
+		
+		
+		
+		<enemies id="jelly" count="40" begin="92.5" time="60"/>
+		<enemies id="jelly_latex" count="5" begin="92" time="1" path="normal_run"/>
+		<enemies id="jelly_latex" count="5" begin="112" time="1" path="normal_run"/>
+		<enemies id="jelly_latex" count="5" begin="132" time="1" path="normal_run"/>
+		
+		<enemies id="shrimp_big" count="3" begin="155" time="0.1" path="shrimp_big_down">
+			<x begin="270" spread="100"/>
+		</enemies>
+		<enemies id="pinkhead" count="6" begin="156" time="0.1" path="shrimp_big_down">
+			<x begin="220" spread="200"/>
+		</enemies>
+		<enemies id="shrimp" count="10" begin="157" time="0.1" path="shrimp_big_down">
+			<x begin="20" spread="600"/>
+		</enemies>
+		
+		
+		<enemies id="vision" count="6" begin="162" time="30"/>
+		<enemies id="shrimp_big" count="15" begin="162" time="30" path="shrimp_big_start"/>
+		<enemies id="pinkhead" count="15" begin="162.5" time="30"/>
+		<enemies id="shrimp" count="30" begin="162.25" time="30" path="shrimp_big_down"/>
+		
+		
+		<enemies id="fly" count="30" begin="195" time="50"/>
+		<enemies id="thorn" count="25" begin="195" time="30"/>
+		<enemies id="jelly_latex" count="10" begin="225" time="20" path="normal_run"/>
+
+	</wave>
+	
+	<wave night="false" boss="boss_bank" boss_name="boss3">
+
+		<enemies id="pinkhead" count="70" begin="0.5" time="30" path="shrimp_big_down"/>
+		<enemies id="tooth" count="2" begin="1" time="1"/>
+		<enemies id="fly" count="4" begin="12" time="1"/>
+		<enemies id="jelly" count="5" begin="23" time="1"/>
+		
+		<enemies id="vision" count="5" begin="34" time="2" path="fix_down">
+			<x begin="320" spread="200"/>
+		</enemies>
+		<enemies id="vision" count="4" begin="34.4" time="1.6" path="fix_down">
+			<x begin="280" spread="-160"/>
+		</enemies>
+		
+		<enemies id="jelly_latex" count="30" begin="42" time="60" path="normal_run"/>
+		<enemies id="fly" count="2" begin="40" time="1"/>
+		<enemies id="fly" count="2" begin="105" time="1"/>
+		<enemies id="thorn" count="8" begin="55" time="1" path="fix_run">
+			<x begin="20" spread="600"/>
+		</enemies>
+		<enemies id="thorn" count="8" begin="70" time="1" path="fix_run">
+			<x begin="620" spread="-600"/>
+		</enemies>
+		<enemies id="thorn" count="8" begin="95" time="1" path="fix_run">
+			<x begin="20" spread="600"/>
+		</enemies>
+		
+		
+		<enemies id="shrimp_big" count="15" begin="112" time="2" path="fix_run">
+			<x begin="20" spread="600"/>
+		</enemies>
+		
+		<enemies id="shrimp_big" count="5" begin="117" time="0.1" path="fix_run">
+			<x begin="100" spread="100"/>
+		</enemies>
+		<enemies id="shrimp_big" count="5" begin="116" time="0.1" path="fix_run">
+			<x begin="270" spread="100"/>
+		</enemies>
+		<enemies id="shrimp_big" count="5" begin="117" time="0.1" path="fix_run">
+			<x begin="440" spread="100"/>
+		</enemies>
+		
+		<enemies id="tooth" count="10" begin="120" time="30"/>
+		<enemies id="vision" count="10" begin="120.3" time="30"/>
+		<enemies id="thorn" count="15" begin="120.6" time="30"/>
+		
+		<enemies id="fly" count="30" begin="155" time="50"/>
+		<enemies id="jelly" count="5" begin="155" time="50"/>
+		<enemies id="tooth" count="5" begin="155" time="50"/>
+		<enemies id="pinkhead" count="25" begin="155.5" time="25" path="fix_run"/>
+		<enemies id="shrimp" count="25" begin="155.2" time="25" path="normal_fast"/>
+		<enemies id="jelly_latex" count="10" begin="180.2" time="25" path="normal_run"/>
+		<enemies id="thorn" count="10" begin="180.2" time="25" />
+		
+		<enemies id="shrimp_big" count="15" begin="207" time="40" path="shrimp_big_start"/>
+		<enemies id="jelly_latex" count="20" begin="207.3" time="40" path="normal_run"/>
+		<enemies id="vision" count="10" begin="207.6" time="40"/>	
+		
+	</wave>
+	
+</level>

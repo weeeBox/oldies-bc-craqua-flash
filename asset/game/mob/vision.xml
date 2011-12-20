@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vision_data>
+	
+	<bitmap id="mob_vision_body" pivot="26; 22" scale="0.99"/>
+	<bitmap id="mob_vision_screen1" pivot="26; 22" scale="0.99"/>
+	<bitmap id="mob_vision_screen2" pivot="26; 22" scale="0.99"/>
+	<bitmap id="mob_vision_screen3" pivot="26; 22" scale="0.99"/>
+	<bitmap id="mob_vision_radio" pivot="16" scale="0.99"/>
+	<bitmap id="mob_vision_receiver" pivot="6; 34" scale="0.99"/>
+	<bitmap id="mob_vision_noise" pivot="12" scale="0.99"/>
+	<bitmap id="mob_vision_hit" pivot="12" scale="0.99"/>
+	
+	<model id="vision" scale="0.8">
+		
+		<sprite id="receiver" position="0; -12">
+		 	<bitmap data="mob_vision_receiver"/>			
+		</sprite>
+		<sprite id="body">
+			<sprite id="screen1">
+				 <bitmap data="mob_vision_screen1"/>
+			</sprite>
+			<sprite id="shot" visible="false">
+				<sprite id="screen2">
+					 <bitmap data="mob_vision_screen2"/>
+				</sprite>
+				<sprite id="screen3">
+					 <bitmap data="mob_vision_screen3"/>
+				</sprite>
+			</sprite>
+			<bitmap data="mob_vision_body"/>
+		</sprite>
+		
+		
+	</model>
+	
+	<animation id="vision">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="receiver" time="0.0; 0.5" ease="sine.in.out" tween="scale" start="1; 1" change="0; -0.1"/>
+			<key time="0.0; 0.5" ease="sine.in.out" tween="angle" start="-2.5" change="5"/>
+		</motion>
+		
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.025" ease="sine.in.out" tween="scale" start="0.975; 1" change="0.025; -0.025"/>
+			<key node="screen1" time="0.0; 0.025" ease="sine.in.out" tween="scale" start="1; 1.2" change="0.2; -0.2"/>
+			<key node="screen2" time="0.0; 0.025" ease="sine.in.out" tween="alpha" start="0" change="1"/>
+			<key node="screen3" time="0.0; 0.025" ease="sine.in.out" tween="alpha" start="1" change="-1"/>
+		</motion>
+		
+		<motion id="shot">
+			<key node="shot" time="0; 0.8" tween="alpha" start="1" change="0"/>
+			<key node="shot" time="0.8; 1" tween="alpha" start="1" change="-1"/>
+		</motion>
+				
+	</animation>
+	
+	<enemy id="vision">
+		
+		<properties health="20" fail="10" mod="1" gems="3" money="6" mass="10" size="28"/>
+		
+		<shape type="circle" r="16"/>
+		
+		<hit particle="vision_hit"/>
+		
+		<death sfx="tv_death">
+			<circle_particles particle="vision_hit" count="10" radius="12"/>
+			<explosion data="vision_exp"/>
+		</death>
+		
+		<timer pause="3" period="1.5">
+			<motion play="shot"/>
+			<explosion data="vision_exp"/>
+		</timer>
+		
+		<sprite model="vision" animation="vision"/>
+		
+		<trail particle="trail_air_16" speed="0.1"/>
+		
+	</enemy>
+	
+	<particle id="vision_noise" bitmap="mob_vision_noise">
+		<properties time="0.75; 1" velocity="200; 500" friction="6"/>
+		<scale begin="0.5; 1" end="0.5; 1"/>
+		<alpha begin="0.5" end="0"/>
+		<rotation angle="0; 360" speed="-600;600"/>
+	</particle>
+	
+	<particle id="vision_hit" bitmap="mob_vision_hit">
+		<properties time="0.5; 1" velocity="100; 300" friction="3" gravity="600"/>
+		<scale begin="1" end="0"/>
+		<rotation angle="0; 360" speed="-600;600"/>
+	</particle>
+	
+	<particle id="vision_wave" bitmap="mob_vision_radio">
+		<properties time="0.25"/>
+		<scale begin="0" end="8"/>
+		<alpha begin="1" end="0"/>
+		<rotation speed="4000"/>
+	</particle>
+
+	<explosion id="vision_exp" damage="10" radius="150" impulse="700" sfx="tv_shot">
+		<particles>
+			<wave particle="vision_wave"/>
+			<bubbles count="20" radius="32" particle="vision_noise"/>
+		</particles>
+	</explosion>
+	
+</vision_data>

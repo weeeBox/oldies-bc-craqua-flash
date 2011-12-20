@@ -1,0 +1,243 @@
+<asset path="../asset/game/">
+
+	<resource path="mob/enemies.xml"/>
+	
+	<resource path="mob/nuke.xml"/>
+	<resource path="mob/nuke/wave.png"/>
+	<resource path="mob/nuke/debris.png"/>
+	<resource path="mob/nuke/marker.png"/>
+	<resource path="mob/nuke/barrel.png"/>
+	
+	<resource path="mob/pig.xml"/>
+	<resource path="mob/pig/head.png"/>
+	<resource path="mob/pig/tail.png"/>
+	
+	<resource path="mob/fish.xml"/>
+	<resource path="mob/fish/body.png"/>
+	
+	<resource path="mob/pinkhead.xml"/>
+	<resource path="mob/pinkhead/body.png"/>
+	<resource path="mob/pinkhead/spear.png"/>
+	<resource path="mob/pinkhead/body_metal.png"/>
+	<resource path="mob/pinkhead/spear_metal.png"/>
+	
+	<resource path="mob/jelly.xml"/>
+	<resource path="mob/jelly/shrimp.png"/>
+	<resource path="mob/jelly/shrimp_big.png"/>
+	<resource path="mob/jelly/latex.png"/>
+	<resource path="mob/jelly/latex_tail.png"/>
+	<resource path="mob/jelly/body.png"/>
+	<resource path="mob/jelly/tail.png"/>
+	<resource path="mob/jelly/charge.png"/>
+	<resource path="mob/jelly/bullet.png"/>
+	<resource path="mob/jelly/bullet_trail.png"/>
+	<resource path="mob/jelly/bullet2.png"/>
+	
+	<resource path="mob/fly.xml"/>
+	<resource path="mob/fly/body.png"/>
+	<resource path="mob/fly/wing.png"/>
+	<resource path="mob/fly/head.png"/>
+	
+	<resource path="mob/tooth.xml"/>
+	<resource path="mob/tooth/body.png"/>
+	<resource path="mob/tooth/shot_face.png"/>
+	<resource path="mob/tooth/bullet.png"/>
+	<resource path="mob/tooth/bullet_trail.png"/>
+	<resource path="mob/tooth/hit.png"/>
+	
+	<resource path="mob/thorn.xml"/>
+	<resource path="mob/thorn/body.png"/>
+	<resource path="mob/thorn/face.png"/>
+	<resource path="mob/thorn/bullet.png"/>
+	<resource path="mob/thorn/bullet_trail.png"/>
+	<resource path="mob/thorn/hit.png"/>
+	
+	<resource path="mob/vision.xml"/>
+	<resource path="mob/vision/body.png"/>
+	<resource path="mob/vision/radio.png"/>
+	<resource path="mob/vision/receiver.png"/>
+	<resource path="mob/vision/screen1.png"/>
+	<resource path="mob/vision/screen2.png"/>
+	<resource path="mob/vision/screen3.png"/>
+	<resource path="mob/vision/noise.png"/>
+	<resource path="mob/vision/hit.png"/>
+	
+	<resource path="mob/goo.xml"/>
+	<resource path="mob/goo/body1.png"/>
+	<resource path="mob/goo/body2.png"/>
+	<resource path="mob/goo/body3.png"/>
+	<resource path="mob/goo/hit.png"/>
+	
+	<resource path="mob/h1n1.xml"/>
+	<resource path="mob/h1n1/body.png"/>
+	<resource path="mob/h1n1/cell.png"/>
+	<resource path="mob/h1n1/cell_bad.png"/>
+	<resource path="mob/h1n1/drop.png"/>
+	<resource path="mob/h1n1/patch.png"/>
+	
+	<resource path="mob/bank.xml"/>
+	<resource path="mob/bank/body.png"/>
+	<resource path="mob/bank/cent.png"/>
+	<resource path="mob/bank/dollar.png"/>
+	<resource path="mob/bank/chain.png"/>
+	<resource path="mob/bank/chain_node.png"/>
+	<resource path="mob/bank/note.png"/>
+	
+	<!-- ITEMS -->
+	<resource path="data/items.xml"/>
+
+	<resource path="item/star.png"/>
+	<resource path="item/star_back.png"/>
+	<resource path="item/gem1.png"/>
+	<resource path="item/gem2.png"/>
+	<resource path="item/gem3.png"/>
+	<resource path="item/gem_back.png"/>
+	<resource path="item/health.png"/>
+	<resource path="item/health_back.png"/>
+	<resource path="item/bomb.png"/>
+	<resource path="item/bomb_back.png"/>
+	
+	<resource path="prop/bitmaps.xml"/>
+	<resource path="prop/particles.xml"/>
+	
+	<resource path="level/data.xml"/>
+	<resource path="level/level.xml"/>
+	<resource path="level/sea_back_.jpg"/>
+	<resource path="level/sea_back_night_.jpg"/>
+	<resource path="level/stick.png"/>
+	<resource path="level/bottom.png"/>
+	<resource path="level/bottom_night.png"/>
+	<resource path="level/shadow.png"/>
+	<resource path="level/hp.png"/>
+	<resource path="level/score.png"/>
+	<resource path="level/score_decoration.png"/>
+	<resource path="level/bomb.png"/>
+	<resource path="level/xp/empty.png"/>
+	<resource path="level/xp/full.png"/>
+	<resource path="level/boss/back.png"/>
+	<resource path="level/boss/hp.png"/>
+	<resource path="level/scrap.png"/>
+	
+	<resource path="level/digit/0.png"/>
+	<resource path="level/digit/1.png"/>
+	<resource path="level/digit/2.png"/>
+	<resource path="level/digit/3.png"/>
+	<resource path="level/digit/4.png"/>
+	<resource path="level/digit/5.png"/>
+	<resource path="level/digit/6.png"/>
+	<resource path="level/digit/7.png"/>
+	<resource path="level/digit/8.png"/>
+	<resource path="level/digit/9.png"/>
+	
+	<resource path="level/hit_bottom/0.png"/>
+	<resource path="level/hit_bottom/1.png"/>
+	<resource path="level/hit_bottom/2.png"/>
+	<resource path="level/hit_bottom/3.png"/>
+	<resource path="level/hit_bottom/4.png"/>
+	<resource path="level/hit_bottom/5.png"/>
+	<resource path="level/hit_bottom/6.png"/>
+	<resource path="level/hit_bottom/7.png"/>
+	<resource path="level/hit_bottom/8.png"/>
+	<resource path="level/hit_bottom/9.png"/>
+
+	<resource path="ui/title.png"/>
+	<resource path="ui/btn.png"/>
+	<resource path="ui/btn_back.png"/>
+	<resource path="ui/q.png"/>
+	<resource path="ui/qb.png"/>
+	<resource path="ui/s1.png"/>
+	<resource path="ui/s1b.png"/>
+	<resource path="ui/s2.png"/>
+	<resource path="ui/s2b.png"/>
+	<resource path="ui/m1.png"/>
+	<resource path="ui/m1b.png"/>
+	<resource path="ui/m2.png"/>
+	<resource path="ui/m2b.png"/>
+	
+	<resource path="fx/wave.png"/>
+	<resource path="fx/air/8.png"/>
+	<resource path="fx/air/16.png"/>
+	<resource path="fx/air/32.png"/>
+	
+	
+	<resource path="audio/data.xml"/>
+	
+	<resource path="audio/item_gem.mp3"/>
+	<resource path="audio/item_money.mp3"/>
+	<resource path="audio/item_heal.mp3"/>
+	<resource path="audio/item_bomb.mp3"/>
+	
+	<resource path="audio/ui_over.mp3"/>
+	<resource path="audio/ui_click.mp3"/>
+	
+	<resource path="audio/boss_death.mp3"/>
+	<resource path="audio/bio_death1.mp3"/>
+	<resource path="audio/bio_death2.mp3"/>
+	<resource path="audio/tech_death1.mp3"/>
+	<resource path="audio/tech_death2.mp3"/>
+	<resource path="audio/enemy_death1.mp3"/>
+	<resource path="audio/enemy_death2.mp3"/>
+	<resource path="audio/enemy_shot1.mp3"/>
+	<resource path="audio/enemy_shot2.mp3"/>
+	
+	<resource path="audio/player_missle1.mp3"/>
+	<resource path="audio/player_missle2.mp3"/>
+	<resource path="audio/player_plasma.mp3"/>
+	<resource path="audio/player_shot1.mp3"/>
+	<resource path="audio/player_shot2.mp3"/>
+	<resource path="audio/player_bomb.mp3"/>
+	<resource path="audio/player_hit.mp3"/>
+	<resource path="audio/player_shield.mp3"/>
+	<resource path="audio/player_upgrade.mp3"/>
+	<resource path="audio/player_downgrade.mp3"/>
+	
+	<!--  PLAYER ASSET -->
+	<resource path="data/player_init.xml"/>
+	<resource path="data/player.xml"/>
+	
+	<resource path="player/body.png"/>
+	<resource path="player/jaw.png"/>
+	<resource path="player/eyes.png"/>
+	<resource path="player/claw_front.png"/>
+	<resource path="player/claw_back.png"/>
+	<resource path="player/claw_link.png"/>
+	<resource path="player/marker.png"/>
+	
+	<resource path="player/plasma.png"/>
+	<resource path="player/plasma_trail.png"/>
+	<resource path="player/missle.png"/>
+	<resource path="player/missle_trail.png"/>
+	
+	<resource path="player/bullet/a1.png"/>
+	<resource path="player/bullet/a2.png"/>
+	<resource path="player/bullet/a3.png"/>
+		
+	<!-- FX ASSET -->
+	
+	<resource path="fx/drop.png"/>
+	<resource path="fx/star.png"/>
+	<resource path="fx/cell.png"/>
+
+	<resource path="fx/burst_star/0.png"/>
+	<resource path="fx/burst_star/1.png"/>
+	<resource path="fx/burst_star/2.png"/>
+	<resource path="fx/burst_star/3.png"/>
+	<resource path="fx/burst_star/4.png"/>
+	<resource path="fx/burst_star/5.png"/>
+
+	
+	<!-- MUSIC -->
+	
+	<resource path="music.xml"/>
+	<resource path="music/gameover.mp3"/>
+	<resource path="music/menu.mp3"/>
+	<resource path="music/stage.mp3"/>
+	<resource path="music/boss.mp3"/>
+	<resource path="music/victory.mp3"/>
+	
+	<resource path="ui/ddg.png"/>
+
+	<resource path="audio/tv_death.mp3"/>
+	<resource path="audio/tv_shot.mp3"/>
+
+</asset>

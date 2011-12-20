@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fish_data>
+
+	<bitmap id="mob_nuke_barrel" pivot="25; 35" scale="0.99"/>
+	<bitmap id="mob_nuke_wave" pivot="32"/>
+	<bitmap id="mob_nuke_debris" pivot="16" scale="0.99"/>
+	<bitmap id="mob_nuke_marker" pivot="64"/>
+	<bitmap id="mob_nuke_hit" data="mob_nuke_debris" pivot="16" scale="0.4"/>
+	
+	<particle id="mob_nuke_hit" bitmap="mob_nuke_hit">
+		<properties time="0.5; 0.75" velocity="300; 300" friction="6" gravity="600"/>
+		<scale begin="0.8; 1" end="0"/>
+		<rotation rotation="1000"/>
+	</particle>
+	
+	<particle id="mob_nuke_trail" bitmap="mob_nuke_debris">
+		<properties velocity="150; 200" friction="6" gravity="-600" time="0.25; 0.5"/>
+		<scale begin="0.25; 0.5" end="0.5; 1"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<particle id="mob_nuke_wave" bitmap="mob_nuke_wave">
+		<properties time="0.5" />
+		<scale begin="4" end="5"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<particle id="mob_nuke_marker" bitmap="mob_nuke_marker">
+		<properties time="3.5" />
+		<scale begin="0.5" end="1.5"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<explosion id="mob_nuke_exp" damage="20" radius="128" flash="1" shake="1" sfx="tech_death">
+		<particles>
+			<wave particle="mob_nuke_wave"/>
+			<bubbles count="10" radius="64" particle="mob_nuke_trail"/>
+		</particles>
+	</explosion>
+	
+	<model id="nuke">
+		<sprite id="body" position="0; 0">
+			<bitmap data="mob_nuke_barrel"/>
+		</sprite>
+	</model>
+	
+	<animation id="nuke">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.2" ease="sine.in.out" tween="scale" start="0.9; 0.95" change="0.05; -0.05"/>
+			<key node="body" time="0.2; 0.4" ease="sine.in.out" tween="scale" start="0.95; 0.9" change="-0.05; 0.05;"/>
+		</motion>
+		<motion node="body" playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0; 0.5" ease="sine.in.out" tween="angle" start="-30" change="60"/>
+		</motion>
+		<motion id="velocity_direction" data="velocity_direction_full"/>
+	</animation>
+	
+	<enemy id="nuke">
+		
+		<properties health="100" fail="0" mod="1" gems="0" money="0" mass="0" size="40"/>
+		
+		<shape type="circle" r="20"/>
+		
+		<hit particle="mob_nuke_hit"/>	
+
+		<init>
+			<circle_particles particle="mob_nuke_trail" count="10" radius="15"/>
+		</init>
+		
+		<death>
+			<explosion data="mob_nuke_exp"/>
+		</death>
+		
+		<sprite model="nuke" animation="nuke"/>
+		
+		<trail particle="trail_air_32" speed="0.05"/>
+		
+		<launch marker="mob_nuke_marker" pause="2" speed="300"/>
+		
+	</enemy>
+
+</fish_data>

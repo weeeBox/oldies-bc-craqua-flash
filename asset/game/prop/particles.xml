@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<particles>
+	<!--
+	-->
+	
+	<particle id="sparkle" bitmap="fx_sparkle">
+		<properties velocity="50; 250" friction="1" time="0.5; 1"/>
+		<scale begin="0" end="1"/>
+		<alpha begin="1" end="0"/>
+		<rotation oriented="true"/>
+	</particle>
+	
+	<bitmap id="fx_air_32" pivot="16"/>
+	<bitmap id="fx_air_16" pivot="8"/>
+	<bitmap id="fx_air_8" pivot="4"/>
+	
+	<particle id="trail_air_32" bitmap="fx_air_32">
+		<properties velocity="50; 100" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0.2; 1" end="0"/>
+	</particle>
+	
+	<particle id="trail_air_16" bitmap="fx_air_16">
+		<properties velocity="50; 100" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0.4; 1" end="0"/>
+	</particle>
+	
+	<particle id="trail_air_8" bitmap="fx_air_8">
+		<properties velocity="50; 100" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0.8; 1" end="0"/>
+	</particle>
+	
+	<particle id="exp_air_32" bitmap="fx_air_32">
+		<properties velocity="100; 500" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0.2; 1" end="0"/>
+	</particle>
+	
+	<particle id="exp_air_16" bitmap="fx_air_16">
+		<properties velocity="100; 500" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0.4; 1" end="0"/>
+	</particle>
+	
+	<particle id="exp_air_8" bitmap="fx_air_8">
+		<properties velocity="100; 500" friction="6" gravity="-600" time="0.25; 0.75"/>
+		<scale begin="0.8; 1" end="0"/>
+	</particle>
+	
+	<particle id="wave128" bitmap="fx_wave">
+		<properties time="0.25" />
+		<scale begin="0" end="4"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<particle id="trail_bubble" bitmap="fx_air_16">
+		<properties velocity="-50; 50" friction="6" gravity="-600" time="0.2; 0.5"/>
+		<scale begin="0.5; 1" end="0"/>
+	</particle>
+	
+	
+	<particle id="player_hit_blood_jip" bitmap="fx_blood_jip1">
+		<properties time="0.5; 0.75" velocity="100; 300" friction="6" gravity="600"/>
+		<scale begin="0.8; 1" end="0"/>
+		<rotation oriented="true"/>
+	</particle>
+
+	
+	
+	<sheet id="fx_burst_star">
+		<properties pivot="8" scale="0.99" />
+		<frame time="0.125" data="fx_burst_star_0"/>
+		<frame time="0.025" data="fx_burst_star_1"/>
+		<frame time="0.025" data="fx_burst_star_2"/>
+		<frame time="0.025" data="fx_burst_star_3"/>
+		<frame time="0.025" data="fx_burst_star_4"/>
+		<frame time="0.025" data="fx_burst_star_5"/>
+	</sheet>
+
+	<particle id="fx_burst_star" animation="fx_burst_star">
+		<properties time="0.25"/>
+		<scale begin="0.5" end="1.5"/>
+		<rotation angle="0; 360"/>
+	</particle>
+	
+	<particle id="test_particle" animation="fx_burst_star">
+		<properties time="0.25"/>
+		<scale begin="0.5" end="1.5"/>
+		<rotation angle="0; 360"/>
+	</particle>
+
+</particles>

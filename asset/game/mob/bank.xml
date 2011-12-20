@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bank_data>
+	
+	<bitmap id="mob_bank_body" pivot="78; 180" scale="0.99"/>
+	<bitmap id="mob_bank_chain" pivot="64; 16" scale="0.99"/>
+	<bitmap id="mob_bank_chain_node" pivot="12" scale="0.99"/>
+	<bitmap id="mob_bank_dollar" pivot="32; 18" scale="0.99"/>
+	<bitmap id="mob_bank_note" pivot="66; 34" scale="0.5"/>
+	<bitmap id="mob_bank_cent" pivot="16" scale="0.99"/>
+	
+	<model id="boss_bank" scale="0.5">
+		<sprite id="body">
+			<bitmap data="mob_bank_body"/>
+			
+		</sprite>
+		<sprite id="chain" position="2; -29">
+			<bitmap data="mob_bank_chain"/>
+		</sprite>	
+			
+		<sprite id="dollar" position="2; -3">
+			<bitmap data="mob_bank_dollar"/>
+		</sprite>
+	</model>
+	
+	<animation id="boss_bank">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0; 1" ease="sine.in.out" tween="scale" start="1; 0.99" change="-0.025; 0.01"/>
+			<key node="chain" time="0; 1" ease="sine.in.out" tween="scale" start="0.975; 1" change="-0.025; -0.05"/>
+		</motion>
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="dollar" time="0; 2" ease="sine.in.out" tween="angle" start="-10" change="20"/>
+			<key time="0; 2" ease="sine.in.out" tween="angle" start="-5" change="10"/>
+		</motion>
+		<motion id="scale1">
+			<key time="0; 0.5" ease="sine.in.out" tween="scale" start="0.5" change="0.25"/>
+			<key node="dollar" time="0; 0.5" ease="sine.in.out" tween="alpha" start="1" change="-1"/>
+		</motion>
+		<motion id="scale2">
+			<key time="0; 0.5" ease="sine.in.out" tween="scale" start="0.75" change="0.25"/>
+			<key node="chain" time="0; 0.5" ease="sine.in.out" tween="alpha" start="1" change="-1"/>
+		</motion>
+		
+				
+	</animation>
+	
+	<enemy id="boss_bank">
+		<properties health="2000" gems="30" money="35" size="100"/>
+		<shape type="aabb" x="0" y="-75" w="140" h="190"/>
+		<sprite model="boss_bank" animation="boss_bank"/>
+		
+		<boss/>
+				
+		<init>
+			<path/>
+			<position to="320; 200" time="3" ease="sine.in.out"/>
+		</init>
+		
+		<timer type="timeline" start="5">
+			<event pause="5">
+				<position to="140; 300" time="5" ease="sine.in.out"/>
+			</event>
+			<event pause="5">
+				<position to="320; 200" time="5" ease="sine.in.out"/>
+			</event>
+			<event pause="5">
+				<position to="500; 300" time="5" ease="sine.in.out"/>
+			</event>
+		</timer>
+		
+		<timer type="timeline" start="2">
+			<event pause="0.5">
+				<sfx data="enemy_shot"/>
+				<bullets bullet="bank_cent" n="1" f="-90" a="360" w="10"/>
+			</event>
+		</timer>
+		
+		<timer type="timeline" start="1" enabled="false">
+			<event pause="2">
+				<sfx data="enemy_shot"/>
+				<bullets bullet="bank_note" n="3" min="45" max="135"/>
+			</event>
+		</timer>
+		
+		<timer type="timeline" start="0.25" enabled="false">
+			<event pause="0.5">
+				<sfx data="enemy_shot"/>
+				<bullets bullet="bank_cent" n="1" a="360" w="-10"/>
+			</event>
+		</timer>
+		
+		<hit particle="exp_air_32" light="0.2">
+		
+			<cap level="0.9">
+				<bonus gems="10" money="10"/>
+			</cap>
+			<cap level="0.8">
+				<bonus gems="10" money="10"/>
+			</cap>
+			
+			<cap level="0.66">
+							
+				<motion play="scale1"/>
+				
+				<world shake="1" flash="1"/>
+				
+				<circle_particles particle="exp_air_32" count="32" radius="64"/>
+				<circle_particles particle="bank_dollar_jip" count="1" radius="64"/>
+				
+				<sfx data="enemy_death"/>
+				
+				<timer index="2" enable="true"/>
+				
+				<bonus gems="15" money="15"/>
+				
+				
+			</cap>
+			
+			<cap level="0.5">
+				<bonus gems="15" money="15"/>
+			</cap>
+			<cap level="0.4">
+				<bonus gems="15" money="15"/>
+			</cap>
+			
+			<cap level="0.33">
+							
+				<motion play="scale2"/>
+				
+				<world shake="1" flash="1"/>
+				
+				<circle_particles particle="exp_air_32" count="32" radius="64"/>
+				<circle_particles particle="bank_chain_jip" count="16" radius="64"/>
+				
+				<sfx data="enemy_death"/>
+				
+				<timer index="3" enable="true"/>
+				
+				<bonus gems="15" money="15"/>
+
+			</cap>
+			
+			<cap level="0.2">
+				<bonus gems="20" money="20"/>
+			</cap>
+			<cap level="0.1">
+				<bonus gems="20" money="20"/>
+			</cap>
+		</hit>
+			
+		<death sfx="boss_death">
+			<world shake="1" flash="1"/>
+			<circle_particles particle="exp_air_32" count="32" radius="64"/>
+		</death>
+
+	</enemy>
+
+	<particle id="bank_dollar_jip" bitmap="mob_bank_dollar">
+		<properties time="1.5" velocity="300; 300" friction="6" gravity="600"/>
+		<alpha begin="1" end="0"/>
+		<rotation angle="0; 360" speed="1000"/>
+	</particle>
+	
+	<particle id="bank_chain_jip" bitmap="mob_bank_chain_node">
+		<properties time="1.5" velocity="300; 300" friction="6" gravity="600"/>
+		<alpha begin="1" end="0"/>
+		<rotation angle="0; 360" speed="1000"/>
+	</particle>
+	
+	<particle id="bank_note_hit" bitmap="mob_bank_note">
+		<properties time="0.5; 0.75" velocity="300; 300" friction="6" gravity="600"/>
+		<scale begin="1" end="0"/>
+		<alpha begin="1" end="0"/>
+		<rotation angle="0; 360" speed="1000"/>
+	</particle>
+	
+	<particle id="bank_cent_hit" bitmap="mob_bank_cent">
+		<properties time="0.5; 0.75" velocity="300; 300" friction="6" gravity="600"/>
+		<scale begin="1" end="0"/>
+		<alpha begin="1" end="0"/>
+		<rotation angle="0; 360" speed="1000"/>
+	</particle>
+	
+	<bullet id="bank_cent">
+	
+		<properties size="5" time="5"/>
+		<shape type="aabb" w="10" h="10"/>
+		
+		<velocity launch="200"/>
+		<impulse launch="600" friction="6"/>
+	
+		<hit damage="5" wall="true" particle="bank_cent_hit"/>
+		<reflect/>
+		
+		<trail particle="exp_air_16" speed="0.05"/>
+		
+		<body bitmap="mob_bank_cent" rotation="1000"/>
+		
+	</bullet>
+	
+	<bullet id="bank_note">
+	
+		<properties size="5" time="2.5"/>
+		<shape type="aabb" w="10" h="10"/>
+		
+		<velocity launch="100" max="200" force="-500"/>
+		<impulse launch="800" friction="6"/>
+	
+		<hit damage="5" wall="true" particle="bank_note_hit"/>
+		<reflect/>
+		
+		<trail particle="exp_air_16" speed="0.05"/>
+		
+		<body bitmap="mob_bank_note" oriented="true"/>
+		
+	</bullet>
+
+</bank_data>

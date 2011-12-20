@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thorn_data>
+	<bitmap id="mob_thorn_body" pivot="25; 24" scale="0.99"/>
+	<bitmap id="mob_thorn_face" pivot="12" scale="0.99"/>
+	<bitmap id="mob_thorn_hit" pivot="8" scale="0.99"/>
+	<bitmap id="mob_thorn_bullet" pivot="10; 8" scale="0.99"/>
+	<bitmap id="mob_thorn_bullet_trail" pivot="8" scale="0.99"/>
+	
+	<model id="thorn">
+		
+		<sprite id="full">
+		    <sprite id="body">
+		    	<bitmap data="mob_thorn_body"/>			
+	      	</sprite>
+	      	<sprite id="face" scale="0.8">
+		    	<bitmap data="mob_thorn_face"/>			
+	      	</sprite>
+		</sprite>
+		
+	</model>
+	
+	<animation id="thorn">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="face" time="0.0; 0.1" ease="sine.in.out" tween="scale" start="0.9; 1" change="0.1; -0.1"/>
+		</motion>
+		<motion count="0" autoplay="true">
+			<key node="body" time="0.0; 0.1" ease="sine.in" tween="scale" start="0.7" change="0.3"/>
+			<key node="body" time="0.1; 1.5" tween="scale" start="1" change="-0.3"/>
+		</motion>
+		<motion count="0" autoplay="true">
+			<key node="body" time="0; 2" tween="angle" start="0" change="360"/>
+		</motion>
+	</animation>
+	
+	<enemy id="thorn">
+		
+		<properties health="6" fail="10" mod="1" gems="3" money="6" mass="5" size="20"/>
+		
+		<shape type="circle" r="12"/>
+		
+		<hit particle="thorn_hit"/>
+		
+		<death sfx="bio_death">
+			<bullets bullet="thorn_bullet" n="8" max="360"/>
+			<circle_particles particle="thorn_hit" count="10" radius="12"/>
+		</death>
+		
+		<sprite model="thorn" animation="thorn"/>
+		
+		<trail particle="trail_air_16" speed="0.1"/>
+		
+	</enemy>
+	
+	<particle id="thorn_hit" bitmap="mob_thorn_hit">
+		<properties time="1; 1.5" velocity="100; 300" friction="6" gravity="600"/>
+		<scale begin="0.8; 1" end="0"/>
+		<rotation angle="0; 360" speed="-600;600"/>
+	</particle>
+	
+	<particle id="thorn_bullet_trail" bitmap="mob_thorn_bullet_trail">
+		<properties velocity="0; 20" friction="6" gravity="600" time="0.25; 0.5"/>
+		<scale begin="0.25; 1" end="0"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<bullet id="thorn_bullet">
+	
+		<properties size="5" time="5"/>
+		<shape type="aabb" w="10" h="10"/>
+		
+		<velocity launch="200"/>
+		<impulse launch="400" friction="6"/>
+	
+		<hit damage="2" wall="true" particle="thorn_hit"/>
+		<reflect/>
+		
+		<trail particle="thorn_bullet_trail" speed="0.05"/>
+		
+		<body bitmap="mob_thorn_bullet" oriented="true"/>
+		
+	</bullet>
+	
+</thorn_data>

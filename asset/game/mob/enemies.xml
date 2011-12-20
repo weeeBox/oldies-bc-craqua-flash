@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+
+	<bitmap id="mob_bullet" data="bullet_default" color="0xff0000" pivot="8" scale="0.5" />
+	
+	<bullet id="mob_bullet">
+	
+		<properties size="5" time="5"/>
+		<shape type="aabb" w="10" h="10"/>
+		
+		<velocity launch="200"/>
+		<impulse launch="400" friction="6"/>
+	
+		<hit damage="2" wall="true"/>
+		<reflect/>
+		
+		<body bitmap="mob_bullet" oriented="true"/>
+		
+	</bullet>
+	
+	<enemy_path id="fix_down" angle="90" speed="50"/>
+	<enemy_path id="fix_run" angle="90" speed="70"/>
+	<enemy_path id="normal" angle="90; 135" speed="30; 50"/>
+	<enemy_path id="normal_run" angle="90; 135" speed="50; 70"/>
+	<enemy_path id="normal_fast" angle="90; 135" speed="150; 200"/>
+	
+	<enemy_path id="hori" angle="0" speed="50; 150" flip="false"/>
+	<enemy_path id="hori_circle" angle="0" speed="100; 200" flip="false">
+		<circle a="100" b="100" f="0" speed="180"/>
+	</enemy_path>
+	
+	<motion id="velocity_direction_30">
+		<key time="0; 180" tween="angle" start="-30" change="60"/>
+		<key time="180; 360" tween="angle" start="30" change="-60"/>
+	</motion>
+	
+	<motion id="velocity_direction_full">
+		<key time="0; 360" tween="angle" start="-90" change="360"/>
+		
+	</motion>
+	
+	<bitmap id="enemy_drop" data="fx_drop" pivot="12; 5" scale="0.99" color="0x528e4a"/>
+	
+	<particle id="enemy_hit" bitmap="enemy_drop">
+		<properties time="0.5; 0.75" velocity="300; 300" friction="6" gravity="600"/>
+		<scale begin="0.8; 1" end="0"/>
+		<rotation oriented="true"/>
+	</particle>
+	
+	<bitmap id="enemy_cell_gray" data="fx_cell" pivot="16" scale="0.99" color="0xb7b094"/>
+	
+	<particle id="enemy_cell_gray" bitmap="enemy_cell_gray">
+		<properties velocity="0; 200" friction="6" gravity="-100" time="0.45; 0.5"/>
+		<scale begin="0.4; 1" end="0"/>
+	</particle>
+
+</data>

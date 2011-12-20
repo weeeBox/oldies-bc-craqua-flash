@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<bitmap id="level_shadow" pivot="16; 8" scale="0.99" />
+	<bitmap id="level_hp" pivot="34; 24" scale="0.5" />
+	<bitmap id="level_score" pivot="16" scale="0.99" />
+	<bitmap id="level_score_decoration" pivot="12" scale="0.83" />
+	<bitmap id="level_bomb" pivot="12; 16" scale="0.7" />
+	<bitmap id="level_xp_empty" pivot="32" scale="0.85" />
+	<bitmap id="level_xp_full" pivot="32" scale="0.85" />
+
+	<bitmap id="level_digit_0" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_1" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_2" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_3" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_4" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_5" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_6" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_7" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_8" pivot="12; 16" scale="0.99" />
+	<bitmap id="level_digit_9" pivot="12; 16" scale="0.99" />
+	
+	<sheet id="level_hit_bottom">
+		<properties pivot="65; 22" scale="0.99" />
+		<frame time="0.025" data="level_hit_bottom_2"/>
+		<frame time="0.025" data="level_hit_bottom_3"/>
+		<frame time="0.025" data="level_hit_bottom_4"/>
+		<frame time="0.05" data="level_hit_bottom_5"/>
+		<frame time="0.05" data="level_hit_bottom_6"/>
+		<frame time="0.05" data="level_hit_bottom_7"/>
+		<frame time="0.05" data="level_hit_bottom_8"/>
+		<frame time="0.05" data="level_hit_bottom_9"/>
+	</sheet>
+	
+	<particle id="level_hit_bottom" animation="level_hit_bottom">
+		<scale begin="1" end="0.75"/>
+	</particle>
+	
+	<bitmap id="level_scrap_day" data="level_scrap" color="0xc3f2ff" pivot="8" scale="0.99" />
+	<bitmap id="level_scrap_night" data="level_scrap" color="0xfff000" pivot="8" scale="0.99" />
+	
+	<particle id="level_day" bitmap="level_scrap_day">
+		<properties velocity="50; 100" friction="1" time="1.5; 2"/>
+		<scale begin="0.25; 1" end="0"/>
+		<alpha begin="0" end="0.25; 0.5"/>
+	</particle>
+	
+	<particle id="level_night" bitmap="level_scrap_night">
+		<properties velocity="50; 100" friction="1" time="1.5; 2"/>
+		<scale begin="0.25; 1" end="0"/>
+		<alpha begin="0" end="0.25; 0.5"/>
+	</particle>
+	
+</data>

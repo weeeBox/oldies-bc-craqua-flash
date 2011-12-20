@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jelly>
+
+	<bitmap id="mob_jelly_body" pivot="24; 16" scale="0.9"/>
+	<bitmap id="mob_jelly_tail" pivot="24; 26" scale="0.9"/>
+	<bitmap id="mob_jelly_charge" pivot="32" scale="0.99"/>
+
+	
+	<model id="jelly">
+		
+		<sprite id="charge" position="0; 0" visible="false">
+			<bitmap data="mob_jelly_charge"/>
+		</sprite>
+		<sprite id="body" position="0; 0">
+			<sprite id="tail" position="0; -10">
+				<bitmap data="mob_jelly_tail"/>
+			</sprite>
+			<bitmap data="mob_jelly_body"/>
+		</sprite>
+	</model>
+	
+	<animation id="jelly">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.2" ease="sine.in.out" tween="scale" start="0.9; 0.95" change="0.05; -0.05"/>
+			<key node="body" time="0.2; 0.4" ease="sine.in.out" tween="scale" start="0.95; 0.9" change="-0.05; 0.05;"/>
+		</motion>
+		<motion id="moving">
+			<key node="body" time="0; 1" tween="scale" start="0.9; 0.8" change="-0.1; 0.2"/>
+			<key node="tail" time="0; 1" tween="scale" start="1; 0.5" change="-0.5; 0.5"/>
+			<weight time="0.0" value="0"/>
+			<weight time="0.8" value="1"/>
+			<weight time="1.0" value="1"/>
+		</motion>
+		<motion id="shot">
+			<key node="body" time="0.0; 0.5" ease="sine.out" tween="color" start="0x000000" end="0xffffff"/>
+			<key node="charge" time="0.0; 0.5" ease="sine.out" tween="alpha" start="1" change="-1"/>
+			<key node="charge" time="0.0; 0.5" tween="angle" start="0" change="1000"/>
+		</motion>
+		<motion id="velocity_direction" data="velocity_direction_30"/>
+	</animation>
+	
+	<enemy id="jelly">
+		
+		<properties health="15" fail="10" mod="1" gems="5" money="3" mass="5" size="16"/>
+		
+		<shape type="circle" r="12"/>
+		
+		<hit particle="enemy_hit"/>
+		<death sfx="bio_death">
+			<circle_particles particle="enemy_cell_gray" count="10" radius="12"/>
+		</death>
+		
+		<moving time="2" type="saw"/>
+		
+		<timer pause="2" period="2">
+			<sfx data="enemy_shot"/>
+			<motion play="shot"/>
+			<bullets direction="aim" bullet="mob_jelly_bullet" n="1"/>
+		</timer>
+		
+		<sprite model="jelly" animation="jelly"/>
+		
+	</enemy>
+	
+	<bitmap id="mob_jelly_latex" pivot="32; 20" scale="0.99"/>
+	<bitmap id="mob_jelly_latex_tail" pivot="22; 40" scale="0.99"/>
+	
+	<model id="jelly_latex">
+		
+	
+		<sprite id="tail" position="-2; -6">
+			<bitmap data="mob_jelly_latex_tail"/>
+		</sprite>
+		
+        <sprite id="body" position="0; 0">
+			<bitmap data="mob_jelly_latex"/>
+		</sprite>
+	</model>
+	
+	<animation id="jelly_latex">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.1" ease="sine.in.out" tween="scale" start="0.95; 1" change="0.05; -0.05"/>
+        </motion>
+   		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="tail" time="0.0; 0.2" ease="sine.in.out" tween="angle" start="-8" change="13"/>
+        </motion>
+
+        <motion id="velocity_direction" data="velocity_direction_30"/>
+	</animation>
+	
+	<enemy id="jelly_latex">
+		
+		<properties health="20" fail="10" mod="1" gems="5" money="6" mass="10" size="16"/>
+		
+		<shape type="circle" r="12"/>
+		
+		<hit particle="enemy_hit"/>
+		<death sfx="enemy_death">
+			<circle_particles particle="enemy_cell_gray" count="10" radius="12"/>
+		</death>
+		
+		<moving time="0.5"/>
+		
+		<sprite model="jelly_latex" animation="jelly_latex"/>
+		
+	</enemy>
+	
+	<bitmap id="mob_jelly_shrimp" pivot="12; 24" scale="0.99"/>
+	<bitmap id="mob_jelly_shrimp_big" pivot="16; 32" scale="0.99"/>
+	
+	<model id="shrimp">
+		<sprite id="body" position="0; 0">
+			<bitmap data="mob_jelly_shrimp"/>
+		</sprite>
+	</model>
+	
+	<model id="shrimp_big">
+		<sprite id="body" position="0; 0">
+			<bitmap data="mob_jelly_shrimp_big"/>
+		</sprite>
+	</model>
+	
+	<animation id="shrimp">
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.2" ease="sine.in.out" tween="scale" start="0.9; 0.95" change="0.05; -0.05"/>
+			<key node="body" time="0.2; 0.4" ease="sine.in.out" tween="scale" start="0.95; 0.9" change="-0.05; 0.05;"/>
+		</motion>
+		<motion id="moving">
+			<key node="body" time="0.5; 1" tween="scale" start="0.9; 0.8" change="-0.1; 0.2"/>
+			<weight time="0.0" value="0"/>
+			<weight time="0.9" value="1"/>
+			<weight time="1.0" value="1"/>
+		</motion>
+		<motion id="velocity_direction" data="velocity_direction_full"/>
+	</animation>
+	
+	<enemy id="shrimp">
+		
+		<properties health="1" fail="10" mod="1" gems="1" money="1" mass="5" size="20"/>
+		
+		<shape type="circle" r="10"/>
+		
+		<hit particle="enemy_hit"/>	
+
+		<death sfx="bio_death">
+			<circle_particles particle="enemy_cell_gray" count="10" radius="12"/>
+		</death>
+		
+		<moving time="0.5" type="saw" min="0.5" max="1"/>
+		
+		<sprite model="shrimp" animation="shrimp"/>
+		
+		<trail particle="trail_air_16" speed="0.1"/>
+		
+	</enemy>
+	
+	<enemy_path id="shrimp_saw" angle="45" flip="false" speed="230"/>
+	<enemy_path id="shrimp_saw2" angle="135" flip="false" speed="230"/>
+	<enemy_path id="shrimp_down" angle="90; 100" speed="100; 130"/>
+	<enemy_path id="shrimp_sin" angle="90; 100" speed="70; 80">
+		<circle a="200" b="0" f="0; 180" speed="-45"/>
+	</enemy_path>
+	
+	<enemy id="shrimp_big">
+		
+		<properties health="10" fail="10" mod="1" gems="3" money="3" mass="5" size="32"/>
+		
+		<shape type="circle" r="20"/>
+		
+		<hit particle="enemy_hit">
+			<cap level="0.8">
+				<path data="shrimp_big_down"/>
+				<circle_particles particle="enemy_cell_gray" count="5" radius="12"/>
+				<sfx data="enemy_death"/>
+			</cap>
+		</hit>
+		
+		<moving time="0.5" type="saw" min="0.5" max="1"/>
+		
+		<death sfx="bio_death">
+			<circle_particles particle="enemy_cell_gray" count="10" radius="12"/>
+		</death>
+		
+		<sprite model="shrimp_big" animation="shrimp"/>
+		
+		<trail particle="trail_air_16" speed="0.1"/>
+		
+	</enemy>
+	
+	<enemy_path id="shrimp_big_start" angle="120; 145" speed="70; 100"/>
+	<enemy_path id="shrimp_big_down" angle="90; 100" speed="200; 300"/>	
+	
+	<bitmap id="mob_jelly_bullet" pivot="9" scale="0.99" color="0xff7777"/>
+	<bitmap id="mob_jelly_bullet_trail" pivot="4" scale="2"/>
+	
+	<bitmap id="mob_jelly_bullet2" pivot="16" scale="0.85"/>
+	
+	<particle id="mob_jelly_bullet_hit" bitmap="mob_jelly_bullet2">
+		<properties time="0.75; 1" velocity="400; 500" friction="6" gravity="600"/>
+		<scale begin="1" end="0"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<particle id="mob_jelly_bullet_trail" bitmap="mob_jelly_bullet_trail">
+		<properties velocity="50; 100" friction="6" gravity="0" time="0.25; 0.5"/>
+		<scale begin="0.25; 0.5" end="0.5; 1"/>
+		<alpha begin="1" end="0"/>
+		<rotation angle="0; 360"/>
+	</particle>
+	
+	<bullet id="mob_jelly_bullet">
+	
+		<properties size="5" time="5"/>
+		<shape type="aabb" w="10" h="10"/>
+		
+		<velocity launch="200"/>
+		<impulse launch="400" friction="6"/>
+	
+		<hit damage="5" wall="true" particle="mob_jelly_bullet_hit"/>
+		<reflect/>
+		
+		<trail particle="mob_jelly_bullet_trail" speed="0.1"/>
+		
+		<body bitmap="mob_jelly_bullet2" pulse_w="50" pulse_a="0.15"/>
+		
+	</bullet>
+</jelly>

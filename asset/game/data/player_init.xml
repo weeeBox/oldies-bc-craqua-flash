@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<player>
+	<moving div="0.2"/>
+	<blink count="8" time="2"/>
+
+			
+	<claw angle="20" distance="22" shooting_angle="10">
+	</claw>
+	
+	<claw angle="60" distance="23" shooting_angle="20">
+	</claw>
+	
+	<claw angle="100" distance="27" shooting_angle="30">
+	</claw>
+	
+	<!-- 1 -->
+	<level exp="10">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="30"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a1" sfx="player_shot" />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+
+	</level>
+	
+	<!-- 2 -->
+	<level exp="30">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a1" sfx="player_shot" />
+		<weapon rate="4" angle="4.5" sync="true" bullet="player_a1"/>
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		
+
+	</level>
+	
+	<!-- 3 -->
+	<level exp="70">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a1" sfx="player_shot" />
+		<weapon rate="4" angle="4.5" sync="true" bullet="player_a1" />
+		<weapon rate="4" angle="9" sync="true" bullet="player_a1" />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+
+	</level>
+	
+	<!-- 4 -->
+	<level exp="120">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a2" sfx="player_shot" />
+		<weapon rate="4" angle="4.5" sync="true" bullet="player_a1" />
+		<weapon rate="4" angle="9" sync="true" bullet="player_a1"/>
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+
+	</level>
+	
+	<!-- 5 -->
+	<level exp="200">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a2" sfx="player_shot" />
+		<weapon rate="4" sync="true" count="2" angle="4" fan="4" bullet="player_a1"  />
+		<weapon rate="4" angle="9" sync="true" bullet="player_a1"  />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+
+	</level>
+	
+	<!-- 6 -->
+	<level exp="300">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a2" sfx="player_shot" />
+		<weapon rate="4" sync="true" angle="4.5" bullet="player_a2"  />
+		<weapon rate="4" angle="9" count="3" fan="6" sync="true" bullet="player_a1"  />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+
+	</level>
+	
+	<!-- 7 -->
+	<level exp="400">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a2" sfx="player_shot" />
+		<weapon rate="4" sync="true" count="2" angle="4" fan="4" bullet="player_a2"  />
+		<weapon rate="4" angle="9" count="3" fan="6" sync="true" bullet="player_a1"  />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+		<bomb bullet="player_missle" angle="-37"/>
+		<bomb bullet="player_missle" angle="37"/>
+
+	</level>
+	
+	<!-- 8 -->
+	<level exp="500">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a2" sfx="player_shot" />
+		<weapon rate="4" sync="true" count="2" angle="4" fan="4" bullet="player_a2"  />
+		<weapon rate="4" angle="9" sync="true" bullet="player_a3"  />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+		<bomb bullet="player_missle" angle="-37"/>
+		<bomb bullet="player_missle" angle="37"/>
+
+	</level>
+	
+	<!-- 9 -->
+	<level exp="600">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" count="2" angle="2" fan="4" bullet="player_a2" sfx="player_shot" />
+		<weapon rate="4" sync="true" count="2" angle="4" fan="4" bullet="player_a2"  />
+		<weapon rate="4" angle="9" sync="true" bullet="player_a3" />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+		<bomb bullet="player_missle" angle="-37"/>
+		<bomb bullet="player_missle" angle="37"/>
+
+	</level>
+	
+	<!-- 10 -->
+	<level exp="800">
+		<mod rate="1" damage="1"/>
+		<regen health="30" bomb="10"/>
+		
+		<weapon rate="8" sync="false" bullet="player_a3" sfx="player_shot" />
+		<weapon rate="4" sync="true" count="3" angle="10" fan="20" bullet="player_a2"  />
+		<weapon rate="4" angle="9" sync="true" bullet="player_a3" />
+		
+		<bomb bullet="player_plasma" sfx="player_bomb"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_plasma"/>
+		<bomb bullet="player_missle" angle="-25"/>
+		<bomb bullet="player_missle" angle="25"/>
+		<bomb bullet="player_missle" angle="-50"/>
+		<bomb bullet="player_missle" angle="50"/>
+		<bomb bullet="player_missle" angle="-37"/>
+		<bomb bullet="player_missle" angle="37"/>
+		<bomb bullet="player_missle" angle="-62"/>
+		<bomb bullet="player_missle" angle="62"/>
+
+	</level>
+	
+	<sprite>
+		<tails bitmap="fx_wave" particle="bubble"/>	
+	</sprite>
+</player>

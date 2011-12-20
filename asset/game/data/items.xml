@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items_data>
+
+	<bitmap id="item_star" pivot="17; 16" scale="0.99" />
+	<bitmap id="item_star_back" pivot="17; 16" scale="0.99" />
+	<bitmap id="item_gem1" pivot="8" scale="0.99" />
+	<bitmap id="item_gem2" pivot="8" scale="0.99" />
+	<bitmap id="item_gem3" pivot="8" scale="0.99" />
+	<bitmap id="item_gem_back" pivot="10" scale="0.99"/>
+	<bitmap id="item_health" pivot="8" scale="0.99" />
+	<bitmap id="item_health_back" pivot="10" scale="0.99"/>
+	<bitmap id="item_bomb" pivot="8" scale="0.99" />
+	<bitmap id="item_bomb_back" pivot="10" scale="0.99"/>
+	
+
+	<item id="money1" type="money" amount="3" sfx="item_money">
+		<shape type="circle" r="8"/>
+		<sprite body="item_gem1" back="item_gem_back"/>
+		<particles data="exp_air_8" count="2"/>
+		<phy gravity="500"/>
+	</item>
+	<item id="money2" type="money" amount="5" sfx="item_money">
+		<shape type="circle" r="8"/>
+		<sprite body="item_gem2" back="item_gem_back"/>
+		<particles data="exp_air_8" count="2"/>
+		<phy gravity="500"/>
+	</item>
+	<item id="money3" type="money" amount="10" sfx="item_money">
+		<shape type="circle" r="8"/>
+		<sprite body="item_gem3" back="item_gem_back"/>
+		<particles data="exp_air_8" count="2"/>
+		<phy gravity="500"/>
+	</item>
+	
+	<item id="gem1" type="gem" scale="0.7" amount="3" sfx="item_gem" spining="10">
+		<shape type="circle" r="4"/>
+		<sprite body="item_star" back="item_star_back"/>
+		<particles data="exp_air_8" count="2"/>
+		<magnit distance="100" force="100"/>
+	</item>
+	<item id="gem2" type="gem" scale="0.85" amount="5" sfx="item_gem" spining="10">
+		<shape type="circle" r="6"/>
+		<sprite body="item_star" back="item_star_back"/>
+		<particles data="exp_air_8" count="2"/>
+		<magnit distance="100" force="100"/>
+	</item>
+	<item id="gem3" type="gem" scale="1" amount="10" sfx="item_gem" spining="10">
+		<shape type="circle" r="7"/>
+		<sprite body="item_star" back="item_star_back"/>
+		<particles data="exp_air_8" count="2"/>
+		<magnit distance="100" force="100"/>
+	</item>
+	
+	<!-- 	
+	<item id="gem1" type="gem" amount="1" sfx="item_pick">
+		<shape type="circle" r="8"/>
+		<sprite body="item_gem1" back="item_gem_back"/>
+		<particles data="exp_air_8" count="4"/>
+	</item>
+	<item id="gem2" type="gem" amount="3" sfx="item_pick">
+		<shape type="circle" r="8"/>
+		<sprite body="item_gem2" back="item_gem_back"/>
+		<particles data="exp_air_8" count="4"/>
+	</item>
+	<item id="gem3" type="gem" amount="10" sfx="item_pick">
+		<shape type="circle" r="8"/>
+		<sprite body="item_gem3" back="item_gem_back"/>
+		<particles data="exp_air_8" count="4"/>
+	</item>
+	 -->
+	
+	<item id="health" type="heal" amount="5" sfx="item_heal">
+		<shape type="circle" r="8"/>
+		<sprite body="item_health" back="item_health_back"/>
+		<particles data="exp_air_8" count="4"/>
+	</item>
+	
+	<item id="bomb" type="bomb" amount="1" sfx="item_bomb">
+		<shape type="circle" r="8"/>
+		<sprite body="item_bomb" back="item_bomb_back"/>
+		<particles data="exp_air_8" count="4"/>
+	</item>
+
+</items_data>

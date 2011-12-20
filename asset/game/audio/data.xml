@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio panorama="320" fading="0.002">
+
+     <sound id="item_gem" data="audio_item_gem"/>
+     <sound id="item_money" data="audio_item_money"/>
+     <sound id="item_heal" data="audio_item_heal"/>
+     <sound id="item_bomb" data="audio_item_bomb"/>
+
+     <sound id="player_shot">
+          <sample data="audio_player_shot1"/>
+          <sample data="audio_player_shot2"/>
+     </sound>
+
+     <sound id="player_bomb" data="audio_player_bomb"/>
+
+     <sound id="player_missle" playback="random">
+          <sample data="audio_player_missle1"/>
+          <sample data="audio_player_missle2"/>
+     </sound>
+
+     <sound id="player_plasma" data="audio_player_plasma"/>
+
+     <sound id="player_death" data="audio_boss_death"/>
+
+     <sound id="player_shield" data="audio_player_shield"/>
+     <sound id="player_hit" data="audio_player_hit"/>
+     <sound id="player_downgrade" data="audio_player_downgrade"/>
+     <sound id="player_upgrade" data="audio_player_upgrade"/>
+
+     <sound id="ui_over" data="audio_ui_over"/>
+     <sound id="ui_click" data="audio_ui_click"/>
+
+     <sound id="bio_death" playback="random">
+          <sample data="audio_bio_death1"/>
+          <sample data="audio_bio_death2"/>
+     </sound>
+
+     <sound id="tech_death" playback="random">
+          <sample data="audio_tech_death1"/>
+          <sample data="audio_tech_death2"/>
+     </sound>
+
+     <sound id="enemy_death" playback="random">
+          <sample data="audio_enemy_death1"/>
+          <sample data="audio_enemy_death2"/>
+     </sound>
+
+     <sound id="boss_death" data="audio_boss_death"/>
+     
+     <sound id="tv_death" data="audio_tv_death"/>
+     <sound id="tv_shot" data="audio_tv_shot"/>
+
+     <sound id="enemy_shot" playback="random">
+          <sample data="audio_enemy_shot1"/>
+          <sample data="audio_enemy_shot2"/>
+     </sound>
+
+</audio>
+

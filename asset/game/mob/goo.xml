@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<goo_data>
+	
+	<bitmap id="mob_goo_body1" pivot="128; 84" scale="0.99"/>
+	<bitmap id="mob_goo_body2" pivot="128; 84" scale="0.99"/>
+	<bitmap id="mob_goo_body3" pivot="128; 84" scale="0.99"/>
+	<bitmap id="mob_goo_hit" pivot="16" scale="0.99"/>
+
+
+	<model id="boss_goo">
+		<sprite id="body">
+			<bitmap id="body_bm" data="mob_goo_body1"/>
+		</sprite>
+	</model>
+	
+	<animation id="boss_goo">
+		
+		<motion playback="pingpong" count="0" autoplay="true">
+			<key node="body" time="0.0; 0.3" ease="sine.in.out" tween="scale" start="0.95; 1" change="0.05; -0.1"/>
+		</motion>
+				
+	</animation>
+	
+	<enemy id="boss_goo">
+		<properties health="1000" gems="30" money="50" size="82"/>
+		<shape type="aabb" x="0" y="0" w="200" h="120"/>
+		<sprite model="boss_goo" animation="boss_goo"/>
+		
+		<boss/>
+				
+		<init>
+			<path/>
+			<position to="320; 100" time="5" ease="sine.in.out"/>
+		</init>
+		
+		<timer type="timeline" start="5">
+			<event pause="10">
+				<position to="140; 100" time="10" ease="sine.in.out"/>
+			</event>
+			<event pause="10">
+				<position to="500; 100" time="10" ease="sine.in.out"/>
+			</event>
+		</timer>
+		
+		<timer type="timeline" start="1" enabled="false">
+			<event pause="0.5">
+				<sfx data="enemy_shot"/>
+				<bullets bullet="goo_bullet" n="3" min="0" max="360" f="90" a="360" w="5"/>
+			</event>
+		</timer>
+		
+		<timer type="timeline" start="1" enabled="false">
+			<event pause="0.5">
+				<sfx data="enemy_shot"/>
+				<bullets bullet="goo_bullet" n="5" min="0" max="360" f="90" a="360" w="5"/>
+			</event>
+		</timer>
+		
+		<hit particle="goo_hit" light="0.2">
+			<cap level="0.9">
+				<bonus gems="3" money="3"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+			<cap level="0.8">
+				<bitmap node="body_bm" data="mob_goo_body2"/>
+				<bitmap node="face_bm" data="mob_goo_face2"/>
+				<world shake="1" flash="1"/>
+				<circle_particles particle="goo_hit" count="16" radius="64"/>
+				<sfx data="enemy_death"/>
+				<timer index="1" enable="true"/>
+				<bonus gems="15" money="15"/>
+			</cap>
+			<cap level="0.7">
+				<bonus gems="4" money="4"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+			<cap level="0.6">
+				<bonus gems="5" money="5"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+			<cap level="0.5">
+				<bonus gems="6" money="6"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+			<cap level="0.4">
+				<bitmap node="body_bm" data="mob_goo_body3"/>
+				<bitmap node="face_bm" data="mob_goo_face3"/>
+				<world shake="1" flash="1"/>
+				<circle_particles particle="goo_hit" count="32" radius="64"/>
+				<sfx data="enemy_death"/>
+				<timer index="1" enable="false"/>
+				<timer index="2" enable="true"/>
+				<bonus gems="15" money="15"/>
+			</cap>
+			<cap level="0.3">
+				<bonus gems="7" money="7"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+			<cap level="0.2">
+				<bonus gems="8" money="8"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+			<cap level="0.1">
+				<bonus gems="9" money="9"/>
+				<circle_particles particle="enemy_cell_gray" count="16" radius="32"/>
+			</cap>
+		</hit>
+		
+		<death sfx="boss_death">
+			<world shake="1" flash="1"/>
+			<circle_particles particle="goo_hit" count="32" radius="64"/>
+		</death>
+
+	</enemy>
+	
+	<particle id="goo_hit" bitmap="mob_goo_hit">
+		<properties time="0.75; 1" velocity="200; 500" friction="6" gravity="-600"/>
+		<scale begin="0.5; 1" end="0.5; 1"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<particle id="goo_bullet_trail" bitmap="mob_goo_hit">
+		<properties velocity="150; 200" friction="6" gravity="-600" time="0.25; 0.5"/>
+		<scale begin="0.25; 0.5" end="0.25; 0.5"/>
+		<alpha begin="0.5" end="0"/>
+	</particle>
+	
+	<particle id="goo_bullet_hit" bitmap="mob_goo_hit">
+		<properties time="0.75; 1" velocity="400; 500" friction="6" gravity="-600"/>
+		<scale begin="1" end="0"/>
+		<alpha begin="1" end="0"/>
+	</particle>
+	
+	<bullet id="goo_bullet">
+	
+		<properties size="5" time="5"/>
+		<shape type="aabb" w="10" h="10"/>
+		
+		<velocity launch="200"/>
+		<impulse launch="600" friction="6"/>
+	
+		<hit damage="5" wall="true" particle="goo_bullet_hit"/>
+		<reflect/>
+		
+		<trail particle="goo_bullet_trail" speed="0.1"/>
+		
+		<body bitmap="mob_goo_hit"/>
+		
+	</bullet>
+
+
+</goo_data>
