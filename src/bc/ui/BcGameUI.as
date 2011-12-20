@@ -350,13 +350,6 @@ package bc.ui
 			settingsQ = new UICheckBox(settingsPanel, 620-527+16, 466-8, stQuality, onSettingClick);
 			settingsS = new UICheckBox(settingsPanel, 584-527+16, 466-8, stSound, onSettingClick);
 			settingsM = new UICheckBox(settingsPanel, 547-527+16, 466-8, stMusic, onSettingClick);
-			
-			if(BcDevice.DEBUG)
-			{
-				label = new UILabel(layerOverlay, 320, 10, "", stInfoSmall);
-				label.html = "<p align=\"center\"><font color=\"#ff0000\">!! TEST VERSION !!</font></p>";
-				label.centerX = 320;
-			}
 		}
 		
 		private function clickInstructions(o:UIObject):void
