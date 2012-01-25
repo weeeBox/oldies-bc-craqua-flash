@@ -181,25 +181,36 @@ package bc.ui
 		
 		
 		
-		private var stQuality:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_QUALITY_HIGH, text2:BcStrings.UI_QUALITY_LOW, back1:"ui_qb", back2:"ui_qb", body1:"ui_q", body2:"ui_q"});
-		private var stMusic:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_MUSIC_ON, text2:BcStrings.UI_MUSIC_OFF, back1:"ui_m1b", back2:"ui_m2b", body1:"ui_m1", body2:"ui_m2"});
-		private var stSound:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_SFX_ON, text2:BcStrings.UI_SFX_OFF, back1:"ui_s1b", back2:"ui_s2b", body1:"ui_s1", body2:"ui_s2"});
-		private var stButtonMedium:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.75});
-		private var stButtonOther:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.85});
-		private var stButtonSmall:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.5});
-		private var stTitle:UIStyle = new UIStyle(UILabel.DEFAULT_STYLE, 
-			{
-				font: "main",
-				textSize: 30,
-				textColor: 0xffffff,
-				strokeBlur: 3,
-				strokeColor: 0x033754,
-				strokeAlpha: 1,
-				strokeStrength: 6
-			});
+//		private var stQuality:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_QUALITY_HIGH, text2:BcStrings.UI_QUALITY_LOW, back1:"ui_qb", back2:"ui_qb", body1:"ui_q", body2:"ui_q"});
+//		private var stMusic:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_MUSIC_ON, text2:BcStrings.UI_MUSIC_OFF, back1:"ui_m1b", back2:"ui_m2b", body1:"ui_m1", body2:"ui_m2"});
+//		private var stSound:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_SFX_ON, text2:BcStrings.UI_SFX_OFF, back1:"ui_s1b", back2:"ui_s2b", body1:"ui_s1", body2:"ui_s2"});
+//		private var stButtonMedium:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.75});
+//		private var stButtonOther:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.85});
+//		private var stButtonSmall:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.5});
+//		private var stTitle:UIStyle = new UIStyle(UILabel.DEFAULT_STYLE, 
+//			{
+//				font: "main",
+//				textSize: 30,
+//				textColor: 0xffffff,
+//				strokeBlur: 3,
+//				strokeColor: 0x033754,
+//				strokeAlpha: 1,
+//				strokeStrength: 6
+//			});
+//			
+//		private var stInfo:UIStyle = new UIStyle(stTitle, {	textSize: 25 });
+//		private var stInfoSmall:UIStyle = new UIStyle(stTitle, { textSize: 15 });
+
+		private var stQuality:UIStyle = null;
+		private var stMusic:UIStyle = null;
+		private var stSound:UIStyle = null;
+		private var stButtonMedium:UIStyle = null;
+		private var stButtonOther:UIStyle = null;
+		private var stButtonSmall:UIStyle = null;
+		private var stTitle:UIStyle = null; 
 			
-		private var stInfo:UIStyle = new UIStyle(stTitle, {	textSize: 25 });
-		private var stInfoSmall:UIStyle = new UIStyle(stTitle, { textSize: 15 });
+		private var stInfo:UIStyle = null;
+		private var stInfoSmall:UIStyle = null;
 		
 		private var settingsPanel:UIPanel = new UIPanel(layerOverlay);
 		private var settingsQ:UICheckBox;
@@ -666,12 +677,13 @@ package bc.ui
 			}
 			else
 			{
-				gameFader.play(transFaderOpen, 1, 
-					function(o:UIObject):void
-					{
-						BcGameGlobal.game.quitWorld();
-					}
-				);
+				gameFader.play(transFaderOpen, 1);
+// FIXME!!!				 
+//					function(o:UIObject):void
+//					{
+//						BcGameGlobal.game.quitWorld();
+//					}
+//				);
 			}
 			
 			if(BcGameGlobal.world.uiBoss || BcGameGlobal.world.uiVictory)
@@ -743,25 +755,27 @@ package bc.ui
 			{
 				BcMusic.getMusic("victory").stop(1);
 				gameFader.play(transFaderExit, 0.5);
-				endPanel.play(transWindowClose, 0.5, 
-					function(o:UIObject):void
-					{
-						openMain(false);
-					}
-				);
+				endPanel.play(transWindowClose, 0.5);
+// FIXME!!!				 
+//					function(o:UIObject):void
+//					{
+//						openMain(false);
+//					}
+//				);
 			}
 			else if(BcGameGlobal.world.uiDeath)
 			{
 				gameFader.play(transFaderExit, 0.5);
 				endPanel.play(transWindowClose, 0.5);
-				settingsPanel.play(transWindowClose, 0.5, 
-					function(o:UIObject):void
-					{
-						BcGameGlobal.game.startLastCheckPoint();
-						gameFader.initBack();
-						gameFader.play(transFaderStart, 1);
-					}
-				);
+				settingsPanel.play(transWindowClose, 0.5);
+// FIXME!!! 
+//					function(o:UIObject):void
+//					{
+//						BcGameGlobal.game.startLastCheckPoint();
+//						gameFader.initBack();
+//						gameFader.play(transFaderStart, 1);
+//					}
+//				);
 				
 				gamePanel.play(transWindowOpen, 0.5);
 			}
@@ -783,12 +797,12 @@ package bc.ui
 			}
 			
 			gameFader.play(transFaderExit, 0.5);
-			endPanel.play(transWindowClose, 0.5, 
-				function(o:UIObject):void
-				{
-					openMain(false);
-				}
-			);
+			endPanel.play(transWindowClose, 0.5); 
+//				function(o:UIObject):void
+//				{
+//					openMain(false);
+//				}
+//			);
 		}
 		
 		private function endClickReplay():void
@@ -802,92 +816,119 @@ package bc.ui
 			
 			gameFader.play(transFaderExit, 0.5);
 			endPanel.play(transWindowClose, 0.5);
-			settingsPanel.play(transWindowClose, 0.5, 
-				function(o:UIObject):void
-				{
-					BcGameGlobal.game.startLastCheckPoint();
-					gameFader.initBack();
-					gameFader.play(transFaderStart, 1);
-				}
-			);
+			settingsPanel.play(transWindowClose, 0.5);
+// FIXME!!!			 
+//				function(o:UIObject):void
+//				{
+//					BcGameGlobal.game.startLastCheckPoint();
+//					gameFader.initBack();
+//					gameFader.play(transFaderStart, 1);
+//				}
+//			);
 		}
 		
-		private var transBackStart:UITransition = new UITransition({
-				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
-				});
-		private var transObjectShow:UITransition = new UITransition({
-				a:[0, 1], ease:easeOpen, flags:[UITransition.FLAG_SHOW, 0]
-				});
-		private var transObjectHide:UITransition = new UITransition({
-				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE]
-				});
-		private var transBackOpen:UITransition = new UITransition({
-				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
-				});
-		private var transBackClose:UITransition = new UITransition({
-				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
-				});
-		private var transWindowOpen:UITransition = new UITransition({
-				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
-				});
-		private var transWindowClose:UITransition = new UITransition({ 
-				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen 
-				});
+//		private var transBackStart:UITransition = new UITransition({
+//				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
+//				});
+//		private var transObjectShow:UITransition = new UITransition({
+//				a:[0, 1], ease:easeOpen, flags:[UITransition.FLAG_SHOW, 0]
+//				});
+//		private var transObjectHide:UITransition = new UITransition({
+//				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE]
+//				});
+//		private var transBackOpen:UITransition = new UITransition({
+//				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
+//				});
+//		private var transBackClose:UITransition = new UITransition({
+//				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
+//				});
+//		private var transWindowOpen:UITransition = new UITransition({
+//				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
+//				});
+//		private var transWindowClose:UITransition = new UITransition({ 
+//				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen 
+//				});
+//				
+//		private var transMainButtonsOpen:UITransition = new UITransition({
+//				x:[320, 0], ease:easeOpen
+//				});
+//		private var transMainButtonsClose:UITransition = new UITransition({ 
+//				x:[0, 320], ease:easeOpen 
+//				});
+//				
+//		private var transMainSponsorOpen:UITransition = new UITransition({
+//				x:[-150, 150], ease:easeOpen
+//				});
+//		private var transMainSponsorClose:UITransition = new UITransition({ 
+//				x:[150, -150], ease:easeOpen 
+//				});
+//				
+//		private var transDisable:UITransition = new UITransition({ 
+//				flags:[UITransition.FLAG_DISABLE, 0] 
+//				});
+//				
+//		private var transEnable:UITransition = new UITransition({ 
+//				flags:[0, UITransition.FLAG_ENABLE] 
+//				});
+//			
+//		private var transButtonShow:UITransition = new UITransition({ 
+//				sx:[0, 1], sy:[0, 1], a:[0, 1], ease:easeOpen 
+//				});
+//				
+//		private var transTitleShow:UITransition = new UITransition({ 
+//				y:[-165, 0], ease:easeOpen 
+//				});
+//				
+//		private var transTitleHide:UITransition = new UITransition({ 
+//				y:[0, -165], ease:easeOpen 
+//				});
+//				
+//				
+//		private var transFaderStart:UITransition = new UITransition({ 
+//				a:[1, 0], color:[0xff000000, 0, 0xffffffff, 0], flags:[UITransition.FLAG_ACTIVATE | UITransition.FLAG_SHOW, UITransition.FLAG_DEACTIVATE | UITransition.FLAG_HIDE], ease:easeOpen
+//				});
+//				
+//		private var transFaderOpen:UITransition = new UITransition({ 
+//				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
+//				});
+//				
+//		private var transFaderClose:UITransition = new UITransition({ 
+//				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen
+//				});
+//				
+//		private var transFaderExit:UITransition = new UITransition({ 
+//				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
+//				});
+//				
+//		private var transLabelHide:UITransition = new UITransition({ 
+//				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE] 
+//				});
+
+		private var transBackStart:UITransition = null;
+		private var transObjectShow:UITransition = null;
+		private var transObjectHide:UITransition = null;
+		private var transBackOpen:UITransition = null;
+		private var transBackClose:UITransition = null;
+		private var transWindowOpen:UITransition = null;
+		private var transWindowClose:UITransition = null;
 				
-		private var transMainButtonsOpen:UITransition = new UITransition({
-				x:[320, 0], ease:easeOpen
-				});
-		private var transMainButtonsClose:UITransition = new UITransition({ 
-				x:[0, 320], ease:easeOpen 
-				});
+		private var transMainButtonsOpen:UITransition = null;
+		private var transMainButtonsClose:UITransition = null;
 				
-		private var transMainSponsorOpen:UITransition = new UITransition({
-				x:[-150, 150], ease:easeOpen
-				});
-		private var transMainSponsorClose:UITransition = new UITransition({ 
-				x:[150, -150], ease:easeOpen 
-				});
+		private var transMainSponsorOpen:UITransition = null;
+		private var transMainSponsorClose:UITransition = null;
 				
-		private var transDisable:UITransition = new UITransition({ 
-				flags:[UITransition.FLAG_DISABLE, 0] 
-				});
-				
-		private var transEnable:UITransition = new UITransition({ 
-				flags:[0, UITransition.FLAG_ENABLE] 
-				});
+		private var transDisable:UITransition = null;				
+		private var transEnable:UITransition = null;
 			
-		private var transButtonShow:UITransition = new UITransition({ 
-				sx:[0, 1], sy:[0, 1], a:[0, 1], ease:easeOpen 
-				});
-				
-		private var transTitleShow:UITransition = new UITransition({ 
-				y:[-165, 0], ease:easeOpen 
-				});
-				
-		private var transTitleHide:UITransition = new UITransition({ 
-				y:[0, -165], ease:easeOpen 
-				});
-				
-				
-		private var transFaderStart:UITransition = new UITransition({ 
-				a:[1, 0], color:[0xff000000, 0, 0xffffffff, 0], flags:[UITransition.FLAG_ACTIVATE | UITransition.FLAG_SHOW, UITransition.FLAG_DEACTIVATE | UITransition.FLAG_HIDE], ease:easeOpen
-				});
-				
-		private var transFaderOpen:UITransition = new UITransition({ 
-				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
-				});
-				
-		private var transFaderClose:UITransition = new UITransition({ 
-				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen
-				});
-				
-		private var transFaderExit:UITransition = new UITransition({ 
-				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
-				});
-				
-		private var transLabelHide:UITransition = new UITransition({ 
-				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE] 
-				});
+		private var transButtonShow:UITransition = null;				
+		private var transTitleShow:UITransition = null;				
+		private var transTitleHide:UITransition = null;
+		private var transFaderStart:UITransition = null;				
+		private var transFaderOpen:UITransition = null;				
+		private var transFaderClose:UITransition = null;				
+		private var transFaderExit:UITransition = null;				
+		private var transLabelHide:UITransition = null;
 
 		private static function easeOpen(t:Number):Number
 		{
@@ -988,13 +1029,16 @@ package bc.ui
 				descComplete.play(transStatDisable, 3);
 		}
 		
-		private var transStatEnable:UITransition = new UITransition({ 
-				a:[0.2, 1], color:[0xffffffff, 0xff00ff00], ease:easeOpen 
-				});
-			
-		private var transStatDisable:UITransition = new UITransition({ 
-				a:[1, 0.2], color:[0xff00ff00, 0xffffffff], ease:easeOpen 
-				});
+//		private var transStatEnable:UITransition = new UITransition({ 
+//				a:[0.2, 1], color:[0xffffffff, 0xff00ff00], ease:easeOpen 
+//				});
+//			
+//		private var transStatDisable:UITransition = new UITransition({ 
+//				a:[1, 0.2], color:[0xff00ff00, 0xffffffff], ease:easeOpen 
+//				});
+
+		private var transStatEnable:UITransition = null;			
+		private var transStatDisable:UITransition = null;
 		
 		private function sponsorLink(object:UIObject):void
 		{

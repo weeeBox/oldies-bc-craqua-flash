@@ -24,9 +24,10 @@ package bc.core.motion.tweens
 		
 		public static function createFromXML(xml:XML):BcITween
 		{
-			var tween:BcITween = new (factory[xml.@tween.toString()])();
-			tween.parse(xml);
-			return tween;
+//			var tween:BcITween = new (factory[xml.@tween.toString()])();
+//			tween.parse(xml);
+//			return tween;
+			return null; // FIXME!!!
 		}
 		
 	}

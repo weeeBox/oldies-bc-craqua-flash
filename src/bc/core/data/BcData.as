@@ -76,7 +76,7 @@ package bc.core.data
 					typeInfo = types[ String( node.name() ) ];
 					if(typeInfo)
 					{
-						typeInfo.collection[ String( node.@id ) ] = new (typeInfo.dataClass)();
+						// typeInfo.collection[ String( node.@id ) ] = new (typeInfo.dataClass)();
 					}
 					else
 					{

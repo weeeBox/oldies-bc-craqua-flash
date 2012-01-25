@@ -2,7 +2,7 @@
 
 <project name="bc-craqua" default="debug">
 
-	<property name="playerVersion" value="10.1" />
+	<property name="playerVersion" value="11.1" />
 	<property name="project.name" value="${ant.project.name}" />
 
 	<!-- Source set -->
