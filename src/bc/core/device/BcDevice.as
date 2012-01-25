@@ -299,14 +299,15 @@ package bc.core.device
 			BcMusic.update(dt);
 			UI.update(dt);
 		}
-		
-		private function onSelectContextMenu(event:ContextMenuEvent):void
-		{
-			if(application)
-			{
-				application.contextMenu();
-			}
-		}
+
+// FIXME		
+//		private function onSelectContextMenu(event:ContextMenuEvent):void
+//		{
+//			if(application)
+//			{
+//				application.contextMenu();
+//			}
+//		}
 		
 		// активация/деактивация окна
 		private function onDeactivate(event:Event):void

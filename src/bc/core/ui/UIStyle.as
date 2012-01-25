@@ -23,12 +23,12 @@ package bc.core.ui
 			}
 		}
 		
-		public function setProperty(name:String, value:*):void
+		public function setProperty(name:String, value:Object):void
 		{
 			_properties[name] = value;
 		}
 		
-		public function getProperty(name:String):*
+		public function getProperty(name:String):Object
 		{
 			var style:UIStyle = this;
 			var value:* = null;

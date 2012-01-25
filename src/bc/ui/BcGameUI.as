@@ -67,7 +67,8 @@ package bc.ui
 		//private var g5Splash:Splash;
 		private var mcAd:MovieClip;
 		private var mcSp:MovieClip;
-		private var mcSpFrame:Shape = new Shape();
+// FIXME
+//		private var mcSpFrame:Shape = new Shape();
 		
 
 		public function BcGameUI()
@@ -902,7 +903,8 @@ package bc.ui
 		private function initBackFader():void
 		{
 			var nbd:BitmapData = new BitmapData(640, 480, false, 0x0);
-			nbd.applyFilter(BcAsset.getImage("ui_bg"), new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
+// FIXME
+//			nbd.applyFilter(BcAsset.getImage("ui_bg"), new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
 			var bm:Bitmap = new Bitmap(nbd);
 			bm.transform.colorTransform = new ColorTransform(0.5, 0.5, 0.5);
 			backFader.sprite.addChild(bm);
@@ -920,7 +922,8 @@ package bc.ui
 		{
 			mainFaderBitmap.bitmapData.draw(layerBack.sprite);
 			mainFaderBitmap.bitmapData.draw(layerMain.sprite);
-			mainFaderBitmap.bitmapData.applyFilter(mainFaderBitmap.bitmapData, new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
+// FIXME
+//			mainFaderBitmap.bitmapData.applyFilter(mainFaderBitmap.bitmapData, new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
 			mainFaderBitmap.transform.colorTransform = new ColorTransform(0.5, 0.5, 0.5);
 			mainFader.play(transObjectShow, 1);
 			mainPanel.play(transDisable, 1);

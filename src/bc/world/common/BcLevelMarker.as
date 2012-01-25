@@ -10,7 +10,7 @@ package bc.world.common
 	import flash.filters.DropShadowFilter;
 	import bc.core.ui.UITextField;
 	import bc.core.ui.UITextFieldAutoSize;
-        // FIXME
+	// FIXME
 	// import flash.text.TextFormat;
 
 	/**
@@ -19,7 +19,8 @@ package bc.world.common
 	public class BcLevelMarker extends Sprite 
 	{
 		public var tf:UITextField = new UITextField();
-		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
+// FIXME
+//		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
 		public var bitmap:Bitmap = new Bitmap();
 		
 		public var beginX:Number = 0;

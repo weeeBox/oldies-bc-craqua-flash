@@ -21,7 +21,8 @@ package bc.world.common
 	public class BcBossBar extends Sprite 
 	{
 		public var tf:UITextField = new UITextField();
-		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
+// FIXME
+//		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
 		public var bitmap:Bitmap = new Bitmap();
 		
 		public var back:Bitmap = new Bitmap();

@@ -18,9 +18,11 @@ package bc.ui
 	public class UIGameEffect extends UIPanel
 	{
 		protected var _bmWorld:Bitmap = new Bitmap(new BitmapData(640, 480, false, 0x0));
-		protected var _shFader:Shape = new Shape();
+// FIXME
+//		protected var _shFader:Shape = new Shape();
 		
-		protected var _filterBlur:BlurFilter = new BlurFilter(8, 8, 2);
+// FIXME
+//		protected var _filterBlur:BlurFilter = new BlurFilter(8, 8, 2);
 		protected var _filterRect:Rectangle = new Rectangle(0, 0, 640, 480);
 		protected var _filterPoint:Point = new Point();
 		
@@ -30,7 +32,8 @@ package bc.ui
 			super(layer, 0, 0);
 
 			_sprite.addChild(_bmWorld);
-			_sprite.addChild(_shFader);
+// FIXME
+//			_sprite.addChild(_shFader);
 		}
 		
 		public override function reset():void
@@ -44,23 +47,24 @@ package bc.ui
 		public function initFader():void
 		{
 			_bmWorld.visible = false;
-			
-			_shFader.graphics.clear();
-			_shFader.graphics.beginFill(0x000000);
-			_shFader.graphics.drawRect(0, 0, 640, 480);
-			_shFader.graphics.endFill();
+// FIXME			
+//			_shFader.graphics.clear();
+//			_shFader.graphics.beginFill(0x000000);
+//			_shFader.graphics.drawRect(0, 0, 640, 480);
+//			_shFader.graphics.endFill();
 		}
 		
 		public function initBack():void
 		{
 			_bmWorld.bitmapData.draw(BcGameGlobal.world.sprite);
-			_bmWorld.bitmapData.applyFilter(_bmWorld.bitmapData, _filterRect, _filterPoint, _filterBlur);
+// FIXME
+//			_bmWorld.bitmapData.applyFilter(_bmWorld.bitmapData, _filterRect, _filterPoint, _filterBlur);
 			_bmWorld.visible = true;
-			
-			_shFader.graphics.clear();
-			_shFader.graphics.beginFill(0x000000, 0.5);
-			_shFader.graphics.drawRect(0, 0, 640, 480);
-			_shFader.graphics.endFill();
+// FIXME			
+//			_shFader.graphics.clear();
+//			_shFader.graphics.beginFill(0x000000, 0.5);
+//			_shFader.graphics.drawRect(0, 0, 640, 480);
+//			_shFader.graphics.endFill();
 		}
 	}
 }
