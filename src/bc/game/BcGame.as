@@ -20,7 +20,8 @@ package bc.game
 	public class BcGame implements BcIApplication
 	{
 		private var world:BcWorld;
-		private var so:SharedObject;
+// FIXME
+//		private var so:SharedObject;
 		private var mc:MovieClip;
 		
 		public function BcGame()
@@ -129,18 +130,19 @@ package bc.game
 		
 		private function initializeLocalStore():void
 		{
-			so = SharedObject.getLocal("bc20");
-			
-			if(so)
-			{
-				BcGameGlobal.localStore = so.data;
-				if(so.data.name == null)
-				{
-					so.data.name = "unnamed";
-					so.data.best = 0;
-				}
-			}
-			else
+// FIXME
+//			so = SharedObject.getLocal("bc20");
+//			
+//			if(so)
+//			{
+//				BcGameGlobal.localStore = so.data;
+//				if(so.data.name == null)
+//				{
+//					so.data.name = "unnamed";
+//					so.data.best = 0;
+//				}
+//			}
+//			else
 			{
 				BcGameGlobal.localStore = new Object();
 			}

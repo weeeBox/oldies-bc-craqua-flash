@@ -10,16 +10,17 @@ package bc.world.common
 	import flash.display.Sprite;
 	import flash.filters.DropShadowFilter;
 	import flash.geom.Rectangle;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFormat;
+	import bc.core.ui.UITextField;
+	import bc.core.ui.UITextFieldAutoSize;
+        // FIXME
+	// import flash.text.TextFormat;
 
 	/**
 	 * @author Elias Ku
 	 */
 	public class BcBossBar extends Sprite 
 	{
-		public var tf:TextField = new TextField();
+		public var tf:UITextField = new UITextField();
 		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
 		public var bitmap:Bitmap = new Bitmap();
 		
@@ -63,14 +64,15 @@ package bc.world.common
 			
 			addChild(back);
 			addChild(hp);
-			
-        	tf.defaultTextFormat = new TextFormat("main", 18, 0xffffff);
-			tf.embedFonts = true;
-			tf.selectable = false;
-			tf.autoSize = TextFieldAutoSize.LEFT;
-			tf.textColor = 0xffffff;
-			tf.filters = [filter];
-			tf.cacheAsBitmap = true;
+
+// FIXME			
+//        	tf.defaultTextFormat = new TextFormat("main", 18, 0xffffff);
+//			tf.embedFonts = true;
+//			tf.selectable = false;
+//			tf.autoSize = UITextFieldAutoSize.LEFT;
+//			tf.textColor = 0xffffff;
+//			tf.filters = [filter];
+//			tf.cacheAsBitmap = true;
 			tf.x = 4;
 			
 			//addChild(tf);
@@ -152,8 +154,9 @@ package bc.world.common
 			tf.text = text;
 
 			var bitmapData:BitmapData = new BitmapData(int(tf.width+5), int(tf.height+5), true, 0);
-			
-			bitmapData.draw(tf, tf.transform.matrix);
+
+// FIXME			
+//			bitmapData.draw(tf, tf.transform.matrix);
 			bitmap.bitmapData = bitmapData;
 			bitmap.smoothing = true;
 			bitmap.pixelSnapping = PixelSnapping.NEVER;

@@ -107,15 +107,16 @@ package bc.core.device
 			impl.fullscreen = value;
 		}
 		
-		public static function get contextMenu():ContextMenu
-		{
-			return impl.display.contextMenu;
-		}
-		
-		public static function set contextMenu(value:ContextMenu):void
-		{
-			impl.contextMenu = value;
-		}
+// FIXME
+//		public static function get contextMenu():ContextMenu
+//		{
+//			return impl.display.contextMenu;
+//		}
+//		
+//		public static function set contextMenu(value:ContextMenu):void
+//		{
+//			impl.contextMenu = value;
+//		}
 		
 		// device
 		private var timer:BcTimer = new BcTimer();
@@ -131,8 +132,8 @@ package bc.core.device
 		private var stage:Stage;
 		
 		private var application:BcIApplication;
-		
-		private var defaultContextMenu:ContextMenu;
+                // FIXME		
+		// private var defaultContextMenu:ContextMenu;
 	
 		public function BcDevice(singleton:BcDeviceSingleton, stage:Stage)
 		{
@@ -141,7 +142,8 @@ package bc.core.device
 				impl = this;
 				
 				this.stage = stage;
-				createDefaultContextMenu();
+// FIXME
+//				createDefaultContextMenu();
 				initialize();
 				
 				BcAsset.initialize();
@@ -152,26 +154,27 @@ package bc.core.device
 			}
 		}
 		
-		private function createDefaultContextMenu():void
-		{
-			var cm:ContextMenu = new ContextMenu();
-			var bii:ContextMenuBuiltInItems = cm.builtInItems;
-			var items:Array = new Array();
-			
-			bii.loop = false;
-			bii.forwardAndBack = false;
-			bii.play = false;
-			bii.print = false;
-			bii.rewind = false;
-			bii.save = false;
-			bii.zoom = false;
-			var cmi:ContextMenuItem;
-			cmi = new ContextMenuItem("eliasku (c) 2009", true, true, true);
-			items.push(cmi);
-			cm.customItems = items;
-			 
-			defaultContextMenu = cm;
-		}
+// FIXME
+//		private function createDefaultContextMenu():void
+//		{
+//			var cm:ContextMenu = new ContextMenu();
+//			var bii:ContextMenuBuiltInItems = cm.builtInItems;
+//			var items:Array = new Array();
+//			
+//			bii.loop = false;
+//			bii.forwardAndBack = false;
+//			bii.play = false;
+//			bii.print = false;
+//			bii.rewind = false;
+//			bii.save = false;
+//			bii.zoom = false;
+//			var cmi:ContextMenuItem;
+//			cmi = new ContextMenuItem("eliasku (c) 2009", true, true, true);
+//			items.push(cmi);
+//			cm.customItems = items;
+//			 
+//			defaultContextMenu = cm;
+//		}
 		
 		private function initialize():void
 		{
@@ -203,9 +206,10 @@ package bc.core.device
 			// Главный рисовальщик
 			display.scrollRect = displaySize;
 			display.opaqueBackground = BcDevice.BACKGROUND_COLOR;
-				
-			display.contextMenu = defaultContextMenu;
-			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+	
+// FIXME			
+//			display.contextMenu = defaultContextMenu;
+//			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
 			
 			stage.addChildAt(display, 0);
 		}
@@ -250,22 +254,23 @@ package bc.core.device
 			else
 				stage.displayState = StageDisplayState.NORMAL;
 		}
-				
-		private function set contextMenu(value:ContextMenu):void
-		{
-			display.contextMenu.removeEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
-			
-			if(value)
-			{
-				display.contextMenu = value;
-			}
-			else
-			{
-				display.contextMenu = defaultContextMenu;
-			}
-			
-			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
-		}
+
+// FIXME				
+//		private function set contextMenu(value:ContextMenu):void
+//		{
+//			display.contextMenu.removeEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+//			
+//			if(value)
+//			{
+//				display.contextMenu = value;
+//			}
+//			else
+//			{
+//				display.contextMenu = defaultContextMenu;
+//			}
+//			
+//			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+//		}
 	
 		public static function get mouseX():Number {return impl.mouseX;}
 		public static function get mouseY():Number {return impl.mouseY;}

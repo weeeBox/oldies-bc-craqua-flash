@@ -199,8 +199,6 @@ package bc.core.device
 			}
 		}
 
-		private var RESOURCE_REG_EXP:RegExp = /[\\\/]/g;
-		
 		private function parseResource(xml:XML, assetPath:String):void
 		{
 			var id:String;
@@ -222,8 +220,11 @@ package bc.core.device
 				id = id.slice(0, id.length-1);
 			}
 			
-			id = id.replace(RESOURCE_REG_EXP, "_");
-			
+			while (id.indexOf("/") != -1)
+			{
+				id = id.replace("/", "_");				
+			}			
+		
 			switch(ext)
 			{
 				case ".png":
