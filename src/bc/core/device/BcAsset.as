@@ -10,29 +10,9 @@ package bc.core.device
 	 */
 	public class BcAsset 
 	{	
-		public static function addImage(id:String, bitmapData:BitmapData):void
-		{
-			images[id] = bitmapData;
-		}
-		
 		public static function getImage(id:String):BitmapData
 		{
 			return images[id];
-		}
-		
-		public static function embedImage(id:String, cls:Class, alpha:Boolean):void
-		{
-			images[id] = processBitmapData(Bitmap(new cls()).bitmapData, alpha);
-		}
-		
-		public static function removeImage(id:String):void
-		{
-			delete images[id];
-		}
-		
-		public static function addSound(id:String, sound:Sound):void
-		{
-			sounds[id] = sound;
 		}
 		
 		public static function getSound(id:String):Sound
@@ -40,30 +20,9 @@ package bc.core.device
 			return sounds[id];
 		}
 		
-		public static function embedSound(id:String, cls:Class):void
-		{
-			sounds[id] = Sound(new cls());
-		}
-		
-		public static function removeSound(id:String):void
-		{
-			delete sounds[id];
-		}
-		
-		public static function addXML(id:String, xml:XML):void
-		{
-			xmls[id] = xml;
-		}	
-				
 		public static function getXML(id:String):XML
 		{
 			return xmls[id];
-		}
-		
-		public static function embedXML(id:String, cls:Class):void
-		{
-			var ba:ByteArray = (new cls()) as ByteArray;
-			xmls[id] = XML(ba.readUTFBytes(ba.length));
 		}
 		
 		public static function removeXML(id:String):void

@@ -31,7 +31,7 @@ package bc.core.ui
 		public function getProperty(name:String):Object
 		{
 			var style:UIStyle = this;
-			var value:* = null;
+			var value:Object = null;
 			
 			while(value==null && style!=null)
 			{
