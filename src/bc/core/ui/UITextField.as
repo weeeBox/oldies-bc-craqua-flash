@@ -9,7 +9,7 @@ package bc.core.ui
 		private var _width : uint;
 		private var _height : uint;
 	
-		// TODO: fix me!!!
+		// FIXME!!!
 		public function UITextField(layer:UIObject = null, x:Number = 0, y:Number = 0, fast:Boolean = true)
 		{
 			super(layer, x, y, fast);

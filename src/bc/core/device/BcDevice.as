@@ -107,16 +107,17 @@ package bc.core.device
 			impl.fullscreen = value;
 		}
 		
-// FIXME
-//		public static function get contextMenu():ContextMenu
-//		{
-//			return impl.display.contextMenu;
-//		}
-//		
-//		public static function set contextMenu(value:ContextMenu):void
-//		{
-//			impl.contextMenu = value;
-//		}
+//#if CUT_THE_CODE
+//#		public static function get contextMenu():ContextMenu
+//#		{
+//#			return impl.display.contextMenu;
+//#		}
+//#		
+//#		public static function set contextMenu(value:ContextMenu):void
+//#		{
+//#			impl.contextMenu = value;
+//#		}
+//#endif
 		
 		// device
 		private var timer:BcTimer = new BcTimer();
@@ -132,8 +133,9 @@ package bc.core.device
 		private var stage:Stage;
 		
 		private var application:BcIApplication;
-                // FIXME		
-		// private var defaultContextMenu:ContextMenu;
+//#if CUT_THE_CODE		
+//#		 private var defaultContextMenu:ContextMenu;
+//#endif
 	
 		public function BcDevice(singleton:BcDeviceSingleton, stage:Stage)
 		{
@@ -142,8 +144,9 @@ package bc.core.device
 				impl = this;
 				
 				this.stage = stage;
-// FIXME
-//				createDefaultContextMenu();
+//#if CUT_THE_CODE
+//#				createDefaultContextMenu();
+//#endif
 				initialize();
 				
 				BcAsset.initialize();
@@ -154,27 +157,28 @@ package bc.core.device
 			}
 		}
 		
-// FIXME
-//		private function createDefaultContextMenu():void
-//		{
-//			var cm:ContextMenu = new ContextMenu();
-//			var bii:ContextMenuBuiltInItems = cm.builtInItems;
-//			var items:Array = new Array();
-//			
-//			bii.loop = false;
-//			bii.forwardAndBack = false;
-//			bii.play = false;
-//			bii.print = false;
-//			bii.rewind = false;
-//			bii.save = false;
-//			bii.zoom = false;
-//			var cmi:ContextMenuItem;
-//			cmi = new ContextMenuItem("eliasku (c) 2009", true, true, true);
-//			items.push(cmi);
-//			cm.customItems = items;
-//			 
-//			defaultContextMenu = cm;
-//		}
+//#if CUT_THE_CODE
+//#		private function createDefaultContextMenu():void
+//#		{
+//#			var cm:ContextMenu = new ContextMenu();
+//#			var bii:ContextMenuBuiltInItems = cm.builtInItems;
+//#			var items:Array = new Array();
+//#			
+//#			bii.loop = false;
+//#			bii.forwardAndBack = false;
+//#			bii.play = false;
+//#			bii.print = false;
+//#			bii.rewind = false;
+//#			bii.save = false;
+//#			bii.zoom = false;
+//#			var cmi:ContextMenuItem;
+//#			cmi = new ContextMenuItem("eliasku (c) 2009", true, true, true);
+//#			items.push(cmi);
+//#			cm.customItems = items;
+//#			 
+//#			defaultContextMenu = cm;
+//#		}
+//#endif
 		
 		private function initialize():void
 		{
@@ -207,9 +211,10 @@ package bc.core.device
 			display.scrollRect = displaySize;
 			display.opaqueBackground = BcDevice.BACKGROUND_COLOR;
 	
-// FIXME			
-//			display.contextMenu = defaultContextMenu;
-//			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+//#if CUT_THE_CODE			
+//#			display.contextMenu = defaultContextMenu;
+//#			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+//#endif
 			
 			stage.addChildAt(display, 0);
 		}
@@ -255,22 +260,23 @@ package bc.core.device
 				stage.displayState = StageDisplayState.NORMAL;
 		}
 
-// FIXME				
-//		private function set contextMenu(value:ContextMenu):void
-//		{
-//			display.contextMenu.removeEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
-//			
-//			if(value)
-//			{
-//				display.contextMenu = value;
-//			}
-//			else
-//			{
-//				display.contextMenu = defaultContextMenu;
-//			}
-//			
-//			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
-//		}
+//#if CUT_THE_CODE				
+//#		private function set contextMenu(value:ContextMenu):void
+//#		{
+//#			display.contextMenu.removeEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+//#			
+//#			if(value)
+//#			{
+//#				display.contextMenu = value;
+//#			}
+//#			else
+//#			{
+//#				display.contextMenu = defaultContextMenu;
+//#			}
+//#			
+//#			display.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, onSelectContextMenu);
+//#		}
+//#endif
 	
 		public static function get mouseX():Number {return impl.mouseX;}
 		public static function get mouseY():Number {return impl.mouseY;}
@@ -300,14 +306,15 @@ package bc.core.device
 			UI.update(dt);
 		}
 
-// FIXME		
-//		private function onSelectContextMenu(event:ContextMenuEvent):void
-//		{
-//			if(application)
-//			{
-//				application.contextMenu();
-//			}
-//		}
+//#if CUT_THE_CODE		
+//#		private function onSelectContextMenu(event:ContextMenuEvent):void
+//#		{
+//#			if(application)
+//#			{
+//#				application.contextMenu();
+//#			}
+//#		}
+//#endif
 		
 		// активация/деактивация окна
 		private function onDeactivate(event:Event):void

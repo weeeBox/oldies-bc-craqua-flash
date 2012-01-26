@@ -67,8 +67,9 @@ package bc.ui
 		//private var g5Splash:Splash;
 		private var mcAd:MovieClip;
 		private var mcSp:MovieClip;
-// FIXME
-//		private var mcSpFrame:Shape = new Shape();
+//#if CUT_THE_CODE
+//#		private var mcSpFrame:Shape = new Shape();
+//#endif
 		
 
 		public function BcGameUI()
@@ -678,12 +679,13 @@ package bc.ui
 			else
 			{
 				gameFader.play(transFaderOpen, 1);
-// FIXME!!!				 
-//					function(o:UIObject):void
-//					{
-//						BcGameGlobal.game.quitWorld();
-//					}
-//				);
+//#if CODE_HACK				 
+//#					function(o:UIObject):void
+//#					{
+//#						BcGameGlobal.game.quitWorld();
+//#					}
+//#				);
+//#endif
 			}
 			
 			if(BcGameGlobal.world.uiBoss || BcGameGlobal.world.uiVictory)
@@ -756,26 +758,28 @@ package bc.ui
 				BcMusic.getMusic("victory").stop(1);
 				gameFader.play(transFaderExit, 0.5);
 				endPanel.play(transWindowClose, 0.5);
-// FIXME!!!				 
-//					function(o:UIObject):void
-//					{
-//						openMain(false);
-//					}
-//				);
+//#if CODE_HACK				 
+//#					function(o:UIObject):void
+//#					{
+//#						openMain(false);
+//#					}
+//#				);
+//#endif
 			}
 			else if(BcGameGlobal.world.uiDeath)
 			{
 				gameFader.play(transFaderExit, 0.5);
 				endPanel.play(transWindowClose, 0.5);
 				settingsPanel.play(transWindowClose, 0.5);
-// FIXME!!! 
-//					function(o:UIObject):void
-//					{
-//						BcGameGlobal.game.startLastCheckPoint();
-//						gameFader.initBack();
-//						gameFader.play(transFaderStart, 1);
-//					}
-//				);
+//#if CODE_HACK 
+//#					function(o:UIObject):void
+//#					{
+//#						BcGameGlobal.game.startLastCheckPoint();
+//#						gameFader.initBack();
+//#						gameFader.play(transFaderStart, 1);
+//#					}
+//#				);
+//#endif
 				
 				gamePanel.play(transWindowOpen, 0.5);
 			}
@@ -817,92 +821,95 @@ package bc.ui
 			gameFader.play(transFaderExit, 0.5);
 			endPanel.play(transWindowClose, 0.5);
 			settingsPanel.play(transWindowClose, 0.5);
-// FIXME!!!			 
-//				function(o:UIObject):void
-//				{
-//					BcGameGlobal.game.startLastCheckPoint();
-//					gameFader.initBack();
-//					gameFader.play(transFaderStart, 1);
-//				}
-//			);
+//#if CODE_HACK			 
+//#				function(o:UIObject):void
+//#				{
+//#					BcGameGlobal.game.startLastCheckPoint();
+//#					gameFader.initBack();
+//#					gameFader.play(transFaderStart, 1);
+//#				}
+//#			);
+//#endif
 		}
-		
-//		private var transBackStart:UITransition = new UITransition({
-//				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
-//				});
-//		private var transObjectShow:UITransition = new UITransition({
-//				a:[0, 1], ease:easeOpen, flags:[UITransition.FLAG_SHOW, 0]
-//				});
-//		private var transObjectHide:UITransition = new UITransition({
-//				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE]
-//				});
-//		private var transBackOpen:UITransition = new UITransition({
-//				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
-//				});
-//		private var transBackClose:UITransition = new UITransition({
-//				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
-//				});
-//		private var transWindowOpen:UITransition = new UITransition({
-//				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
-//				});
-//		private var transWindowClose:UITransition = new UITransition({ 
-//				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen 
-//				});
-//				
-//		private var transMainButtonsOpen:UITransition = new UITransition({
-//				x:[320, 0], ease:easeOpen
-//				});
-//		private var transMainButtonsClose:UITransition = new UITransition({ 
-//				x:[0, 320], ease:easeOpen 
-//				});
-//				
-//		private var transMainSponsorOpen:UITransition = new UITransition({
-//				x:[-150, 150], ease:easeOpen
-//				});
-//		private var transMainSponsorClose:UITransition = new UITransition({ 
-//				x:[150, -150], ease:easeOpen 
-//				});
-//				
-//		private var transDisable:UITransition = new UITransition({ 
-//				flags:[UITransition.FLAG_DISABLE, 0] 
-//				});
-//				
-//		private var transEnable:UITransition = new UITransition({ 
-//				flags:[0, UITransition.FLAG_ENABLE] 
-//				});
-//			
-//		private var transButtonShow:UITransition = new UITransition({ 
-//				sx:[0, 1], sy:[0, 1], a:[0, 1], ease:easeOpen 
-//				});
-//				
-//		private var transTitleShow:UITransition = new UITransition({ 
-//				y:[-165, 0], ease:easeOpen 
-//				});
-//				
-//		private var transTitleHide:UITransition = new UITransition({ 
-//				y:[0, -165], ease:easeOpen 
-//				});
-//				
-//				
-//		private var transFaderStart:UITransition = new UITransition({ 
-//				a:[1, 0], color:[0xff000000, 0, 0xffffffff, 0], flags:[UITransition.FLAG_ACTIVATE | UITransition.FLAG_SHOW, UITransition.FLAG_DEACTIVATE | UITransition.FLAG_HIDE], ease:easeOpen
-//				});
-//				
-//		private var transFaderOpen:UITransition = new UITransition({ 
-//				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
-//				});
-//				
-//		private var transFaderClose:UITransition = new UITransition({ 
-//				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen
-//				});
-//				
-//		private var transFaderExit:UITransition = new UITransition({ 
-//				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
-//				});
-//				
-//		private var transLabelHide:UITransition = new UITransition({ 
-//				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE] 
-//				});
+
+//#if CODE_HACK		
+//#		private var transBackStart:UITransition = new UITransition({
+//#				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
+//#				});
+//#		private var transObjectShow:UITransition = new UITransition({
+//#				a:[0, 1], ease:easeOpen, flags:[UITransition.FLAG_SHOW, 0]
+//#				});
+//#		private var transObjectHide:UITransition = new UITransition({
+//#				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE]
+//#				});
+//#		private var transBackOpen:UITransition = new UITransition({
+//#				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
+//#				});
+//#		private var transBackClose:UITransition = new UITransition({
+//#				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
+//#				});
+//#		private var transWindowOpen:UITransition = new UITransition({
+//#				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
+//#				});
+//#		private var transWindowClose:UITransition = new UITransition({ 
+//#				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen 
+//#				});
+//#				
+//#		private var transMainButtonsOpen:UITransition = new UITransition({
+//#				x:[320, 0], ease:easeOpen
+//#				});
+//#		private var transMainButtonsClose:UITransition = new UITransition({ 
+//#				x:[0, 320], ease:easeOpen 
+//#				});
+//#				
+//#		private var transMainSponsorOpen:UITransition = new UITransition({
+//#				x:[-150, 150], ease:easeOpen
+//#				});
+//#		private var transMainSponsorClose:UITransition = new UITransition({ 
+//#				x:[150, -150], ease:easeOpen 
+//#				});
+//#				
+//#		private var transDisable:UITransition = new UITransition({ 
+//#				flags:[UITransition.FLAG_DISABLE, 0] 
+//#				});
+//#				
+//#		private var transEnable:UITransition = new UITransition({ 
+//#				flags:[0, UITransition.FLAG_ENABLE] 
+//#				});
+//#			
+//#		private var transButtonShow:UITransition = new UITransition({ 
+//#				sx:[0, 1], sy:[0, 1], a:[0, 1], ease:easeOpen 
+//#				});
+//#				
+//#		private var transTitleShow:UITransition = new UITransition({ 
+//#				y:[-165, 0], ease:easeOpen 
+//#				});
+//#				
+//#		private var transTitleHide:UITransition = new UITransition({ 
+//#				y:[0, -165], ease:easeOpen 
+//#				});
+//#				
+//#				
+//#		private var transFaderStart:UITransition = new UITransition({ 
+//#				a:[1, 0], color:[0xff000000, 0, 0xffffffff, 0], flags:[UITransition.FLAG_ACTIVATE | UITransition.FLAG_SHOW, UITransition.FLAG_DEACTIVATE | UITransition.FLAG_HIDE], ease:easeOpen
+//#				});
+//#				
+//#		private var transFaderOpen:UITransition = new UITransition({ 
+//#				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
+//#				});
+//#				
+//#		private var transFaderClose:UITransition = new UITransition({ 
+//#				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen
+//#				});
+//#				
+//#		private var transFaderExit:UITransition = new UITransition({ 
+//#				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
+//#				});
+//#				
+//#		private var transLabelHide:UITransition = new UITransition({ 
+//#				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE] 
+//#				});
+//#endif
 
 		private var transBackStart:UITransition = null;
 		private var transObjectShow:UITransition = null;
@@ -944,8 +951,9 @@ package bc.ui
 		private function initBackFader():void
 		{
 			var nbd:BitmapData = new BitmapData(640, 480, false, 0x0);
-// FIXME
-//			nbd.applyFilter(BcAsset.getImage("ui_bg"), new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
+//#if CUT_THE_CODE
+//#			nbd.applyFilter(BcAsset.getImage("ui_bg"), new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
+//#endif
 			var bm:Bitmap = new Bitmap(nbd);
 			bm.transform.colorTransform = new ColorTransform(0.5, 0.5, 0.5);
 			backFader.sprite.addChild(bm);
@@ -963,8 +971,9 @@ package bc.ui
 		{
 			mainFaderBitmap.bitmapData.draw(layerBack.sprite);
 			mainFaderBitmap.bitmapData.draw(layerMain.sprite);
-// FIXME
-//			mainFaderBitmap.bitmapData.applyFilter(mainFaderBitmap.bitmapData, new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
+//#if CUT_THE_CODE
+//#			mainFaderBitmap.bitmapData.applyFilter(mainFaderBitmap.bitmapData, new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
+//#endif
 			mainFaderBitmap.transform.colorTransform = new ColorTransform(0.5, 0.5, 0.5);
 			mainFader.play(transObjectShow, 1);
 			mainPanel.play(transDisable, 1);

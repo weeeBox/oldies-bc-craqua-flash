@@ -51,8 +51,11 @@ package bc.game
 		public static const GAME_BOSS_DEFEATED:String = "BOSS DEFEATED";
 		public static const GAME_STAGE_N:String = "Stage ";
 		public static const GAME_BOSS_N:String = "Boss ";
-		
-		public static const BOSS_NAMES:Object = null; // FIXME!!! {boss1:"Gasoiler", boss2:"A(H1N1)", boss3:"MR. NOTHING"};
+
+//#if CODE_HACK		
+//#		public static const BOSS_NAMES:Object = {boss1:"Gasoiler", boss2:"A(H1N1)", boss3:"MR. NOTHING"};
+//#endif
+		public static const BOSS_NAMES:Object = null;
 		
 		public static const RANKS:Array = ["EASY", "NOT BAD", "GOOD", "EXCELLENT", "AWESOME", "HARDCORE"];
 		

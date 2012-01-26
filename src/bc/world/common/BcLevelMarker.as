@@ -10,8 +10,9 @@ package bc.world.common
 	import flash.filters.DropShadowFilter;
 	import bc.core.ui.UITextField;
 	import bc.core.ui.UITextFieldAutoSize;
-	// FIXME
-	// import flash.text.TextFormat;
+	//#if CUT_THE_CODE
+	//# import flash.text.TextFormat;
+	//#endif
 
 	/**
 	 * @author Elias Ku
@@ -19,8 +20,9 @@ package bc.world.common
 	public class BcLevelMarker extends Sprite 
 	{
 		public var tf:UITextField = new UITextField();
-// FIXME
-//		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
+//#if CUT_THE_CODE
+//#		public var filter:DropShadowFilter = new DropShadowFilter(0, 0, 0x00284b, 1, 2, 2, 8, 2);
+//#endif
 		public var bitmap:Bitmap = new Bitmap();
 		
 		public var beginX:Number = 0;
@@ -32,14 +34,15 @@ package bc.world.common
 		public function BcLevelMarker()
 		{
 			BcSpriteUtil.setupFast(this);
-// FIXME		
-//        	tf.defaultTextFormat = new TextFormat("main", 40, 0xffffff);
-//			tf.embedFonts = true;
-//			tf.selectable = false;
-//			tf.autoSize = UITextFieldAutoSize.LEFT;
-//			tf.textColor = 0xffffff;
-//			tf.filters = [filter];
-//			tf.cacheAsBitmap = true;
+//#if CUT_THE_CODE		
+//#        	tf.defaultTextFormat = new TextFormat("main", 40, 0xffffff);
+//#			tf.embedFonts = true;
+//#			tf.selectable = false;
+//#			tf.autoSize = UITextFieldAutoSize.LEFT;
+//#			tf.textColor = 0xffffff;
+//#			tf.filters = [filter];
+//#			tf.cacheAsBitmap = true;
+//#endif
 			tf.x = 4;
 			
 			//addChild(tf);
@@ -94,8 +97,9 @@ package bc.world.common
 
 			var bitmapData:BitmapData = new BitmapData(int(tf.width+5), int(tf.height+5), true, 0);
 
-// FIXME			
-//			bitmapData.draw(tf, tf.transform.matrix);
+//#if CUT_THE_CODE			
+//#			bitmapData.draw(tf, tf.transform.matrix);
+//#endif
 			bitmap.bitmapData = bitmapData;
 			bitmap.smoothing = true;
 			bitmap.pixelSnapping = PixelSnapping.NEVER;
