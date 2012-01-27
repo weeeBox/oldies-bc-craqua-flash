@@ -1,4 +1,4 @@
-package bc.game 
+package bc.game.init 
 {
 	import bc.core.data.BcData;
 	import bc.core.device.BcEntryPoint;

@@ -969,9 +969,9 @@ package bc.ui
 		
 		private function disableMain():void
 		{
-			mainFaderBitmap.bitmapData.draw(layerBack.sprite);
-			mainFaderBitmap.bitmapData.draw(layerMain.sprite);
 //#if CUT_THE_CODE
+//#			mainFaderBitmap.bitmapData.draw(layerBack.sprite);
+//#			mainFaderBitmap.bitmapData.draw(layerMain.sprite);
 //#			mainFaderBitmap.bitmapData.applyFilter(mainFaderBitmap.bitmapData, new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
 //#endif
 			mainFaderBitmap.transform.colorTransform = new ColorTransform(0.5, 0.5, 0.5);

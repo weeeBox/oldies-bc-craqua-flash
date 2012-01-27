@@ -60,8 +60,8 @@ package bc.ui
 		
 		public function initBack():void
 		{
-			_bmWorld.bitmapData.draw(BcGameGlobal.world.sprite);
 //#if CUT_THE_CODE
+//#			_bmWorld.bitmapData.draw(BcGameGlobal.world.sprite);
 //#			_bmWorld.bitmapData.applyFilter(_bmWorld.bitmapData, _filterRect, _filterPoint, _filterBlur);
 //#endif
 			_bmWorld.visible = true;

@@ -22,9 +22,9 @@ package bc.core.ui
 	
 		public function UILabel(layer:UIObject, x:Number, y:Number, text:String = "", style:UIStyle = null)
 		{
-			var strokeBlur:Number;
-			
 			super(layer, x, y);
+
+//			var strokeBlur:Number;
 			
 			if(!style)
 			{
