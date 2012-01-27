@@ -122,7 +122,7 @@ package bc.ui
 			progress+=0.01;
 			if(progress>1) progress = 1;
 			
-			loadingLabel.text = int(progress*100).toString() + BcStrings.UI_LOADING;
+			loadingLabel.text = "" + int(progress*100) + BcStrings.UI_LOADING;
 			loadingLabel.centerX = 320;
 			
 			var g:Graphics = loadingProgress.sprite.graphics;
@@ -415,13 +415,13 @@ package bc.ui
 			mainContinue.highlight = cont;
 			
 			mainContinue.html = "<p align=\"center\">" + BcStrings.UI_CONTINUE + "<br><font size=\"12\">" + BcStrings.INFO_STAGE_N + 
-				(BcGameGlobal.world.checkPoint.wave+1).toString() +
+				(BcGameGlobal.world.checkPoint.wave+1) +
 				"</font></p>";
 			
 			if(!oShowScoresButton && oBestScore)
 			{
 				mainBest.html = "<p align=\"center\">" + BcStrings.INFO_YOUR_BEST_SCORE + "<br><font size=\"20\">" + 
-					uint(BcGameGlobal.localStore.best).toString() +
+					uint(BcGameGlobal.localStore.best) +
 					"</font></p>";
 				mainBest.centerX = 510;
 			}
@@ -663,7 +663,7 @@ package bc.ui
 
 			endLabel.text = BcGameGlobal.world.uiMessage;
 			endRank.text = BcStrings.INFO_RANK + BcGameGlobal.world.uiRank;
-			endResult.text = BcStrings.INFO_RESULT + BcGameGlobal.world.player.getMoney().toString();
+			endResult.text = BcStrings.INFO_RESULT + BcGameGlobal.world.player.getMoney();
 			
 			endLabel.centerX = 
 			endRank.centerX = 
@@ -996,15 +996,15 @@ package bc.ui
 			var y:Number = 166+10;
 			var labelSpace:Number = 24;
 			
-			descRockets = new UILabel(endPanel, 135, y, BcStrings.DESC_ROCKETS + int(BcPlayer.M_ROCKETS*100).toString() + BcStrings.DESC_POINTS, stInfoSmall);
+			descRockets = new UILabel(endPanel, 135, y, BcStrings.DESC_ROCKETS + int(BcPlayer.M_ROCKETS*100) + BcStrings.DESC_POINTS, stInfoSmall);
 			y+=labelSpace;
-			descDamage = new UILabel(endPanel, 135, y, BcStrings.DESC_DAMAGE + int(BcPlayer.M_DAMAGE*100).toString() + BcStrings.DESC_POINTS, stInfoSmall);
+			descDamage = new UILabel(endPanel, 135, y, BcStrings.DESC_DAMAGE + int(BcPlayer.M_DAMAGE*100) + BcStrings.DESC_POINTS, stInfoSmall);
 			y+=labelSpace;
-			descBottom = new UILabel(endPanel, 135, y, BcStrings.DESC_BOTTOM + int(BcPlayer.M_BOTTOM*100).toString() + BcStrings.DESC_POINTS, stInfoSmall);
+			descBottom = new UILabel(endPanel, 135, y, BcStrings.DESC_BOTTOM + int(BcPlayer.M_BOTTOM*100) + BcStrings.DESC_POINTS, stInfoSmall);
 			y+=labelSpace;
-			descBonus = new UILabel(endPanel, 135, y, BcStrings.DESC_BONUS + int(BcPlayer.M_BONUS*100).toString() + BcStrings.DESC_POINTS, stInfoSmall);
+			descBonus = new UILabel(endPanel, 135, y, BcStrings.DESC_BONUS + int(BcPlayer.M_BONUS*100) + BcStrings.DESC_POINTS, stInfoSmall);
 			y+=labelSpace;
-			descComplete = new UILabel(endPanel, 135, y, BcStrings.DESC_COMPLETE + int(BcPlayer.M_COMPLETE*100).toString() + BcStrings.DESC_POINTS, stInfoSmall);
+			descComplete = new UILabel(endPanel, 135, y, BcStrings.DESC_COMPLETE + int(BcPlayer.M_COMPLETE*100) + BcStrings.DESC_POINTS, stInfoSmall);
 			y+=labelSpace;
 		}
 		
@@ -1072,8 +1072,10 @@ package bc.ui
 		
 		private function navigate(url:String):void
 		{
-			if(url)
-				navigateToURL(new URLRequest(url), "_blank");
+//#if CUT_THE_CODE
+//#			if(url)
+//#				navigateToURL(new URLRequest(url), "_blank");
+//#endif
 		}
 
 		
