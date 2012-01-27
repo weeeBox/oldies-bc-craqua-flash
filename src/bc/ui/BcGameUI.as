@@ -526,7 +526,7 @@ package bc.ui
 				//BcDevice.stage.addChild(g5Hiscores);
 				
 				var score:int = BcGameGlobal.world.player.getMoney();
-				//g5Hiscores.setDetails(246, 0, "craqua", "jZxUzqho7FjO9Gf", false, score, score.toString(), "points!");
+				//g5Hiscores.setDetails(246, 0, "craqua", "jZxUzqho7FjO9Gf", false, score, score, "points!");
 			}*/
 			
 			/*hsPanel.play(transWindowOpen, 1);

@@ -290,7 +290,7 @@ package bc.world.core
 			{
 				waveXML = waves[index];
 				waveIndex = index;
-				marker.launch(BcStrings.GAME_STAGE_N + (waveIndex+1).toString());
+				marker.launch(BcStrings.GAME_STAGE_N + (waveIndex+1));
 			}
 			
 			if(waveXML)
@@ -321,7 +321,7 @@ package bc.world.core
 					}
 					else
 					{
-						bossName = BcStrings.GAME_BOSS_N + (waveIndex+1).toString();
+						bossName = BcStrings.GAME_BOSS_N + (waveIndex+1);
 					}
 				}				
 				

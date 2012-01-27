@@ -112,7 +112,7 @@ package bc.world.hud
 			var i:uint;
 			for (i = 0; i < 10; ++i)
 			{
-				digitBitmaps[i] = BcBitmapData.getData("level_digit_" + i.toString());
+				digitBitmaps[i] = BcBitmapData.getData("level_digit_" + i);
 			}
 		}
 	}

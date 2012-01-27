@@ -405,7 +405,7 @@ package bc.world.bullet
 				{
 					var mob:BcEnemy = world.enemies.head;
 					var minMob:BcEnemy;
-					var minFollows:int = int.MAX_VALUE;
+					var minFollows:int = 2147483647;
 					
 					while(mob)
 					{
