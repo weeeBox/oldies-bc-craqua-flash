@@ -120,7 +120,7 @@ package bc.core.audio
 			}
 		}
 		
-		private function update(dt:Number):void
+		private function updateVolumeProgress(dt:Number):void
 		{
 			if(volumeProgress < 1)
 			{
@@ -157,7 +157,7 @@ package bc.core.audio
 		{
 			for each (var track:BcMusic in playlist)
 			{
-				track.update(dt);
+				track.updateVolumeProgress(dt);
 			}
 		}
 		

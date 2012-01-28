@@ -89,22 +89,22 @@ package bc.core.device
 		
 		public static function get quality():uint
 		{
-			return impl.quality;
+			return impl.getStageQuality();
 		}
 		
 		public static function set quality(value:uint):void
 		{
-			impl.quality = value;
+			impl.setStageQuality(value);
 		}
 		
 		public static function get fullscreen():Boolean
 		{
-			return impl.fullscreen;
+			return impl.getStageFullscreen();
 		}
 		
 		public static function set fullscreen(value:Boolean):void
 		{
-			impl.fullscreen = value;
+			impl.setStageFullscreen(value);
 		}
 		
 //#if CUT_THE_CODE
@@ -221,7 +221,7 @@ package bc.core.device
 			stage.addChildAt(display, 0);
 		}
 		
-		private function get quality():uint
+		private function getStageQuality():uint
 		{
 			var stageQuality:String = stage.quality;
 			var quality:uint = 2;
@@ -233,7 +233,7 @@ package bc.core.device
 			return quality;
 		}
 		
-		private function set quality(value:uint):void
+		private function setStageQuality(value:uint):void
 		{
 			switch(value)
 			{
@@ -249,12 +249,12 @@ package bc.core.device
 			}
 		}
 		
-		private function get fullscreen():Boolean
+		private function getStageFullscreen():Boolean
 		{
 			return (stage.displayState == StageDisplayState.FULL_SCREEN);
 		}
 		
-		private function set fullscreen(value:Boolean):void
+		private function setStageFullscreen(value:Boolean):void
 		{
 			if(value)
 				stage.displayState = StageDisplayState.FULL_SCREEN;

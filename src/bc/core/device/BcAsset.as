@@ -28,7 +28,7 @@ package bc.core.device
 			delete xmls[id];
 		}
 		
-		public static function load(path:String, onLoadingCompleted:Function):void
+		public static function loadPath(path:String, onLoadingCompleted:Function):void
 		{
 			impl.load(path, onLoadingCompleted);
 		}

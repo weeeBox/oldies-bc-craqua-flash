@@ -801,7 +801,7 @@ package bc.game.asset
 		
 		public function BcGameAsset(callback:Function)
 		{
-			BcAsset.load("../asset/game.xml", callback);
+			BcAsset.loadPath("../asset/game.xml", callback);
 			//callback();
 		}
 	}

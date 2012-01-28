@@ -28,7 +28,7 @@ package bc.game.asset
 		        
 		public function BcPreloaderAsset(callback:Function)
 		{
-			BcAsset.load("../asset/preloader.xml", callback);
+			BcAsset.loadPath("../asset/preloader.xml", callback);
 			//callback();
 		}
 	}
