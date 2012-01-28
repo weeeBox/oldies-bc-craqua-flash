@@ -64,9 +64,11 @@ package bc.core.ui
 			
 			if(properties.hasOwnProperty("color"))
 			{
-				color = Vector.<ColorTransform>([
-					BcColorTransformUtil.setColorARGB(new ColorTransform(), properties.color[0], properties.color[1]),
-					BcColorTransformUtil.setColorARGB(new ColorTransform(), properties.color[2], properties.color[3])
+				var colors : Vector.<uint> = Vector.<uint>(properties.color);
+				
+				color = Vector.<ColorTransform>([				
+					BcColorTransformUtil.setColorARGB(new ColorTransform(), colors[0], colors[1]),
+					BcColorTransformUtil.setColorARGB(new ColorTransform(), colors[2], colors[3])
 					]);
 			}
 			
