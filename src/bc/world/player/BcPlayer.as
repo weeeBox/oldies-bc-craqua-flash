@@ -317,7 +317,7 @@ package bc.world.player
 
 						if(!weapon.sync)
 						{
-							weapon.query = (++weapon.query & 1);
+							weapon.query = ((weapon.query + 1) & 1);
 						}
 						
 						while(j > 0)
