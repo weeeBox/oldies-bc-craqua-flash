@@ -106,19 +106,19 @@ package bc.world.enemy
 		
 		public function parse(xml:XML):void
 		{			
-			var node:XML;
+			
 			var subNode:XML;
 				
-			node = xml.moving[0];
-			if(node)
+			var movingNode:XML = xml.moving[0];
+			if(movingNode)
 			{
-				if(node.hasOwnProperty("@min")) movingMin = node.@min;
-				if(node.hasOwnProperty("@max")) movingMax = node.@max;
-				if(node.hasOwnProperty("@time")) movingTime = node.@time;
-				if(node.hasOwnProperty("@offset")) movingOffset = node.@offset;
-				if(node.hasOwnProperty("@type"))
+				if(movingNode.hasOwnProperty("@min")) movingMin = movingNode.@min;
+				if(movingNode.hasOwnProperty("@max")) movingMax = movingNode.@max;
+				if(movingNode.hasOwnProperty("@time")) movingTime = movingNode.@time;
+				if(movingNode.hasOwnProperty("@offset")) movingOffset = movingNode.@offset;
+				if(movingNode.hasOwnProperty("@type"))
 				{
-					switch(node.@type.toString())
+					switch(movingNode.@type.toString())
 					{
 						case "normal":
 							movingType = 0;
@@ -130,66 +130,66 @@ package bc.world.enemy
 				}
 			}
 			
-			node = xml.properties[0];
-			if(node)
+			var propertiesNode:XML = xml.properties[0];
+			if(propertiesNode)
 			{
-				if(node.hasOwnProperty("@health")) health = Number(node.@health);
-				if(node.hasOwnProperty("@fail")) fail = Number(node.@fail);
-				if(node.hasOwnProperty("@mod")) mod = Number(node.@mod);
-				if(node.hasOwnProperty("@size")) size = Number(node.@size);
-				if(node.hasOwnProperty("@mass")) mass = Number(node.@mass);
-				if(node.hasOwnProperty("@gems")) gems = node.@gems;
-				if(node.hasOwnProperty("@money")) money = node.@money;
+				if(propertiesNode.hasOwnProperty("@health")) health = Number(propertiesNode.@health);
+				if(propertiesNode.hasOwnProperty("@fail")) fail = Number(propertiesNode.@fail);
+				if(propertiesNode.hasOwnProperty("@mod")) mod = Number(propertiesNode.@mod);
+				if(propertiesNode.hasOwnProperty("@size")) size = Number(propertiesNode.@size);
+				if(propertiesNode.hasOwnProperty("@mass")) mass = Number(propertiesNode.@mass);
+				if(propertiesNode.hasOwnProperty("@gems")) gems = propertiesNode.@gems;
+				if(propertiesNode.hasOwnProperty("@money")) money = propertiesNode.@money;
 			}
 			
-			node = xml.trail[0];
-			if(node)
+			var trailNode:XML = xml.trail[0];
+			if(trailNode)
 			{
-				if(node.hasOwnProperty("@particle"))
+				if(trailNode.hasOwnProperty("@particle"))
 				{
-					trailParticle = BcParticleData.getData(node.@particle);
+					trailParticle = BcParticleData.getData(trailNode.@particle);
 				}
-				if(node.hasOwnProperty("@speed"))
+				if(trailNode.hasOwnProperty("@speed"))
 				{
-					trailSpeed = node.@speed;
+					trailSpeed = trailNode.@speed;
 				}
-				if(node.hasOwnProperty("@spread"))
+				if(trailNode.hasOwnProperty("@spread"))
 				{
-					trailSpread = node.@spread;
+					trailSpread = trailNode.@spread;
 				}
 			}
 			
-			for each (node in xml.timer)
+			for each (var timerNode:XML in xml.timer)
 			{
-				timers.push(createTimer(node));
+				timers.push(createTimer(timerNode));
 			}
 			
-			for each (node in xml.trigger)
+			for each (var triggerNode:XML in xml.trigger)
 			{
-				triggers.push(createTrigger(node));
+				triggers.push(createTrigger(triggerNode));
 			}
 			
-			node = xml.hit[0];
-			if(node)
+			var hitNode:XML = xml.hit[0];
+			if(hitNode)
 			{
-				if(node.hasOwnProperty("@particle"))
+				if(hitNode.hasOwnProperty("@particle"))
 				{
-					hitParticle = BcParticleData.getData(node.@particle);
+					hitParticle = BcParticleData.getData(hitNode.@particle);
 				}
 				
-				if(node.hasOwnProperty("@light"))
+				if(hitNode.hasOwnProperty("@light"))
 				{
-					hitLight = node.@light;
+					hitLight = hitNode.@light;
 				}
 				
 				
-				for each (subNode in node.cap)
+				for each (subNode in hitNode.cap)
 				{
 					if(!hitCaps) hitCaps = new Vector.<BcEnemyHitCap>();
 					hitCaps.push(new BcEnemyHitCap(subNode));
 				}
 				
-				subNode = node.bonus[0];
+				subNode = hitNode.bonus[0];
 				if(subNode)
 				{
 					hitBonus = subNode.@damage;
@@ -197,35 +197,35 @@ package bc.world.enemy
 				}
 			}
 			
-			node = xml.death[0];
-			if(node)
+			var deathNode:XML = xml.death[0];
+			if(deathNode)
 			{
-				deathActions = createActionArray(node);
+				deathActions = createActionArray(deathNode);
 				
-				if(node.hasOwnProperty("@sfx"))
+				if(deathNode.hasOwnProperty("@sfx"))
 				{
-					deathSound = BcSound.getData(node.@sfx);
+					deathSound = BcSound.getData(deathNode.@sfx);
 				}
 			}
 			
-			node = xml.init[0];
-			if(node)
+			var initNode:XML = xml.init[0];
+			if(initNode)
 			{
-				initActions = createActionArray(node);
+				initActions = createActionArray(initNode);
 			}
 			
 			shape = BcShape.createFromXML(xml.shape[0]);
 				
-			node = xml.sprite[0];
-			if(node)
+			var spriteNode:XML = xml.sprite[0];
+			if(spriteNode)
 			{
-				if(node.hasOwnProperty("@animation"))
+				if(spriteNode.hasOwnProperty("@animation"))
 				{
-					animationData = BcAnimationData.getData(node.@animation);
+					animationData = BcAnimationData.getData(spriteNode.@animation);
 				}
-				if(node.hasOwnProperty("@model"))
+				if(spriteNode.hasOwnProperty("@model"))
 				{
-					modelData = BcModelData.getData(node.@model);
+					modelData = BcModelData.getData(spriteNode.@model);
 				}
 			}
 			
@@ -236,12 +236,12 @@ package bc.world.enemy
 				bonusProb = 1;
 			}
 			
-			node = xml.launch[0];
-			if(node)
+			var launchNode:XML = xml.launch[0];
+			if(launchNode)
 			{
-				launchPause = node.@pause;
-				launchSpeed = node.@speed;
-				launchMarker = BcParticleData.getData(node.@marker);
+				launchPause = launchNode.@pause;
+				launchSpeed = launchNode.@speed;
+				launchMarker = BcParticleData.getData(launchNode.@marker);
 			}
 		}
 		
@@ -367,10 +367,9 @@ package bc.world.enemy
 		public static function createActionArray(xml:XML):Vector.<BcIEnemyAction>
 		{
 			var actions:Vector.<BcIEnemyAction>;
-			var list:XMLList = xml.children();
-			var node:XML;
+			var list:XMLList = xml.children();			
 			
-			for each (node in list)
+			for each (var node:XML in list)
 			{
 				if(!actions)
 				{
@@ -387,11 +386,6 @@ package bc.world.enemy
 		{
 			var trigger:BcIEnemyTrigger;
 			var type:String = xml.@type;
-			
-			switch(type)
-			{
-
-			}
 			
 			return trigger;
 		}

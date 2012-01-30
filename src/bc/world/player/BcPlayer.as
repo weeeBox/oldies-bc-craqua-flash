@@ -275,7 +275,7 @@ package bc.world.player
 			var speed:Number;
 			
 			// дуло
-			var weapon:BcPlayerWeapon;
+			
 			var claw:BcPlayerClaw;
 			var launchDoImpulse:Boolean;
 			var launchedBullet:BcBullet;
@@ -284,7 +284,7 @@ package bc.world.player
 			var angle:Number;
 			var angleDelta:Number;
 			
-			for each (weapon in levelInfo.weapons)
+			for each (var weapon:BcPlayerWeapon in levelInfo.weapons)
 			{
 				if(!weapon)
 				{
@@ -562,27 +562,24 @@ package bc.world.player
 
 		private function parse(xml:XML):void
 		{
-			var node:XML;
-
 			var claw:BcPlayerClaw;
 			var lvl:BcPlayerLevel;
 			
 			moveDivide = Number(xml.moving[0].@div);
 			
-			for each (node in xml.claw)
+			for each (var clawNode:XML in xml.claw)
 			{
 				claw = new BcPlayerClaw();
-				claw.parse(node);
+				claw.parse(clawNode);
 				claws.push(claw);
 			}
 
-			for each (node in xml.level)
+			for each (var levelNode:XML in xml.level)
 			{
 				lvl = new BcPlayerLevel();
-				lvl.parse(node);
+				lvl.parse(levelNode);
 				levels.push(lvl);
 			}
-
 		}
 		
 		private function heal(amount:uint):void

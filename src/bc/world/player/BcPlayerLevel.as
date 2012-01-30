@@ -33,11 +33,10 @@ package bc.world.player
 		{
 			var i:int;
 			var weapon:BcPlayerWeapon;
-			var node:XML;
 			
 			exp = xml.@exp;
 			
-			node = xml.mod[0];
+			var node:XML = xml.mod[0];
 			if(node)
 			{
 				modRate = node.@rate;
@@ -51,18 +50,18 @@ package bc.world.player
 				regenBomb = node.@bomb;
 			}
 			
-			for each (node in xml.weapon)
+			for each (var weaponNode:XML in xml.weapon)
 			{
 				weapon = new BcPlayerWeapon();
-				weapon.parse(node);
+				weapon.parse(weaponNode);
 				weapons[i] = weapon;
 				i++;
 			}
 			
-			for each (node in xml.bomb)
+			for each (var bombNode:XML in xml.bomb)
 			{
 				weapon = new BcPlayerWeapon();
-				weapon.parse(node);
+				weapon.parse(bombNode);
 				bombs.push(weapon);
 			}
 		}

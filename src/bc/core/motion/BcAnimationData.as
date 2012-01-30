@@ -13,9 +13,8 @@ package bc.core.motion
 		
 		public function parse(xml:XML):void
 		{
-			var motionData:BcMotionData;
-			var node:XML;
-			for each (node in xml.motion)
+			var motionData:BcMotionData;			
+			for each (var node:XML in xml.motion)
 			{
 				if(node.hasOwnProperty("@data"))
 				{

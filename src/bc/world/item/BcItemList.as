@@ -145,7 +145,7 @@ package bc.world.item
 
 		public function launchEnemyBonus(position:Vector2, gems:int, money:int, prob:Number, caster:DisplayObject):void
 		{
-			var item:BcItemData;
+			
 			var count:int;
 			
 			gemAccum += gems;
@@ -155,28 +155,28 @@ package bc.world.item
 			{
 				while(gemAccum > minGem)
 				{
-					for each (item in BcItemData.gemList)
+					for each (var gemItem:BcItemData in BcItemData.gemList)
 					{
-						if(gemAccum >= item.amount)
+						if(gemAccum >= gemItem.amount)
 						{
 							break;
 						}
 					}
-					launch(item, position, caster);
-					gemAccum -= item.amount;
+					launch(gemItem, position, caster);
+					gemAccum -= gemItem.amount;
 				}
 				
 				while(moneyAccum > minMoney)
 				{
-					for each (item in BcItemData.moneyList)
+					for each (var moneyItem:BcItemData in BcItemData.moneyList)
 					{
-						if(moneyAccum >= item.amount)
+						if(moneyAccum >= moneyItem.amount)
 						{
 							break;
 						}
 					}
-					launch(item, position, caster);
-					moneyAccum -= item.amount;
+					launch(moneyItem, position, caster);
+					moneyAccum -= moneyItem.amount;
 				}
 			}
 			

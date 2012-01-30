@@ -286,11 +286,10 @@ package bc.world.collision
 		}
 		
 		public function testObject(gridObject:BcGridObject, mask:uint, arbiter:BcArbiter):void
-		{
-			var cell:BcGridCell;
+		{			
 			var object:BcGridObject;
 			
-			for each (cell in gridObject.cells)
+			for each (var cell:BcGridCell in gridObject.cells)
 			{
 				pushCellObjects(cell, mask);
 			}

@@ -30,11 +30,10 @@ package bc.world.enemy.timers
 		public override function parse(xml:XML):void
 		{
 			super.parse(xml);
-			
-			var node:XML;
+						
 			var event:BcEnemyTimelineEvent;
 			
-			for each (node in xml.event)
+			for each (var node:XML in xml.event)
 			{
 				event = new BcEnemyTimelineEvent();
 				event.actions = BcEnemyData.createActionArray(node);

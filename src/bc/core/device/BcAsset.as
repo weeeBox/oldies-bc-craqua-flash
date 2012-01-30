@@ -148,11 +148,10 @@ package bc.core.device
 		}
 		
 		private function parseDescription(xml:XML):void
-		{
-			var res_node:XML;
+		{			
 			var path_full:String = xml.@path.toString();
 
-			for each (res_node in xml.resource)
+			for each (var res_node:XML in xml.resource)
 			{
 				parseResource(res_node, path_full);
 			}

@@ -460,12 +460,11 @@ package bc.world.enemy
 		}
 		
 		private function processHitCaps(amount:Number):void
-		{
-			var hitCap:BcEnemyHitCap;
+		{			
 			var lastCap:Number = (health + amount) / data.health;
 			var nowCap:Number = health / data.health;
 			
-			for each ( hitCap in data.hitCaps )
+			for each ( var hitCap:BcEnemyHitCap in data.hitCaps )
 			{
 				if(hitCap.actions && lastCap > hitCap.level && nowCap <= hitCap.level)
 				{
@@ -490,10 +489,8 @@ package bc.world.enemy
 		}
 		
 		public function doActions(actions:Vector.<BcIEnemyAction>):void
-		{
-			var action:BcIEnemyAction;
-			
-			for each ( action in actions )
+		{	
+			for each ( var action:BcIEnemyAction in actions )
 			{
 				action.action(this);
 			}

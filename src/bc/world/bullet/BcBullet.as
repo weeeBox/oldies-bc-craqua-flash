@@ -377,15 +377,14 @@ package bc.world.bullet
 		{
 			var arbiter:BcArbiter = world.arbiter;
 			var hero:BcPlayer = world.player;
-			var i:uint;
-			var tail:BcShape;
+			var i:uint;			
 			
 			arbiter.object = hero;
 			
 			if(shape) BcCollision.testShapes(hero.shape, shape, arbiter);
 			else BcCollision.testPointShape(position, hero.shape, arbiter);
 			
-			for each ( tail in hero.tailShapes )
+			for each ( var tail:BcShape in hero.tailShapes )
 			{
 				if(i == hero.tailCount)
 					break;

@@ -248,7 +248,7 @@ package bc.world.core
 		{
 			var waveXML:XML;
 			var waveList:XMLList;
-			var enemiesNode:XML;
+			
 			var enemyData:BcEnemyData;
 			var enemy:BcEnemy;
 			var i:int;
@@ -326,7 +326,7 @@ package bc.world.core
 				}				
 				
 				waveList = waveXML.children();
-				for each (enemiesNode in waveList)
+				for each (var enemiesNode:XML in waveList)
 				{
 					nodeName = enemiesNode.name();
 					if(nodeName=="offset")
