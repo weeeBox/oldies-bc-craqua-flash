@@ -29,9 +29,9 @@ package bc.world.core
 		private var flowPause:Number = 0;
 		private var nextBoss:Boolean;
 			
-		private var FLOW_WAVE:uint = 0;
-		private var FLOW_BOSS:uint = 1;
-		private var FLOW_NEXT:uint = 2;
+		private static const FLOW_WAVE:uint = 0;
+		private static const FLOW_BOSS:uint = 1;
+		private static const FLOW_NEXT:uint = 2;
 		
 		private var flow:uint = 0;
 		
