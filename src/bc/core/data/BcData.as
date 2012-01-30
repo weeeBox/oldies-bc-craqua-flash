@@ -30,22 +30,20 @@ package bc.core.data
 		}
 		
 		public static function load(xmlArray:Vector.<String>):void
-		{
-			var xmlName:String;
-			
-			for each (xmlName in xmlArray)
+		{	
+			for each (var xmlName1:String in xmlArray)
 			{
-				preload(BcAsset.getXML(xmlName));
+				preload(BcAsset.getXML(xmlName1));
 			}
 			
-			for each (xmlName in xmlArray)
+			for each (var xmlName2:String in xmlArray)
 			{
-				parse(BcAsset.getXML(xmlName));
+				parse(BcAsset.getXML(xmlName2));
 			}
 			
-			for each (xmlName in xmlArray)
+			for each (var xmlName3:String in xmlArray)
 			{
-				BcAsset.removeXML(xmlName);
+				BcAsset.removeXML(xmlName3);
 			}
 		}
 		

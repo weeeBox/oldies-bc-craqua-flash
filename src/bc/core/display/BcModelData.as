@@ -38,9 +38,7 @@ package bc.core.display
 		}
 		
 		private function setupNode(node:BcModelNode, parentIndex:int):void
-		{
-			var iter:BcModelNode;
-			
+		{	
 			node.index = index;
 			node.parent = parentIndex;
 			if(node.id)
@@ -52,7 +50,7 @@ package bc.core.display
 			
 			if(node.children)
 			{
-				for each (iter in node.children)
+				for each (var iter:BcModelNode in node.children)
 				{
 					setupNode(iter, node.index);
 				}

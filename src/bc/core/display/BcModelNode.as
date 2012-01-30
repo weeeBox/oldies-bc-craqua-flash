@@ -41,11 +41,10 @@ package bc.core.display
 
 		internal function parseChildren(xml:XML):void
 		{
-			var node:BcModelNode;
-			var xmlNode:XML;
+			var node:BcModelNode;			
 			var xmlList:XMLList = xml.children();
 			
-			for each (xmlNode in xmlList)
+			for each (var xmlNode:XML in xmlList)
 			{
 				node = new BcModelNode();
 				node.parseInfo(xmlNode);

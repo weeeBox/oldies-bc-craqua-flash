@@ -35,19 +35,18 @@ package bc.core.motion
 		public function parse(xml:XML):void
 		{
 			var key:BcMotionKey;
-			var weight:BcMotionWeight;			
-			var node:XML;
+			var weight:BcMotionWeight;
 			
 			keys = new Vector.<BcMotionKey>();
-			for each (node in xml.key)
+			for each (var keyNode:XML in xml.key)
 			{
 				key = new BcMotionKey();
-				key.parse(node);
+				key.parse(keyNode);
 				keys.push(key);
 			}
 			
 			weights = new Vector.<BcMotionWeight>();
-			for each (node in xml.weight)
+			for each (var node:XML in xml.weight)
 			{
 				weight = new BcMotionWeight();
 				weight.parse(node);

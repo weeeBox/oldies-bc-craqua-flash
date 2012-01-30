@@ -23,31 +23,26 @@ package bc.core.display
 		}
 		
 		public function parse(xml:XML):void
-		{
-			var node:XML;
-			var propertiesNode:XML;
-			
+		{	
 			var bitmapProperties:BcBitmapData;
 			var speed:Number = 1;
 			var frameTime:Number;
 			
-			node = xml.properties[0];
-			if(node)
-			{
-				propertiesNode = node;
-				
-				if(node.hasOwnProperty("loop"))
+			var propertiesNode:XML = xml.properties[0];
+			if(propertiesNode)
+			{	
+				if(propertiesNode.hasOwnProperty("loop"))
 				{
-					loop = BcStringUtil.parseBoolean(node.@loop);
+					loop = BcStringUtil.parseBoolean(propertiesNode.@loop);
 				}
 				
-				if(node.hasOwnProperty("speed"))
+				if(propertiesNode.hasOwnProperty("speed"))
 				{
-					speed = node.@speed;
+					speed = propertiesNode.@speed;
 				}
 			}
 			
-			for each (node in xml.frame)
+			for each (var node:XML in xml.frame)
 			{
 				if(node.hasOwnProperty("@time"))
 				{
