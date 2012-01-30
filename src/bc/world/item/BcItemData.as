@@ -18,10 +18,10 @@ package bc.world.item
 		public var bodyBitmap:BcBitmapData;
 		public var backBitmap:BcBitmapData;
 
-		public static var MONEY:uint = 0;
-		public static var GEM:uint = 1;
-		public static var HEAL:uint = 2;
-		public static var BOMB:uint = 3;
+		public const MONEY:uint = 0;
+		public const GEM:uint = 1;
+		public const HEAL:uint = 2;
+		public const BOMB:uint = 3;
 
 		public var type:uint;
 		public var amount:uint;

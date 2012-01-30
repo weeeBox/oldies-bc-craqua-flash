@@ -6,9 +6,9 @@ package bc.core.motion
 	 */
 	public class BcPlayback 
 	{
-		public static var NORMAL:uint = 0;
-		public static var REVERSE:uint = 1;
-		public static var PINGPONG:uint = 2;
+		public const NORMAL:uint = 0;
+		public const REVERSE:uint = 1;
+		public const PINGPONG:uint = 2;
 		
 		internal static function parseString(string:String):uint
 		{

@@ -7,8 +7,8 @@ package bc.core.device.messages
 	 */
 	public class BcKeyboardMessage 
 	{		
-		public static var KEY_DOWN:uint = 0;
-		public static var KEY_UP:uint = 1;
+		public const KEY_DOWN:uint = 0;
+		public const KEY_UP:uint = 1;
 		
 		public var event:uint;
 		
