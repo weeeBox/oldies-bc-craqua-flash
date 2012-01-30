@@ -7,9 +7,9 @@ package bc.core.device.messages
 	 */
 	public class BcMouseMessage 
 	{
-		public const MOUSE_MOVE:uint = 0;
-		public const MOUSE_DOWN:uint = 1;
-		public const MOUSE_UP:uint = 2;
+		public static const MOUSE_MOVE:uint = 0;
+		public static const MOUSE_DOWN:uint = 1;
+		public static const MOUSE_UP:uint = 2;
 		
 		public var event:uint;
 		

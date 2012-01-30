@@ -14,10 +14,10 @@ package bc.world.common
 	public class BcObject extends BcGridObject 
 	{
 		// Константы масок коллизий
-		public const MASK_PLAYER:uint = 1;
-		public const MASK_ENEMY:uint = 2;
-		public const MASK_ITEM:uint = 4;
-		public const MASK_ALL:uint = 0xffffffff;
+		public static const MASK_PLAYER:uint = 1;
+		public static const MASK_ENEMY:uint = 2;
+		public static const MASK_ITEM:uint = 4;
+		public static const MASK_ALL:uint = 0xffffffff;
 		
 		// Ссылка на мир
 		public var world:BcWorld;

@@ -65,7 +65,7 @@ package bc.world.player
 		public var shootingPause:Number = 0;
 		
 		// максимальное кол-во бомб
-		public const BOMB_COUNT:uint = 6;
+		public static const BOMB_COUNT:uint = 6;
 		
 		// Кол-во бомб в обойке
 		//protected function get safe_bombs():uint { return uint(SafeMemory.instance.getValue("bombs")); }
@@ -834,11 +834,11 @@ package bc.world.player
 		public var medalTotalBonus:uint;
 		private var medalBonus:uint;
 		
-		public const M_ROCKETS:Number = 0.10;
-		public const M_DAMAGE:Number = 0.25;
-		public const M_BOTTOM:Number = 0.25;
-		public const M_BONUS:Number = 0.20;
-		public const M_COMPLETE:Number = 0.10;
+		public static const M_ROCKETS:Number = 0.10;
+		public static const M_DAMAGE:Number = 0.25;
+		public static const M_BOTTOM:Number = 0.25;
+		public static const M_BONUS:Number = 0.20;
+		public static const M_COMPLETE:Number = 0.10;
 		
 		private function initMedals():void
 		{

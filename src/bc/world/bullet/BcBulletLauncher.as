@@ -8,9 +8,9 @@ package bc.world.bullet
 	 */
 	public class BcBulletLauncher 
 	{
-		public const DIRECTION_NONE:uint = 0;
-		public const DIRECTION_AIM:uint = 1;
-		public const DIRECTION_VELOCITY:uint = 2;
+		public static const DIRECTION_NONE:uint = 0;
+		public static const DIRECTION_AIM:uint = 1;
+		public static const DIRECTION_VELOCITY:uint = 2;
 		
 		private var n:uint = 1;
 		private var min:Number = 0;
