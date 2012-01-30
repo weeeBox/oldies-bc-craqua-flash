@@ -7,11 +7,11 @@ package bc.core.ui
 	public class UIStyle 
 	{
 		private var _properties:Object;
-		private var _base:UIStyle;
+		private var baseStyle:UIStyle;
 		
-		public function UIStyle(base:UIStyle = null, properties:Object = null)
+		public function UIStyle(baseStyle:UIStyle = null, properties:Object = null)
 		{
-			_base = base;
+			this.baseStyle = baseStyle;
 			
 			if(properties)
 			{
@@ -36,7 +36,7 @@ package bc.core.ui
 			while(value==null && style!=null)
 			{
 				value = style._properties[name];
-				style = style._base;
+				style = style.baseStyle;
 			}
 			
 			return value;

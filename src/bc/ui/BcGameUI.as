@@ -1048,36 +1048,5 @@ package bc.ui
 
 		private var transStatEnable:UITransition = null;			
 		private var transStatDisable:UITransition = null;
-		
-		private function sponsorLink(object:UIObject):void
-		{
-			
-			var url:String;
-			
-			switch(object)
-			{
-				case mainSponsor:
-					url = "http://www.gimme5games.com/?ref=CRAQUA_TITLE";
-					break;
-				case creditsSponsor:
-					url = "http://www.gimme5games.com/?ref=CRAQUA_CREDITS";
-					break;
-				case gameLink:
-					url = "http://www.gimme5games.com/?ref=CRAQUA_INGAMEHAND";
-					break;
-			}
-			
-			navigate(url);
-		}
-		
-		private function navigate(url:String):void
-		{
-//#if CUT_THE_CODE
-//#			if(url)
-//#				navigateToURL(new URLRequest(url), "_blank");
-//#endif
-		}
-
-		
 	}
 }
