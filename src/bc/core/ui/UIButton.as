@@ -124,7 +124,7 @@ package bc.core.ui
 		private function createLabel():void
 		{
 			_label = new UILabel(this, 0, 0, "", _style);
-			_label.sprite.scaleX = 
+			_label.sprite.scaleX = _baseScale;
 			_label.sprite.scaleY = _baseScale;
 		}
 		

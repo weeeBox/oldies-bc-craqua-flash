@@ -154,7 +154,7 @@ internal class Bubble extends Sprite
 		f = 5 + 2*Math.random();
 		mod_ph = 0.5+2*Math.random();
 		
-		scaleX = 
+		scaleX = 0;
 		scaleY = 0;
 		
 		layer.addChild(this);	

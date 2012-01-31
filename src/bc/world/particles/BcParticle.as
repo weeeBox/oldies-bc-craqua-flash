@@ -96,7 +96,7 @@ package bc.world.particles
 			}
 			else
 			{
-				vx = 
+				vx = 0;
 				vy = 0;
 			}
 			
@@ -104,7 +104,7 @@ package bc.world.particles
 			
 			sprite.x = x = position.x;
 			sprite.y = y = position.y;
-			sprite.scaleX = 
+			sprite.scaleX = scale;
 			sprite.scaleY = scale;
 			sprite.alpha = alpha;
 			

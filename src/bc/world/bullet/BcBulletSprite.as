@@ -51,7 +51,7 @@ package bc.world.bullet
 			}
 			else
 			{
-				scaleX = 
+				scaleX = 1;
 				scaleY = 1;
 			}
 		}

@@ -95,7 +95,7 @@ package bc.world.hud
 			{
 				if(decoration)
 				{
-					decoration.scaleX = 
+					decoration.scaleX = 1 + good*0.2;
 					decoration.scaleY = 1 + good*0.2;
 				}
 			}

@@ -47,7 +47,7 @@ package bc.world.common
 			
 			//addChild(tf);
 			addChild(bitmap);
-			scaleX = 
+			scaleX = 0.99;
 			scaleY = 0.99;
 			//cacheAsBitmap = true;
 			

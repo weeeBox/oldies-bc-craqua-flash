@@ -41,7 +41,7 @@ package bc.world.item
 			data.bodyBitmap.setupBitmap(bodyBitmap);
 			data.backBitmap.setupBitmap(backBitmap);
 
-			scaleX = 
+			scaleX = data.scale;
 			scaleY = data.scale;
 			rotation = 0;
 			 

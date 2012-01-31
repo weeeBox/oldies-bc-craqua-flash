@@ -48,7 +48,7 @@ package bc.world.common
 			back.bitmapData = backImage;
 			hp.bitmapData = BcAsset.getImage("level_boss_hp");
 			
-			hp.smoothing = 
+			hp.smoothing = true;
 			back.smoothing = true;
 			
 			hp.pixelSnapping = 

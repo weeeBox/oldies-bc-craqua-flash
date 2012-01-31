@@ -49,7 +49,7 @@ package bc.world.hud
 			background.addChild(bitmapBackgroundTween);
 			
 			bitmap = new Bitmap(BcAsset.getImage("level_stick"), PixelSnapping.NEVER, false);
-			bitmap.x = 
+			bitmap.x = -4; 
 			bitmap.y = -4;
 			middle.addChild(bitmap);
 			
@@ -162,7 +162,7 @@ package bc.world.hud
 			bitmapMiddle.smoothing = false;
 			bitmapMiddle.alpha = 1;
 			
-			bitmapBackgroundTween.visible = 
+			bitmapBackgroundTween.visible = false; 
 			bitmapMiddleTween.visible = false;
 			
 			tweenProgress = 1;
@@ -219,10 +219,10 @@ package bc.world.hud
 				bitmapMiddleTween.pixelSnapping = PixelSnapping.NEVER;
 				bitmapMiddleTween.smoothing = false;
 					
-				bitmapBackgroundTween.visible = 
+				bitmapBackgroundTween.visible = true; 
 				bitmapMiddleTween.visible = true;
 				
-				bitmapBackgroundTween.alpha = 
+				bitmapBackgroundTween.alpha = 0;
 				bitmapMiddleTween.alpha = 0;
 				
 				tweenProgress = 0;
