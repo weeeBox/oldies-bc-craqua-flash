@@ -51,13 +51,13 @@ package bc.world.common
 			hp.smoothing = true;
 			back.smoothing = true;
 			
-			hp.pixelSnapping = 
+			hp.pixelSnapping = PixelSnapping.NEVER; 
 			back.pixelSnapping = PixelSnapping.NEVER;
 			
-			hp.x = 
+			hp.x = -backImage.width*0.5;
 			back.x = -backImage.width*0.5;
 			
-			hp.y = 
+			hp.y = 28;
 			back.y = 28;
 			
 			hpRect.width = hpWidth = backImage.width;
@@ -82,7 +82,7 @@ package bc.world.common
 			//addChild(tf);
 			bitmap.y = 2;
 			addChild(bitmap);
-			scaleX = 
+			scaleX = 0.99;
 			scaleY = 0.99;
 			//cacheAsBitmap = true;
 			

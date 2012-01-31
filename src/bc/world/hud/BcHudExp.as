@@ -62,14 +62,14 @@ package bc.world.hud
 			
 			
 			fullHeight = 54;
-			fullRect.x = 
+			fullRect.x = -fullHeight*0.5;
 			fullRect.y = -fullHeight*0.5;
 			fullRect.width = 54;
 			
 			digits.addChild(digit10Bitmap);
 			digits.addChild(digitBitmap);
 			
-			digits.scaleX = 
+			digits.scaleX = 0.5;
 			digits.scaleY = 0.5;
 			
 			shadow.join();
@@ -95,7 +95,7 @@ package bc.world.hud
 			const rotSpeed:Number = (1+5*gemTween*gemTween)*dt*30;
 			y = baseY + a;
 			
-			back.rotation = 
+			back.rotation += rotSpeed; 
 			full.rotation += rotSpeed;
 				
 			shadow.update(x, y, 64);
@@ -115,7 +115,7 @@ package bc.world.hud
 				if(digitsTween > 1)
 					digitsTween = 1;
 				var sc:Number = 1.3 - BcEasing.sineOut(digitsTween)*0.55;
-				digits.scaleX = 
+				digits.scaleX = sc;
 				digits.scaleY = sc;
 			}
 			
@@ -190,7 +190,7 @@ package bc.world.hud
 			if(levelupTween > 0)
 			{
 				sc = levelupTween*levelupTween;
-				levelupAura.scaleX = 
+				levelupAura.scaleX = 1+(1-sc)*2;
 				levelupAura.scaleY = 1+(1-sc)*2;
 				levelupAura.alpha = sc;
 			}

@@ -59,8 +59,10 @@ package bc.world.hud
 			bitmap.scaleX = -1;
 			middle.addChild(bitmap);
 			
-			bitmapMiddle.x = bitmapMiddleTween.x = -4;
-			bitmapMiddle.y = bitmapMiddleTween.y = 440-4;
+			bitmapMiddle.x = -4;
+			bitmapMiddleTween.x = -4;
+			bitmapMiddle.y = 440-4;
+			bitmapMiddleTween.y = 440-4;
 			middle.addChild(bitmapMiddle);
 			middle.addChild(bitmapMiddleTween);
 			

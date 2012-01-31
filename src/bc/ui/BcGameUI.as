@@ -288,13 +288,13 @@ package bc.ui
 			BcBitmapData.addData("sponsor_logo", bd);
 		
 			image = new UIImage(mainButtons, 511, 423+4, "sponsor_logo");
-			image.sprite.scaleX = 
+			image.sprite.scaleX = 0.47;
 			image.sprite.scaleY = 0.47;
 			
 			if(oSponsorCredits)
 			{
 				image = new UIImage(creditsPanel, 160, 160, "ui_ddg");
-				image.sprite.scaleX = 
+				image.sprite.scaleX = 0.6;
 				image.sprite.scaleY = 0.6;
 				(new UILabel(creditsPanel, 320, 100-20, "DIGIDUCK GAMES", stInfoSmall)).centerX = 160;
 				label = new UILabel(creditsPanel, 320, 100-20, BcStrings.UI_SPONSORED_BY, stInfoSmall);
@@ -304,7 +304,7 @@ package bc.ui
 				
 				//creditsSponsor = ;
 				image = new UIImage(creditsPanel, 320+160, 160, "sponsor_logo");
-				image.sprite.scaleX = 
+				image.sprite.scaleX = 0.4;
 				image.sprite.scaleY = 0.4;
 				
 				if(oSponsorLogo)
@@ -665,8 +665,8 @@ package bc.ui
 			endRank.text = BcStrings.INFO_RANK + BcGameGlobal.world.uiRank;
 			endResult.text = BcStrings.INFO_RESULT + BcGameGlobal.world.player.getMoney();
 			
-			endLabel.centerX = 
-			endRank.centerX = 
+			endLabel.centerX = 320;
+			endRank.centerX = 320; 
 			endResult.centerX = 320;
 			
 			gameFader.initBack();

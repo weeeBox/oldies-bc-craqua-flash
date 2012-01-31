@@ -185,7 +185,7 @@ package bc.world.player
 			if(scale < 0.2) scale = 0;
 			movingSprite.x = dx;
 			movingSprite.y = dy;
-			movingSprite.scaleX = 
+			movingSprite.scaleX = scale;
 			movingSprite.scaleY = scale;
 		}
 

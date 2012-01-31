@@ -179,7 +179,7 @@ package bc.world.particles
 			
 			if(scaleDelta!=0)
 			{
-				sprite.scaleX = 
+				sprite.scaleX = scale + t*scaleDelta; 
 				sprite.scaleY = scale + t*scaleDelta;
 			}
 			

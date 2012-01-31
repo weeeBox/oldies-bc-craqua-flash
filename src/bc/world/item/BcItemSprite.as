@@ -80,7 +80,8 @@ package bc.world.item
 			{
 				t = 1-t*t*t;
 				sh = t * 0.5 * (1 + (int(item.time * 20) & 1));//0.5 + 0.5*Math.sin( Math.PI*0.5 + item.time * ( 8 * Math.PI * 2 + Math.PI ) );
-				shadow.alpha = alpha = sh;
+				shadow.alpha = sh; 
+				alpha = sh;
 			}
 			
 			/*if(show<1)

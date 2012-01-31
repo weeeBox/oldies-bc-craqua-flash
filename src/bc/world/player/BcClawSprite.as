@@ -52,7 +52,8 @@ package bc.world.player
 		
 		public function initialize():void
 		{
-			x = y = 0;
+			x = 0;
+			y = 0;
 			angle = 0;
 			linkSprite.scaleX = 0.5 + 0.5/16;
 			anim = Math.random();
