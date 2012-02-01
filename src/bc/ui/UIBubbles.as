@@ -147,7 +147,8 @@ internal class Bubble extends Sprite
 		t = 0;
 		vy = 0;
 		
-		ox = x = 20+Math.random()*600;
+		ox = 20+Math.random()*600;
+		x = ox;
 		y = 320+Math.random()*160;
 		s = 0.2 + Math.random()*0.3;
 		g = 400 + 300*Math.random();
