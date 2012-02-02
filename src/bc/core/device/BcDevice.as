@@ -185,33 +185,31 @@ package bc.core.device
 			displaySize.width = stage.stageWidth = BcDevice.DISPLAY_WIDTH;
 			displaySize.height = stage.stageHeight = BcDevice.DISPLAY_HEIGHT;
 
-//#if CUT_THE_CODE	
-//#			stage.frameRate = Number(BcDevice.FRAME_RATE);
-//#			stage.align = StageAlign.TOP_LEFT;
-//#			stage.scaleMode = StageScaleMode.NO_SCALE;
-//#			stage.fullScreenSourceRect = displaySize;
-//#			stage.stageFocusRect = false;
-//#			stage.tabChildren = false;
-//#			stage.addEventListener(Event.ENTER_FRAME, onFrame);
-//#			
-//#			//# События мыши
-//#			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-//#			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-//#			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
-//#			stage.addEventListener(Event.MOUSE_LEAVE, onMouseLeave);
-//#			
-//#			//# События клавиатуры
-//#			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-//#			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
-//#			
-//#			//# деактивация окна
-//#			stage.addEventListener(Event.DEACTIVATE, onDeactivate);
-//#			stage.addEventListener(Event.ACTIVATE, onActivate);
-//#			
-//#			//# Главный рисовальщик
-//#			display.scrollRect = displaySize;
-//#			display.opaqueBackground = BcDevice.BACKGROUND_COLOR;
-//#endif			
+			stage.frameRate = Number(BcDevice.FRAME_RATE);
+			stage.align = StageAlign.TOP_LEFT;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.fullScreenSourceRect = displaySize;
+			stage.stageFocusRect = false;
+			stage.tabChildren = false;
+			stage.addEventListener(Event.ENTER_FRAME, onFrame);
+			
+			// События мыши
+			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+			stage.addEventListener(Event.MOUSE_LEAVE, onMouseLeave);
+			
+			// События клавиатуры
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			
+			// деактивация окна
+			stage.addEventListener(Event.DEACTIVATE, onDeactivate);
+			stage.addEventListener(Event.ACTIVATE, onActivate);
+			
+			// Главный рисовальщик
+			display.scrollRect = displaySize;
+			display.opaqueBackground = BcDevice.BACKGROUND_COLOR;
 	
 //#if CUT_THE_CODE			
 //#			display.contextMenu = defaultContextMenu;

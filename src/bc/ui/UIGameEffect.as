@@ -18,13 +18,9 @@ package bc.ui
 	public class UIGameEffect extends UIPanel
 	{
 		protected var _bmWorld:Bitmap = new Bitmap(new BitmapData(640, 480, false, 0x0));
-//#if CUT_THE_CODE
-//#		protected var _shFader:Shape = new Shape();
-//#endif
+		protected var _shFader:Shape = new Shape();
 		
-//#if CUT_THE_CODE
-//#		protected var _filterBlur:BlurFilter = new BlurFilter(8, 8, 2);
-//#endif
+		protected var _filterBlur:BlurFilter = new BlurFilter(8, 8, 2);
 		protected var _filterRect:Rectangle = new Rectangle(0, 0, 640, 480);
 		protected var _filterPoint:Point = new Point();
 		
@@ -34,9 +30,7 @@ package bc.ui
 			super(layer, 0, 0);
 
 			_sprite.addChild(_bmWorld);
-//#if CUT_THE_CODE
-//#			_sprite.addChild(_shFader);
-//#endif
+			_sprite.addChild(_shFader);
 		}
 		
 		public override function reset():void
@@ -50,27 +44,21 @@ package bc.ui
 		public function initFader():void
 		{
 			_bmWorld.visible = false;
-//#if CUT_THE_CODE			
-//#			_shFader.graphics.clear();
-//#			_shFader.graphics.beginFill(0x000000);
-//#			_shFader.graphics.drawRect(0, 0, 640, 480);
-//#			_shFader.graphics.endFill();
-//#endif
+			_shFader.graphics.clear();
+			_shFader.graphics.beginFill(0x000000);
+			_shFader.graphics.drawRect(0, 0, 640, 480);
+			_shFader.graphics.endFill();
 		}
 		
 		public function initBack():void
 		{
-//#if CUT_THE_CODE
-//#			_bmWorld.bitmapData.draw(BcGameGlobal.world.sprite);
-//#			_bmWorld.bitmapData.applyFilter(_bmWorld.bitmapData, _filterRect, _filterPoint, _filterBlur);
-//#endif
+			_bmWorld.bitmapData.draw(BcGameGlobal.world.sprite);
+			_bmWorld.bitmapData.applyFilter(_bmWorld.bitmapData, _filterRect, _filterPoint, _filterBlur);
 			_bmWorld.visible = true;
-//#if CUT_THE_CODE			
-//#			_shFader.graphics.clear();
-//#			_shFader.graphics.beginFill(0x000000, 0.5);
-//#			_shFader.graphics.drawRect(0, 0, 640, 480);
-//#			_shFader.graphics.endFill();
-//#endif
+			_shFader.graphics.clear();
+			_shFader.graphics.beginFill(0x000000, 0.5);
+			_shFader.graphics.drawRect(0, 0, 640, 480);
+			_shFader.graphics.endFill();
 		}
 	}
 }

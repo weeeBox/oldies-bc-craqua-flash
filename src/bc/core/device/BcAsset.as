@@ -38,15 +38,13 @@ package bc.core.device
 			var bd:BitmapData = bitmapData;
 			var temp:BitmapData;
 			
-//#if CUT_THE_CODE
-//#			if(!alpha)
-//#			{
-//#				temp = new BitmapData(bd.width, bd.height, false, 0);
-//#				temp.draw(bd);
-//#				bd = temp;
-//#				temp = null;
-//#			}
-//#endif
+			if(!alpha)
+			{
+				temp = new BitmapData(bd.width, bd.height, false, 0);
+				temp.draw(bd);
+				bd = temp;
+				temp = null;
+			}
 			
 			return bd;
 		}
@@ -183,29 +181,25 @@ package bc.core.device
 				id = id.replace("/", "_");				
 			}			
 
-//#if CUT_THE_CODE		
-//#			switch(ext)
-//#			{
-//#				case ".png":
-//#				case ".jpg":
-//#					loader = createLoader(BcLoader.LOADER_IMAGE, id, path, onResourceLoaded);
-//#					loader.metaAlpha = alpha;
-//#					break;
-//#				case ".mp3":
-//#				case ".wav":
-//#					createLoader(BcLoader.LOADER_SOUND, id, path, onResourceLoaded);
-//#					break;
-//#				case ".xml":
-//#					createLoader(BcLoader.LOADER_XML, id, path, onResourceLoaded);
-//#					break;
-//#				default:
-//#					throw new Error("BcAsset: unknown resource type.");
-//#					break;
-//#			}
-//#endif
+			switch(ext)
+			{
+				case ".png":
+				case ".jpg":
+					loader = createLoader(BcLoader.LOADER_IMAGE, id, path, onResourceLoaded);
+					loader.metaAlpha = alpha;
+					break;
+				case ".mp3":
+				case ".wav":
+					createLoader(BcLoader.LOADER_SOUND, id, path, onResourceLoaded);
+					break;
+				case ".xml":
+					createLoader(BcLoader.LOADER_XML, id, path, onResourceLoaded);
+					break;
+				default:
+					throw new Error("BcAsset: unknown resource type.");
+					break;
+			}
 		}
-		
-		
 	}
 }
 

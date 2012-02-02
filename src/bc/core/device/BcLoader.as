@@ -1,5 +1,10 @@
 package bc.core.device 
 {
+import flash.net.URLLoader;
+import flash.events.Event;
+import flash.events.IOErrorEvent;
+import flash.display.Loader;
+import flash.net.URLRequest;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.media.Sound;
@@ -27,68 +32,64 @@ public class BcLoader
 		this.id = id;
 		this.callback = callback;
 
-//#if CUT_THE_CODE		
-//#		var request:URLRequest = new URLRequest(path);
-//#		
-//#		try
-//#		{
-//#			switch(type)
-//#			{
-//#				case LOADER_IMAGE:
-//#					loader = new Loader();
-//#            		loader.load(request);
-//#            		loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
-//#            		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onImageComplete, false, 0, true);
-//#            		break;
-//#            		
-//#				case LOADER_SOUND:
-//#					loader = new Sound();
-//#            		loader.load(request);
-//#            		loader.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
-//#            		loader.addEventListener(Event.COMPLETE, onSoundComplete, false, 0, true);
-//#            		break;
-//#            		
-//#           		case LOADER_XML:
-//#					loader = new URLLoader();
-//#            		loader.load(request);
-//#            		loader.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
-//#            		loader.addEventListener(Event.COMPLETE, onXMLComplete, false, 0, true);
-//#            		break;
-//#			}		
-//#        }
-//#        catch (error:Error)
-//#        {
-//#        	log(error.message);
-//#        	finish();
-//#        }
-//#endif
+		var request:URLRequest = new URLRequest(path);
+		
+		try
+		{
+			switch(type)
+			{
+				case LOADER_IMAGE:
+					loader = new Loader();
+            		loader.load(request);
+            		loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
+            		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onImageComplete, false, 0, true);
+            		break;
+            		
+				case LOADER_SOUND:
+					loader = new Sound();
+            		loader.load(request);
+            		loader.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
+            		loader.addEventListener(Event.COMPLETE, onSoundComplete, false, 0, true);
+            		break;
+            		
+           		case LOADER_XML:
+					loader = new URLLoader();
+            		loader.load(request);
+            		loader.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
+            		loader.addEventListener(Event.COMPLETE, onXMLComplete, false, 0, true);
+            		break;
+			}		
+        }
+        catch (error:Error)
+        {
+        	log(error.message);
+        	finish();
+        }
 	}
 
-//#if CUT_THE_CODE
-//#	private function onImageComplete(event:Event):void
-//#    {
-//#    	data = Bitmap(Loader(loader).content).bitmapData;
-//#    	finish();
-//#    }
-//#    
-//#    private function onXMLComplete(event:Event):void
-//#    {
-//#    	data = XML(URLLoader(loader).data);
-//#    	finish();
-//#    }
-//#    
-//#    private function onSoundComplete(event:Event):void
-//#    {
-//#    	data = Sound(loader);
-//#    	finish();
-//#    }
-//#    
-//#    private function onError(event:IOErrorEvent):void
-//#    {
-//#    	log(event.text);
-//#    	finish();
-//#    }
-//#endif	
+	private function onImageComplete(event:Event):void
+    {
+    	data = Bitmap(Loader(loader).content).bitmapData;
+    	finish();
+    }
+    
+    private function onXMLComplete(event:Event):void
+    {
+    	data = XML(URLLoader(loader).data);
+    	finish();
+    }
+    
+    private function onSoundComplete(event:Event):void
+    {
+    	data = Sound(loader);
+    	finish();
+    }
+    
+    private function onError(event:IOErrorEvent):void
+    {
+    	log(event.text);
+    	finish();
+    }
     
     private function finish():void
     {

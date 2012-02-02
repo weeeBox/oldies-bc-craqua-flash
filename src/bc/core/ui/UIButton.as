@@ -16,25 +16,23 @@ package bc.core.ui
 	{
 		public static var DEFAULT_STYLE:UIStyle = new UIStyle();
 
-//#if CUT_THE_CODE		
-//#		DEFAULT_STYLE.setProperty("font", "main");
-//#		DEFAULT_STYLE.setProperty("textSize", 30);
-//#		DEFAULT_STYLE.setProperty("textColor", 0xffffff);
-//#		DEFAULT_STYLE.setProperty("strokeBlur", 3);
-//#		DEFAULT_STYLE.setProperty("strokeColor", 0x033754);
-//#		DEFAULT_STYLE.setProperty("strokeAlpha", 1);
-//#		DEFAULT_STYLE.setProperty("strokeStrength", 6);
-//#		
-//#		DEFAULT_STYLE.setProperty("back", "ui_btn_back");
-//#		DEFAULT_STYLE.setProperty("body", "ui_btn");
-//#		DEFAULT_STYLE.setProperty("normalBackColor", 0xff000000);
-//#		DEFAULT_STYLE.setProperty("overBackColor", 0xffffffff);
-//#		DEFAULT_STYLE.setProperty("scale", 1);
-//#		
-//#		DEFAULT_STYLE.setProperty("sfxOver", "ui_over");
-//#		DEFAULT_STYLE.setProperty("sfxClick", "ui_click");
-//#		DEFAULT_STYLE.setProperty("sfxPress", "ui_click");
-//#endif
+		DEFAULT_STYLE.setProperty("font", "main");
+		DEFAULT_STYLE.setProperty("textSize", 30);
+		DEFAULT_STYLE.setProperty("textColor", 0xffffff);
+		DEFAULT_STYLE.setProperty("strokeBlur", 3);
+		DEFAULT_STYLE.setProperty("strokeColor", 0x033754);
+		DEFAULT_STYLE.setProperty("strokeAlpha", 1);
+		DEFAULT_STYLE.setProperty("strokeStrength", 6);
+		
+		DEFAULT_STYLE.setProperty("back", "ui_btn_back");
+		DEFAULT_STYLE.setProperty("body", "ui_btn");
+		DEFAULT_STYLE.setProperty("normalBackColor", 0xff000000);
+		DEFAULT_STYLE.setProperty("overBackColor", 0xffffffff);
+		DEFAULT_STYLE.setProperty("scale", 1);
+		
+		DEFAULT_STYLE.setProperty("sfxOver", "ui_over");
+		DEFAULT_STYLE.setProperty("sfxClick", "ui_click");
+		DEFAULT_STYLE.setProperty("sfxPress", "ui_click");
 		
 		protected var _style:UIStyle;
 		
@@ -58,67 +56,65 @@ package bc.core.ui
 		public function UIButton(layer:UIObject, x:Number = 0, y:Number = 0, text:String = null, style:UIStyle = null, onClick:Function = null, fast:Boolean = true)
 		{
 			super(layer, x, y, fast);
-//#if CUT_THE_CODE			
-//#			var image:String;
-//#			var w:Number = 0;
-//#			var h:Number = 0;
-//#			
-//#			if(fast)
-//#				BcSpriteUtil.setupFast(_spriteButton);
-//#				
-//#			BcSpriteUtil.setupFast(_spriteBack);
-//#			BcSpriteUtil.setupFast(_spriteBody);
-//#			
-//#			if(!style)
-//#			{
-//#				style = DEFAULT_STYLE;
-//#			}
-//#			
-//#			_style = style;
-//#			
-//#			image = style.getProperty("back");
-//#			if(image)
-//#			{
-//#				_spriteBack.addChild(BcBitmapData.create(image));
-//#			}
-//#			
-//#			image = style.getProperty("body");
-//#			if(image)
-//#			{
-//#				_spriteBody.addChild(BcBitmapData.create(image));
-//#			}
-//#			
-//#			_spriteButton.addChild(_spriteBack);
-//#			_spriteButton.addChild(_spriteBody);
-//#			_sprite.addChild(_spriteButton);
-//#			
-//#			if(_style.getProperty("scale"))
-//#			{
-//#				_baseScale = _style.getProperty("scale");
-//#			}
-//#			
-//#			w = _baseScale*(_spriteButton.width-12);
-//#			h = _baseScale*(_spriteButton.height-12);
-//#			
-//#			_shape = new UIRectangleShape(w, h, int(-0.5*w), int(-0.5*h));
-//#			
-//#			if(text)
-//#			{
-//#				this.text = text;
-//#			}
-//#			
-//#			_onMouseClick = onClick;
-//#			
-//#			redraw();
-//#			
-//#			var sfx:String;
-//#			sfx = _style.getProperty("sfxOver");
-//#			if(sfx) _sfxOver = BcSound.getData(sfx);
-//#			sfx = _style.getProperty("sfxPress");
-//#			if(sfx) _sfxPress = BcSound.getData(sfx);
-//#			sfx = _style.getProperty("sfxClick");
-//#			if(sfx) _sfxClick = BcSound.getData(sfx);
-//#endif
+			var image:String;
+			var w:Number = 0;
+			var h:Number = 0;
+			
+			if(fast)
+				BcSpriteUtil.setupFast(_spriteButton);
+				
+			BcSpriteUtil.setupFast(_spriteBack);
+			BcSpriteUtil.setupFast(_spriteBody);
+			
+			if(!style)
+			{
+				style = DEFAULT_STYLE;
+			}
+			
+			_style = style;
+
+			image = String(style.getProperty("back"));
+			if(image)
+			{
+				_spriteBack.addChild(BcBitmapData.create(image));
+			}
+
+			image = String(style.getProperty("body"));
+			if(image)
+			{
+				_spriteBody.addChild(BcBitmapData.create(image));
+			}
+			
+			_spriteButton.addChild(_spriteBack);
+			_spriteButton.addChild(_spriteBody);
+			_sprite.addChild(_spriteButton);
+			
+			if(_style.getProperty("scale"))
+			{
+				_baseScale = Number(_style.getProperty("scale"));
+			}
+			
+			w = _baseScale*(_spriteButton.width-12);
+			h = _baseScale*(_spriteButton.height-12);
+			
+			_shape = new UIRectangleShape(w, h, int(-0.5*w), int(-0.5*h));
+			
+			if(text)
+			{
+				this.text = text;
+			}
+			
+			_onMouseClick = onClick;
+			
+			redraw();
+			
+			var sfx : String;
+			sfx = String(_style.getProperty("sfxOver"));
+			if (sfx) _sfxOver = BcSound.getData(sfx);
+			sfx = String(_style.getProperty("sfxPress"));
+			if (sfx) _sfxPress = BcSound.getData(sfx);
+			sfx = String(_style.getProperty("sfxClick"));
+			if(sfx) _sfxClick = BcSound.getData(sfx);
 		}
 		
 		private function createLabel():void
@@ -244,14 +240,12 @@ package bc.core.ui
 		
 		protected function redraw():void
 		{
-//#if CUT_THE_CODE
-//#			BcColorTransformUtil.setMultipliersARGB(COLOR_BEGIN, _style.getProperty("normalBackColor"));
-//#			BcColorTransformUtil.setMultipliersARGB(COLOR_END, _style.getProperty("overBackColor"));
-//#			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver + (1-_tweenOver)*_tweenLight);
-//#						
-//#			_spriteButton.scaleX = 
-//#			_spriteButton.scaleY = _baseScale*(1 - 0.025 * _tweenPush);
-//#endif
+			BcColorTransformUtil.setMultipliersARGB(COLOR_BEGIN, uint(_style.getProperty("normalBackColor")));
+			BcColorTransformUtil.setMultipliersARGB(COLOR_END, uint(_style.getProperty("overBackColor")));
+			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver + (1-_tweenOver)*_tweenLight);
+						
+			_spriteButton.scaleX = 
+			_spriteButton.scaleY = _baseScale*(1 - 0.025 * _tweenPush);
 		}
 		
 		public function set highlight(value:Boolean):void

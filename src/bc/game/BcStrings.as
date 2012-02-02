@@ -52,10 +52,7 @@ package bc.game
 		public static const GAME_STAGE_N:String = "Stage ";
 		public static const GAME_BOSS_N:String = "Boss ";
 
-//#if CODE_HACK		
-//#		public static const BOSS_NAMES:Object = {boss1:"Gasoiler", boss2:"A(H1N1)", boss3:"MR. NOTHING"};
-//#endif
-		public static const BOSS_NAMES:Object = null;
+		public static const BOSS_NAMES:Object = {boss1:"Gasoiler", boss2:"A(H1N1)", boss3:"MR. NOTHING"};
 		
 		public static const RANKS:Array = ["EASY", "NOT BAD", "GOOD", "EXCELLENT", "AWESOME", "HARDCORE"];
 		

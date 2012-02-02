@@ -1,24 +1,24 @@
 package bc.core.ui 
 {
+	import flash.filters.DropShadowFilter;
+	import flash.text.TextFormat;
 	/**
 	 * @author Elias Ku
 	 */
 	public class UILabel extends UIObject 
 	{
 		public static var DEFAULT_STYLE:UIStyle = new UIStyle();
-//#if CUT_THE_CODE
-//#		DEFAULT_STYLE.setProperty("font", "main");
-//#		DEFAULT_STYLE.setProperty("textSize", 15);
-//#		DEFAULT_STYLE.setProperty("textColor", 0xffffff);
-//#		DEFAULT_STYLE.setProperty("strokeBlur", 0);
-//#		DEFAULT_STYLE.setProperty("strokeColor", 0x0);
-//#		DEFAULT_STYLE.setProperty("strokeAlpha", 1);
-//#		DEFAULT_STYLE.setProperty("strokeStrength", 8);
-//# 		
-//#		protected var _textField:UITextField = new UITextField();
-//#		protected var _textFormat:TextFormat;
-//#		protected var _stroke:DropShadowFilter;
-//#endif
+		DEFAULT_STYLE.setProperty("font", "main");
+		DEFAULT_STYLE.setProperty("textSize", 15);
+		DEFAULT_STYLE.setProperty("textColor", 0xffffff);
+		DEFAULT_STYLE.setProperty("strokeBlur", 0);
+		DEFAULT_STYLE.setProperty("strokeColor", 0x0);
+		DEFAULT_STYLE.setProperty("strokeAlpha", 1);
+		DEFAULT_STYLE.setProperty("strokeStrength", 8);
+ 		
+		protected var _textField:UITextField = new UITextField();
+		protected var _textFormat:TextFormat;
+		protected var _stroke:DropShadowFilter;
 	
 		public function UILabel(layer:UIObject, x:Number, y:Number, text:String = "", style:UIStyle = null)
 		{
