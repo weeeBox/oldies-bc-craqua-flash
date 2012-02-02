@@ -156,32 +156,26 @@ package bc.core.device
 		{
 			var id : String = loader.getId();
 			
-			switch(loader.getType())
+			if (loader.getType() == BcResLoaderFactory.LOADER_IMAGE)
 			{
-				case BcResLoaderFactory.LOADER_IMAGE:
-				{
-					images[id] = BitmapData(data);
-					break;
-				}
-				case BcResLoaderFactory.LOADER_XML:
-				{
-					var xml : XML = XML(data);
-					if (id == XML_DEST_ID)
-					{
-						parseDescription(xml);
-					}
-					else
-					{
-						xmls[id] = xml;
-					}
-					break;
-				}
-				case BcResLoaderFactory.LOADER_SOUND:
-				{
-					sounds[id] = Sound(data);
-					break;
+				images[id] = BitmapData(data);
 			}
-		}
+			else if (loader.getType() == BcResLoaderFactory.LOADER_XML)
+			{
+				var xml : XML = XML(data);
+				if (id == XML_DEST_ID)
+				{
+					parseDescription(xml);
+				}
+				else
+				{
+					xmls[id] = xml;
+				}
+			}
+			else if (loader.getType() == BcResLoaderFactory.LOADER_SOUND)
+			{
+				sounds[id] = Sound(data);
+			}
 			
 			releaseLoader();
 		}
