@@ -61,26 +61,6 @@ package bc.core.device
 			return impl.timer.fps;
 		}
 		
-		public static function get quality():uint
-		{
-			return impl.getStageQuality();
-		}
-		
-		public static function set quality(value:uint):void
-		{
-			impl.setStageQuality(value);
-		}
-		
-		public static function get fullscreen():Boolean
-		{
-			return impl.getStageFullscreen();
-		}
-		
-		public static function set fullscreen(value:Boolean):void
-		{
-			impl.setStageFullscreen(value);
-		}
-		
 //#if CUT_THE_CODE
 //#		public static function get contextMenu():ContextMenu
 //#		{

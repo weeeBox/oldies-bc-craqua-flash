@@ -591,8 +591,8 @@ package bc.ui
 		{
 			if (check == settingsQ)
 			{
-					if(settingsQ.checked) BcDevice.quality = 0;
-					else BcDevice.quality = 2;
+//					if(settingsQ.checked) BcDevice.quality = 0;
+//					else BcDevice.quality = 2;
 			}
 			if (check == settingsM)
 			{
