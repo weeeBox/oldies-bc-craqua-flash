@@ -1,7 +1,7 @@
 package bc.core.ui 
 {
+	import bc.core.display.BcApplication;
 	import bc.core.audio.BcSound;
-	import bc.core.device.BcDevice;
 	import bc.core.util.BcColorTransformUtil;
 	import bc.core.util.BcSpriteUtil;
 
@@ -416,10 +416,14 @@ package bc.core.ui
 			if(flags & UITransition.FLAG_ENABLE)
 			{
 				_enabled = true;
-				mouseMove(BcDevice.mouseX, BcDevice.mouseY);
-				if(BcDevice.mousePushed)
+				
+				var mouseX:Number = BcApplication.mouseX;
+				var mouseY:Number = BcApplication.mouseY;
+				mouseMove(mouseX, mouseY);
+				
+				if(BcApplication.mousePushed)
 				{
-					mouseDown(BcDevice.mouseX, BcDevice.mouseY);
+					mouseDown(mouseX, mouseY);
 				}
 			}
 			

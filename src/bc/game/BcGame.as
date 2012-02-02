@@ -3,7 +3,6 @@ package bc.game
 	import bc.core.display.BcApplication;
 	import bc.core.audio.BcAudio;
 	import bc.core.data.BcData;
-	import bc.core.device.BcDevice;
 	import bc.core.device.BcIApplication;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
@@ -11,7 +10,6 @@ package bc.game
 	import bc.world.core.BcWorld;
 
 	import flash.display.MovieClip;
-	import flash.net.SharedObject;
 	import flash.ui.Keyboard;
 	import flash.ui.Mouse;
 

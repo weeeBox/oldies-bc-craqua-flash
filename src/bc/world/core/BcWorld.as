@@ -6,7 +6,6 @@ package bc.world.core
 	import bc.core.audio.BcMusic;
 	import bc.core.data.BcData;
 	import bc.core.device.BcAsset;
-	import bc.core.device.BcDevice;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
 	import bc.core.util.BcColorTransformUtil;

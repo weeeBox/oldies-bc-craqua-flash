@@ -9,7 +9,6 @@ package bc.ui
 	import bc.core.audio.BcAudio;
 	import bc.core.audio.BcMusic;
 	import bc.core.device.BcAsset;
-	import bc.core.device.BcDevice;
 	import bc.core.display.BcBitmapData;
 	import bc.core.ui.UI;
 	import bc.core.ui.UIButton;
@@ -23,7 +22,6 @@ package bc.ui
 	import bc.core.ui.UITransition;
 	import bc.game.BcGameGlobal;
 	import bc.game.BcStrings;
-	import bc.game.asset.BcPreloaderAsset;
 	import bc.world.player.BcPlayer;
 
 	import flash.display.Bitmap;

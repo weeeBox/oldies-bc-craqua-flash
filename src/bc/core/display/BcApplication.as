@@ -14,6 +14,10 @@ package bc.core.display
 		private static var display:Sprite = new Sprite();
 		private static var application:BcIApplication;
 		
+		private static var m_mouseX:Number = 0;
+		private static var m_mouseY:Number = 0;
+		private static var m_mousePushed:Boolean;
+		
 		public static function get sharedDisplay():DisplayObjectContainer
 		{
 			return display;
@@ -27,6 +31,36 @@ package bc.core.display
 		public static function get height():uint
 		{
 			return DISPLAY_HEIGHT;
+		}
+		
+		public static function get mouseX():Number 
+		{
+			return m_mouseX;
+		}
+		
+		public static function set mouseX(value:Number):void 
+		{
+			m_mouseX = value;
+		}
+		
+		public static function get mouseY():Number 
+		{
+			return m_mouseY;
+		}
+		
+		public static function set mouseY(value:Number):void 
+		{
+			m_mouseY = value;
+		}
+		
+		public static function get mousePushed():Boolean 
+		{
+			return m_mousePushed;
+		}
+		
+		public static function set mousePushed(value : Boolean):void 
+		{
+			m_mousePushed = value;
 		}
 		
 		public static function get sharedApplication():BcIApplication

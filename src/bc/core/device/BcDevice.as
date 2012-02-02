@@ -293,6 +293,9 @@ package bc.core.device
 			mouseX = event.stageX;
 			mouseY = event.stageY;
 					
+			BcApplication.mouseX = mouseX;
+			BcApplication.mouseY = mouseY;
+					
 			if(mouseLeaved)
 			{
 				mouseLeaved = false;
@@ -312,6 +315,7 @@ package bc.core.device
 		private function onMouseDown(event:MouseEvent):void
 		{
 			mousePushed = true;
+			BcApplication.mousePushed = true;
 			
 			if(mouseLeaved)
 			{
@@ -332,6 +336,8 @@ package bc.core.device
 		private function onMouseUp(event:MouseEvent):void
 		{
 			mousePushed = false;
+			BcApplication.mousePushed = false;
+			
 			mouseMessage.processEvent(BcMouseMessage.MOUSE_UP, event);
 			
 			var application:BcIApplication = BcApplication.sharedApplication;

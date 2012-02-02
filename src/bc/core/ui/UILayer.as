@@ -1,7 +1,6 @@
 package bc.core.ui 
 {
 	import bc.core.display.BcApplication;
-	import bc.core.device.BcDevice;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
 
