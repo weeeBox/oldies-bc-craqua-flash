@@ -9,9 +9,11 @@ package bc.core.ui
 	{
 		public static var defaultStyle:UIStyle;
  		
-		//protected var _textField:UITextField = new UITextField();
-		protected var _textFormat:TextFormat;
-		protected var _stroke:DropShadowFilter;
+//#if CUT_THE_CODE		
+//#		protected var _textField:UITextField = new UITextField();
+//#		protected var _textFormat:TextFormat;
+//#		protected var _stroke:DropShadowFilter;
+//#endif
 	
 		public function UILabel(layer:UIObject, x:Number, y:Number, text:String = "", style:UIStyle = null)
 		{
