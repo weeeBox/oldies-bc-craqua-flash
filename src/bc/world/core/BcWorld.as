@@ -1,5 +1,6 @@
 package bc.world.core 
 {
+	import bc.core.display.BcApplication;
 	import bc.game.BcGame;
 	import bc.core.audio.BcAudio;
 	import bc.core.audio.BcMusic;
@@ -119,7 +120,7 @@ package bc.world.core
 				initializeCheckPoint();
 				
 				sprite.visible = false;
-				BcDevice.display.addChildAt(sprite, 0);
+				BcApplication.sharedDisplay.addChildAt(sprite, 0);
 			}
 		}
 		

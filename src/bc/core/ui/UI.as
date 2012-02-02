@@ -1,5 +1,6 @@
 package bc.core.ui 
 {
+	import bc.core.display.BcApplication;
 	import bc.core.device.BcDevice;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
@@ -56,7 +57,7 @@ package bc.core.ui
 		{
 			if(!layer.sprite.parent)
 			{
-				BcDevice.display.addChild(layer.sprite);
+				BcApplication.sharedDisplay.addChild(layer.sprite);
 				layer.setNext(_layers);
 				_layers = layer;
 			}

@@ -1,5 +1,6 @@
 package bc.core.device 
 {
+	import bc.core.display.BcApplication;
 	import bc.core.audio.BcAudio;
 	import bc.core.audio.BcMusic;
 	import bc.core.data.BcData;
@@ -49,11 +50,6 @@ package bc.core.device
 			{
 				new BcDevice(new BcDeviceSingleton(), stage);
 			}
-		}
-		
-		public static function get display():DisplayObjectContainer
-		{
-			return impl.display;
 		}
 		
 		public static function get stage():Stage
@@ -121,7 +117,6 @@ package bc.core.device
 		
 		// device
 		private var timer:BcTimer = new BcTimer();
-		private var display:Sprite = new Sprite();
 		private var displaySize:Rectangle = new Rectangle();
 		
 		// messages
@@ -207,6 +202,7 @@ package bc.core.device
 			stage.addEventListener(Event.ACTIVATE, onActivate);
 			
 			// Главный рисовальщик
+			var display:DisplayObjectContainer = BcApplication.sharedDisplay;
 			display.scrollRect = displaySize;
 			display.opaqueBackground = BcDevice.BACKGROUND_COLOR;
 	
