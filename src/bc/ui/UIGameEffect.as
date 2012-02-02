@@ -32,7 +32,9 @@ package bc.ui
 			super(layer, 0, 0);
 
 			_sprite.addChild(_bmWorld);
-			_sprite.addChild(_shFader);
+//#if CUT_THE_CODE
+//#			_sprite.addChild(_shFader);
+//#endif
 		}
 		
 		public override function reset():void
@@ -46,10 +48,12 @@ package bc.ui
 		public function initFader():void
 		{
 			_bmWorld.visible = false;
-			_shFader.graphics.clear();
-			_shFader.graphics.beginFill(0x000000);
-			_shFader.graphics.drawRect(0, 0, 640, 480);
-			_shFader.graphics.endFill();
+//#if CUT_THE_CODE			
+//#			_shFader.graphics.clear();
+//#			_shFader.graphics.beginFill(0x000000);
+//#			_shFader.graphics.drawRect(0, 0, 640, 480);
+//#			_shFader.graphics.endFill();
+//#endif			
 		}
 		
 		public function initBack():void
@@ -59,10 +63,12 @@ package bc.ui
 //#			_bmWorld.bitmapData.applyFilter(_bmWorld.bitmapData, _filterRect, _filterPoint, _filterBlur);
 //#endif			
 			_bmWorld.visible = true;
-			_shFader.graphics.clear();
-			_shFader.graphics.beginFill(0x000000, 0.5);
-			_shFader.graphics.drawRect(0, 0, 640, 480);
-			_shFader.graphics.endFill();
+//#if CUT_THE_CODE
+//#			_shFader.graphics.clear();
+//#			_shFader.graphics.beginFill(0x000000, 0.5);
+//#			_shFader.graphics.drawRect(0, 0, 640, 480);
+//#			_shFader.graphics.endFill();
+//#endif
 		}
 	}
 }
