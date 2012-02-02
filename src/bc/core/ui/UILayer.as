@@ -1,5 +1,6 @@
 package bc.core.ui 
 {
+	import bc.core.display.BcApplication;
 	import bc.core.device.BcDevice;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
@@ -15,7 +16,7 @@ package bc.core.ui
 		{
 			super(null, 0, 0, false);
 			
-			_sprite.scrollRect = new Rectangle(0, 0, BcDevice.width, BcDevice.height);
+			_sprite.scrollRect = new Rectangle(0, 0, BcApplication.width, BcApplication.height);
 		}
 		
 		public override function update():void

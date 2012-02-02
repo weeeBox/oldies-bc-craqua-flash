@@ -1,5 +1,6 @@
 package bc.core.audio 
 {
+	import bc.core.display.BcApplication;
 	import bc.core.device.BcAsset;
 	import bc.core.device.BcDevice;
 
@@ -27,8 +28,8 @@ package bc.core.audio
 		
 		public function BcAudioImpl()
 		{
-			x = BcDevice.width * 0.5;
-			y = BcDevice.height * 0.5;
+			x = BcApplication.width * 0.5;
+			y = BcApplication.height * 0.5;
 		}
 		
 		public function configurate(xmlName:String):void

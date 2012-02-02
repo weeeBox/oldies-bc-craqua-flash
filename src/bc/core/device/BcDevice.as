@@ -32,8 +32,7 @@ package bc.core.device
 	 */
 	public final class BcDevice 
 	{
-		private static const DISPLAY_WIDTH:uint = 640;
-		private static const DISPLAY_HEIGHT:uint = 480;
+		
 		private static const BACKGROUND_COLOR:uint = 0x000000;
 		private static const FRAME_RATE:uint = 60;
 		public static const DEBUG:Boolean = true;
@@ -52,22 +51,11 @@ package bc.core.device
 			}
 		}
 		
-		public static function get stage():Stage
+		private static function get stage():Stage
 		{
 			return impl.stage;
-		}
+		}		
 		
-		
-		public static function get width():uint
-		{
-			return DISPLAY_WIDTH;
-		}
-		
-		public static function get height():uint
-		{
-			return DISPLAY_HEIGHT;
-		}
-			
 		public static function get fps():int
 		{
 			return impl.timer.fps;
@@ -176,8 +164,8 @@ package bc.core.device
 		
 		private function initialize():void
 		{
-			displaySize.width = stage.stageWidth = BcDevice.DISPLAY_WIDTH;
-			displaySize.height = stage.stageHeight = BcDevice.DISPLAY_HEIGHT;
+			displaySize.width = stage.stageWidth = BcApplication.width;
+			displaySize.height = stage.stageHeight = BcApplication.height;
 
 			stage.frameRate = Number(BcDevice.FRAME_RATE);
 			stage.align = StageAlign.TOP_LEFT;
