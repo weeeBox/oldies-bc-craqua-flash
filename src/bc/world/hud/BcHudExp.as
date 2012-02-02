@@ -115,7 +115,7 @@ package bc.world.hud
 				if(digitsTween > 1)
 					digitsTween = 1;
 				var sc:Number = 1.3 - BcEasing.sineOut.easing(digitsTween)*0.55;
-				digits.scaleX = 
+				digits.scaleX = sc;
 				digits.scaleY = sc;
 			}
 			

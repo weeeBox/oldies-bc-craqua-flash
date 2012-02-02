@@ -227,7 +227,7 @@ package bc.core.ui
 			BcColorTransformUtil.setMultipliersARGB(COLOR_END, _style.getUint("overBackColor"));
 			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver + (1-_tweenOver)*_tweenLight);
 						
-			_spriteButton.scaleX = 
+			_spriteButton.scaleX = _baseScale*(1 - 0.025 * _tweenPush);
 			_spriteButton.scaleY = _baseScale*(1 - 0.025 * _tweenPush);
 		}
 		

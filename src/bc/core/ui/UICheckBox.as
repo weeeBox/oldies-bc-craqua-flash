@@ -197,7 +197,7 @@ package bc.core.ui
 			BcColorTransformUtil.setMultipliersARGB(COLOR_END, _style.getUint("overBackColor"));
 			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver);
 						
-			_spriteButton.scaleX = 
+			_spriteButton.scaleX = 1 - 0.1 * _tweenPush;
 			_spriteButton.scaleY = 1 - 0.1 * _tweenPush;
 			
 			_label.sprite.alpha = _tweenOver;
@@ -208,9 +208,9 @@ package bc.core.ui
 		{	
 			_checked = value;
 			
-			_bmBody1.visible = 
+			_bmBody1.visible = !value;
 			_bmBack1.visible = !value;
-			_bmBody2.visible = 
+			_bmBody2.visible = value;
 			_bmBack2.visible = value;
 			
 			if(value)
