@@ -105,7 +105,7 @@ package bc.world.hud
 				indicatorTween += dt*4;
 				if(indicatorTween > 1)
 					indicatorTween = 1;
-				indicatorValue = indicatorStart + BcEasing.sineOut(indicatorTween)*(progress - indicatorStart);
+				indicatorValue = indicatorStart + BcEasing.sineOut.easing(indicatorTween)*(progress - indicatorStart);
 				updateIndicator();
 			}
 			
@@ -114,8 +114,8 @@ package bc.world.hud
 				digitsTween += dt*2;
 				if(digitsTween > 1)
 					digitsTween = 1;
-				var sc:Number = 1.3 - BcEasing.sineOut(digitsTween)*0.55;
-				digits.scaleX = sc;
+				var sc:Number = 1.3 - BcEasing.sineOut.easing(digitsTween)*0.55;
+				digits.scaleX = 
 				digits.scaleY = sc;
 			}
 			

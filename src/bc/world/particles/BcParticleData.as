@@ -124,7 +124,7 @@ package bc.world.particles
 		
 		public static function register():void
 		{		
-			BcData.register("particle", BcParticleData, data);
+			BcData.register("particle", new BcParticleDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcParticleData

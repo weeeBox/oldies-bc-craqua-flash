@@ -1,5 +1,6 @@
 package bc.game.asset 
 {
+	import bc.core.device.BcAssetCallback;
 	import bc.core.device.BcAsset;
 
 	/**
@@ -26,7 +27,7 @@ package bc.game.asset
 		private static var xml_data:Class;
 		BcAsset.embedXML("data", xml_data);*/
 		        
-		public function BcPreloaderAsset(callback:Function)
+		public function BcPreloaderAsset(callback:BcAssetCallback)
 		{
 			BcAsset.loadPath("../asset/preloader.xml", callback);
 			//callback();

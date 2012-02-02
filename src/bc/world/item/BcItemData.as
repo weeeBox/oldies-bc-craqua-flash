@@ -136,7 +136,7 @@ package bc.world.item
 		
 		public static function register():void
 		{		
-			BcData.register("item", BcItemData, data);
+			BcData.register("item", new BcItemDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcItemData

@@ -63,7 +63,7 @@ package bc.core.display
 		
 		public static function register():void
 		{		
-			BcData.register("model", BcModelData, data);
+			BcData.register("model", new BcModelDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcModelData

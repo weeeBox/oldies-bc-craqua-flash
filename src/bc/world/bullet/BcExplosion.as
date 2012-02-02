@@ -152,7 +152,7 @@ package bc.world.bullet
 		
 		public static function register():void
 		{		
-			BcData.register("explosion", BcExplosion, data);
+			BcData.register("explosion", new BcExplosionDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcExplosion

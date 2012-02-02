@@ -15,29 +15,7 @@ package bc.core.ui
 	 */
 	public class UICheckBox extends UIObject 
 	{
-		public static var DEFAULT_STYLE:UIStyle = new UIStyle();
-
-//#if CUT_THE_CODE		
-//#		DEFAULT_STYLE.setProperty("font", "main");
-//#		DEFAULT_STYLE.setProperty("textSize", 12);
-//#		DEFAULT_STYLE.setProperty("textColor", 0xffffff);
-//#		DEFAULT_STYLE.setProperty("strokeBlur", 3);
-//#		DEFAULT_STYLE.setProperty("strokeColor", 0x033754);
-//#		DEFAULT_STYLE.setProperty("strokeAlpha", 1);
-//#		DEFAULT_STYLE.setProperty("strokeStrength", 6);
-//#		
-//#		DEFAULT_STYLE.setProperty("text1", "unchecked");
-//#		DEFAULT_STYLE.setProperty("text2", "checked");
-//#		DEFAULT_STYLE.setProperty("back1", "ui_btn_back");
-//#		DEFAULT_STYLE.setProperty("body1", "ui_btn");
-//#		DEFAULT_STYLE.setProperty("back2", "ui_btn_back");
-//#		DEFAULT_STYLE.setProperty("body2", "ui_btn");
-//#		DEFAULT_STYLE.setProperty("normalBackColor", 0xff000000);
-//#		DEFAULT_STYLE.setProperty("overBackColor", 0xffffffff);
-//#		
-//#		DEFAULT_STYLE.setProperty("sfxOver", "ui_over");
-//#		DEFAULT_STYLE.setProperty("sfxClick", "ui_click");
-//#endif
+		private static var defaultStyle:UIStyle;
 		
 		protected var _style:UIStyle;
 		
@@ -57,79 +35,77 @@ package bc.core.ui
 		protected var _tweenOver:Number = 0;
 		protected var _tweenPush:Number = 0;
 		
-		public function UICheckBox(layer:UIObject, x:Number = 0, y:Number = 0, style:UIStyle = null, onCheck:Function = null)
+		public function UICheckBox(layer:UIObject, x:Number = 0, y:Number = 0, style:UIStyle = null, onMouseClick:UIMouseClickCallback = null)
 		{
 			super(layer, x, y);
 	
-//#if CUT_THE_CODE		
-//#			var image:String;
-//#			var w:Number = 0;
-//#			var h:Number = 0;
-//#			
-//#			BcSpriteUtil.setupFast(_spriteButton);
-//#			BcSpriteUtil.setupFast(_spriteBack);
-//#			BcSpriteUtil.setupFast(_spriteBody);
-//#			
-//#			if(!style)
-//#			{
-//#				style = DEFAULT_STYLE;
-//#			}
-//#			
-//#			_style = style;
-//#			
-//#			image = style.getProperty("back1");
-//#			if(image)
-//#			{
-//#				_bmBack1 = BcBitmapData.create(image);
-//#				_spriteBack.addChild(_bmBack1);
-//#			}
-//#			
-//#			image = style.getProperty("back2");
-//#			if(image)
-//#			{
-//#				_bmBack2 = BcBitmapData.create(image);
-//#				_spriteBack.addChild(_bmBack2);
-//#			}
-//#			
-//#			image = style.getProperty("body1");
-//#			if(image)
-//#			{
-//#				_bmBody1 = BcBitmapData.create(image);
-//#				_spriteBody.addChild(_bmBody1);
-//#				w = _bmBody1.width;
-//#				h = _bmBody1.height;
-//#			}
-//#			
-//#			image = style.getProperty("body2");
-//#			if(image)
-//#			{
-//#				_bmBody2 = BcBitmapData.create(image);
-//#				_spriteBody.addChild(_bmBody2);
-//#			}
-//#			
-//#			_spriteButton.addChild(_spriteBack);
-//#			_spriteButton.addChild(_spriteBody);
-//#			_sprite.addChild(_spriteButton);
-//#			
-//#			_shape = new UIRectangleShape(w, h, int(-0.5*w), int(-0.5*h));
-//#			
-//#			_onMouseClick = onCheck;
-//#			_instantClick = true;
-//#			
-//#			_label = new UILabel(this, 0, 0, "", _style);
-//#			
-//#			checked = false;
-//#			
-//#			redraw();
-//#			
-//#			var sfx:String;
-//#			sfx = _style.getProperty("sfxOver");
-//#			if(sfx) _sfxOver = BcSound.getData(sfx);
-//#			sfx = _style.getProperty("sfxPress");
-//#			if(sfx) _sfxPress = BcSound.getData(sfx);
-//#			sfx = _style.getProperty("sfxClick");
-//#			if(sfx) _sfxClick = BcSound.getData(sfx);
-//#endif
+			var image:String;
+			var w:Number = 0;
+			var h:Number = 0;
+			
+			BcSpriteUtil.setupFast(_spriteButton);
+			BcSpriteUtil.setupFast(_spriteBack);
+			BcSpriteUtil.setupFast(_spriteBody);
+			
+			if(style == null)
+			{
+				style = getDefaultStyle();
+			}
+			
+			_style = style;
+			
+			image = style.getString("back1");
+			if(image != null)
+			{
+				_bmBack1 = BcBitmapData.create(image);
+				_spriteBack.addChild(_bmBack1);
+			}
+			
+			image = style.getString("back2");
+			if(image != null)
+			{
+				_bmBack2 = BcBitmapData.create(image);
+				_spriteBack.addChild(_bmBack2);
+			}
+			
+			image = style.getString("body1");
+			if(image != null)
+			{
+				_bmBody1 = BcBitmapData.create(image);
+				_spriteBody.addChild(_bmBody1);
+				w = _bmBody1.width;
+				h = _bmBody1.height;
+			}
+			
+			image = style.getString("body2");
+			if(image != null)
+			{
+				_bmBody2 = BcBitmapData.create(image);
+				_spriteBody.addChild(_bmBody2);
+			}
+			
+			_spriteButton.addChild(_spriteBack);
+			_spriteButton.addChild(_spriteBody);
+			_sprite.addChild(_spriteButton);
+			
+			_shape = new UIRectangleShape(w, h, int(-0.5*w), int(-0.5*h));
+			
+			_onMouseClick = onMouseClick;
+			_instantClick = true;
+			
+			_label = new UILabel(this, 0, 0, "", _style);
+			
+			checked = false;
+			
+			redraw();
+			
+			var sfx:String;
+			sfx = _style.getString("sfxOver");
+			if(sfx != null) _sfxOver = BcSound.getData(sfx);
+			sfx = _style.getString("sfxPress");
+			if(sfx != null) _sfxPress = BcSound.getData(sfx);
+			sfx = _style.getString("sfxClick");
+			if(sfx != null) _sfxClick = BcSound.getData(sfx);
 		}
 		
 		public function set text(value:String):void
@@ -217,40 +193,36 @@ package bc.core.ui
 		
 		private function redraw():void
 		{
-//#if CUT_THE_CODE
-//#			BcColorTransformUtil.setMultipliersARGB(COLOR_BEGIN, _style.getProperty("normalBackColor"));
-//#			BcColorTransformUtil.setMultipliersARGB(COLOR_END, _style.getProperty("overBackColor"));
-//#			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver);
-//#						
-//#			_spriteButton.scaleX = 
-//#			_spriteButton.scaleY = 1 - 0.1 * _tweenPush;
-//#			
-//#			_label.sprite.alpha = _tweenOver;
-//#			_label.y = -20-20*_tweenOver;
-//#endif
+			BcColorTransformUtil.setMultipliersARGB(COLOR_BEGIN, _style.getUint("normalBackColor"));
+			BcColorTransformUtil.setMultipliersARGB(COLOR_END, _style.getUint("overBackColor"));
+			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver);
+						
+			_spriteButton.scaleX = 
+			_spriteButton.scaleY = 1 - 0.1 * _tweenPush;
+			
+			_label.sprite.alpha = _tweenOver;
+			_label.y = -20-20*_tweenOver;
 		}
 		
 		public function set checked(value:Boolean):void
 		{	
-//#if CUT_THE_CODE
-//#			_checked = value;
-//#			
-//#			_bmBody1.visible = 
-//#			_bmBack1.visible = !value;
-//#			_bmBody2.visible = 
-//#			_bmBack2.visible = value;
-//#			
-//#			if(value)
-//#			{
-//#				_label.text = _style.getProperty("text2");
-//#			}
-//#			else
-//#			{
-//#				_label.text = _style.getProperty("text1");
-//#			}
-//#			
-//#			_label.x = int(-0.5*_label.sprite.width);
-//#endif 
+			_checked = value;
+			
+			_bmBody1.visible = 
+			_bmBack1.visible = !value;
+			_bmBody2.visible = 
+			_bmBack2.visible = value;
+			
+			if(value)
+			{
+				_label.text = _style.getString("text2");
+			}
+			else
+			{
+				_label.text = _style.getString("text1");
+			}
+			
+			_label.x = int(-0.5*_label.sprite.width); 
 		}
 		
 		public function get checked():Boolean
@@ -263,6 +235,35 @@ package bc.core.ui
 			checked = !_checked;
 					
 			super.mouseClick();
+		}
+		
+		public static function getDefaultStyle() : UIStyle
+		{
+			if (defaultStyle == null)
+			{
+				defaultStyle = new UIStyle();
+		
+				defaultStyle.setString("font", "main");
+				defaultStyle.setNumber("textSize", 12);
+				defaultStyle.setNumber("textColor", 0xffffff);
+				defaultStyle.setNumber("strokeBlur", 3);
+				defaultStyle.setNumber("strokeColor", 0x033754);
+				defaultStyle.setNumber("strokeAlpha", 1);
+				defaultStyle.setNumber("strokeStrength", 6);
+				
+				defaultStyle.setString("text1", "unchecked");
+				defaultStyle.setString("text2", "checked");
+				defaultStyle.setString("back1", "ui_btn_back");
+				defaultStyle.setString("body1", "ui_btn");
+				defaultStyle.setString("back2", "ui_btn_back");
+				defaultStyle.setString("body2", "ui_btn");
+				defaultStyle.setNumber("normalBackColor", 0xff000000);
+				defaultStyle.setNumber("overBackColor", 0xffffffff);
+				
+				defaultStyle.setString("sfxOver", "ui_over");
+				defaultStyle.setString("sfxClick", "ui_click");
+			}
+			return defaultStyle;
 		}
 	}
 }

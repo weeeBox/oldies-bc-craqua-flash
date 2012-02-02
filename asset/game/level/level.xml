@@ -55,7 +55,7 @@
 		<enemies id="pinkhead" count="25" begin="0.33" time="30"/>
 	</wave>
 	
-	<wave night="false" boss="boss_goo" boss_name="boss1">
+	<wave night="false" boss="boss_goo" boss_name="Gasoiler">
 		
 		<offset time="0"/>
 		<enemies id="pinkhead" count="30" begin="0" time="10" fall="1" path="hori">
@@ -129,7 +129,7 @@
 		
 	</wave>
 	
-	<wave night="true" boss="boss_h1n1" boss_name="boss2">
+	<wave night="true" boss="boss_h1n1" boss_name="A(H1N1)">
 		
 		<enemies id="shrimp" count="10" begin="0" time="1" path="shrimp_saw">
 			<x begin="20" spread="600"/>
@@ -217,7 +217,7 @@
 
 	</wave>
 	
-	<wave night="false" boss="boss_bank" boss_name="boss3">
+	<wave night="false" boss="boss_bank" boss_name="MR. NOTHING">
 
 		<enemies id="pinkhead" count="70" begin="0.5" time="30" path="shrimp_big_down"/>
 		<enemies id="tooth" count="2" begin="1" time="1"/>

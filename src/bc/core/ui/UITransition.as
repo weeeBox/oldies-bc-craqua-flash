@@ -1,5 +1,6 @@
 package bc.core.ui 
 {
+	import bc.core.motion.easing.BcEaseFunction;
 	import bc.core.util.BcColorTransformUtil;
 	import flash.geom.ColorTransform;
 
@@ -32,54 +33,25 @@ package bc.core.ui
 		public var a:Vector.<Number>;
 		public var color:Vector.<ColorTransform>;
 		
-		public var ease:Function;
+		public var ease:BcEaseFunction;
 		
 		
-		public function UITransition(properties:Object)
+		public function UITransition(x : Vector.<Number>, y : Vector.<Number>, sx : Vector.<Number>, sy : Vector.<Number>, a : Vector.<Number>, colorVector : Vector.<uint>, flags : Vector.<uint>, ease : BcEaseFunction)
 		{
-			if(properties.hasOwnProperty("x"))
-			{
-				x = Vector.<Number>(properties.x);
-			}
+			this.x = x;
+			this.y = y;
+			this.sx = sx;
+			this.sy = sy;
+			this.a = a;
+			this.flags = flags;
+			this.ease = ease;
 			
-			if(properties.hasOwnProperty("y"))
+			if (colorVector != null)
 			{
-				y = Vector.<Number>(properties.y);
-			}
-			
-			if(properties.hasOwnProperty("sx"))
-			{
-				sx = Vector.<Number>(properties.sx);
-			}
-			
-			if(properties.hasOwnProperty("sy"))
-			{
-				sy = Vector.<Number>(properties.sy);
-			}
-			
-			if(properties.hasOwnProperty("a"))
-			{
-				a = Vector.<Number>(properties.a);
-			}
-			
-			if(properties.hasOwnProperty("color"))
-			{
-				var colors : Vector.<uint> = Vector.<uint>(properties.color);
-				
 				color = Vector.<ColorTransform>([				
-					BcColorTransformUtil.setColorARGB(new ColorTransform(), colors[0], colors[1]),
-					BcColorTransformUtil.setColorARGB(new ColorTransform(), colors[2], colors[3])
+					BcColorTransformUtil.setColorARGB(new ColorTransform(), colorVector[0], colorVector[1]),
+					BcColorTransformUtil.setColorARGB(new ColorTransform(), colorVector[2], colorVector[3])
 					]);
-			}
-			
-			if(properties.hasOwnProperty("flags"))
-			{
-				flags = Vector.<uint>(properties.flags);
-			}
-			
-			if(properties.hasOwnProperty("ease"))
-			{
-				ease = properties.ease;
 			}
 		}
 	}

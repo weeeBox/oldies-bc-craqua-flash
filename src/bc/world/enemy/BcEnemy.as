@@ -1,5 +1,6 @@
 package bc.world.enemy 
 {
+	import bc.core.motion.easing.BcEaseFunction;
 	import bc.core.math.Vector2;
 	import bc.core.motion.BcAnimation;
 	import bc.core.motion.BcEasing;
@@ -57,7 +58,7 @@ package bc.world.enemy
 		public var positionEnd:Vector2 = new Vector2();
 		public var positionProgress:Number = 1;
 		public var positionSpeed:Number = 1;
-		public var positionEase:Function;
+		public var positionEase:BcEaseFunction;
 		
 		public var trailCounter:Number = 0;
 		
@@ -284,7 +285,7 @@ package bc.world.enemy
 				
 				if(positionEase!=null)
 				{
-					moving = positionEase(positionProgress);
+					moving = positionEase.easing(positionProgress);
 				}
 				else
 				{
@@ -496,7 +497,7 @@ package bc.world.enemy
 			}
 		}
 		
-		public function doPositionTween(moveTo:Vector2, time:Number, ease:Function):void
+		public function doPositionTween(moveTo:Vector2, time:Number, ease:BcEaseFunction):void
 		{
 			positionBegin.x = position.x;
 			positionBegin.y = position.y;

@@ -1,12 +1,16 @@
 package bc.core.device 
 {
+	import bc.core.debug.BcDebug;
+	import bc.core.resources.loaders.BcResLoaderFactory;
+	import bc.core.resources.loaders.BcResLoader;
+	import bc.core.resources.BcResLoaderListener;
 	import flash.display.BitmapData;
 	import flash.media.Sound;
 
 	/**
 	 * @author Elias Ku
 	 */
-	public class BcAsset 
+	public class BcAsset implements BcResLoaderListener
 	{	
 		public static function getImage(id:String):BitmapData
 		{
@@ -27,75 +31,66 @@ package bc.core.device
 		{
 			delete xmls[id];
 		}
-		
-		public static function loadPath(path:String, onLoadingCompleted:Function):void
-		{
-			impl.load(path, onLoadingCompleted);
-		}
-		
-		private static function processBitmapData(bitmapData:BitmapData, alpha:Boolean):BitmapData
-		{
-			var bd:BitmapData = bitmapData;
-			var temp:BitmapData;
 			
-			if(!alpha)
-			{
-				temp = new BitmapData(bd.width, bd.height, false, 0);
-				temp.draw(bd);
-				bd = temp;
-				temp = null;
-			}
-			
-			return bd;
+		public static function loadPath(path:String, assetCallback:BcAssetCallback):void
+		{
+			instance.load(path, assetCallback);
 		}
 		
 		internal static function get busy():Boolean
 		{
-			return impl.busyCounter > 0;
+			return instance.busyCounter > 0;
 		}
 		
 		internal static function initialize():void
 		{
-			impl = new BcAsset(new BcAssetSingleton());
+			instance = new BcAsset(new BcAssetSingleton());
 		}
+		
+		public static function getInstance() : BcAsset
+		{
+			return instance;
+		}
+		
+		private static var XML_DEST_ID : String = "__desc";
 		
 		// Коллекции ресурсов, разделены по типам
 		private static var images:Object = new Object();
 		private static var xmls:Object = new Object();
 		private static var sounds:Object = new Object();
 		
-		private static var impl:BcAsset;
+		private static var instance:BcAsset;
 		
 		// Массив загрузчиков, чистится при завершении загрузки
-		private var loaders:Vector.<BcLoader>;
+		private var loaders:Vector.<BcResLoader>;
 		private var activeLoaders:uint;
 		public var busyCounter:uint;
 		
-		private var loadingCompleted:Function;
+		private var loadingCallback:BcAssetCallback;
 		
 		public function BcAsset(singleton:BcAssetSingleton)
 		{
 			if(singleton)
 			{
-				loaders = new Vector.<BcLoader>();
+				loaders = new Vector.<BcResLoader>();
 			}
 		}
 		
-		
-		
-		public function load(path:String, onLoadingCompleted:Function):void
+		public function load(path:String, loadingCallback:BcAssetCallback):void
 		{
-			loadingCompleted = onLoadingCompleted;
-			createLoader(BcLoader.LOADER_XML, "__desc", path, onDescriptionLoaded);
+			this.loadingCallback = loadingCallback;
+			createLoader(XML_DEST_ID, path, this);
 			busyCounter++;
 		}
 
-		private function createLoader(type:String, id:String, source:String, _complete:Function):BcLoader
+		private function createLoader(id:String, path:String, listener:BcResLoaderListener):BcResLoader
 		{
-			var loader:BcLoader = new BcLoader(type, id, source, _complete);
+			var loader : BcResLoader = BcResLoaderFactory.getInstance().createLoader(id, path, listener);
 			
 			loaders.push(loader);
 			++activeLoaders;
+			
+			loader.load();
 			
 			return loader;
 		}
@@ -107,49 +102,20 @@ package bc.core.device
 			{
 				loaders.length = 0;
 				busyCounter--;
-				if(loadingCompleted!=null)
+				if(loadingCallback!=null)
 				{
-					loadingCompleted();
-					loadingCompleted = null;
+					loadingCallback.assetLoadingCompleted();
+					loadingCallback = null;
 				}
 			}
 		}
 		
-		private function onDescriptionLoaded(loader:BcLoader):void
-		{
-			var desc:XML = loader.xml;
-			
-			if(desc)
-			{
-				parseDescription(desc);
-			}
-			
-			releaseLoader();
-		}
-		
-		private function onResourceLoaded(loader:BcLoader):void
-		{
-			switch(loader.type)
-			{
-				case BcLoader.LOADER_IMAGE:
-					images[loader.id] = processBitmapData(loader.bitmapData, loader.metaAlpha);
-					break;
-				case BcLoader.LOADER_XML:
-					xmls[loader.id] = loader.xml;
-					break;
-				case BcLoader.LOADER_SOUND:
-					sounds[loader.id] = loader.sound;
-					break;
-			}
-			
-			releaseLoader();
-		}
-		
 		private function parseDescription(xml:XML):void
-		{			
-			var path_full:String = xml.@path.toString();
+		{
+			var path_full:String = xml.attribute("path");
+			var resources:XMLList = xml.elements("resource");
 
-			for each (var res_node:XML in xml.resource)
+			for each (var res_node:XML in resources)
 			{
 				parseResource(res_node, path_full);
 			}
@@ -160,45 +126,69 @@ package bc.core.device
 			var id:String;
 			var path:String;
 			var ext:String;
-			var alpha:Boolean = true;
-			var loader:BcLoader;
 			
-			
-			path = assetPath + xml.@path.toString();
-			id = xml.@path.toString();
+			path = assetPath + xml.attribute("path");
+			id = xml.attribute("path");
 			
 			ext = id.substr(id.length-4);
 			id = id.slice(0, id.length-4);
 			
-			if(id.charAt(id.length-1) == "_")
-			{
-				alpha = false;
-				id = id.slice(0, id.length-1);
-			}
+			id = removePathSeparators(id);
+		
+			createLoader(id, path, this);
+		}
 			
-			while (id.indexOf("/") != -1)
+		private function removePathSeparators(id : String) : String
+		{
+			var index : int;
+			while ((index = id.indexOf("/")) != -1)
 			{
 				id = id.replace("/", "_");				
 			}			
-
-			switch(ext)
+			while ((index = id.indexOf("\\")) != -1)
 			{
-				case ".png":
-				case ".jpg":
-					loader = createLoader(BcLoader.LOADER_IMAGE, id, path, onResourceLoaded);
-					loader.metaAlpha = alpha;
+				id = id.replace("\\", "_");
+			}
+			return id;
+		}
+
+		public function resLoadingComplete(loader : BcResLoader, data : Object) : void
+		{
+			var id : String = loader.getId();
+			
+			switch(loader.getType())
+			{
+				case BcResLoaderFactory.LOADER_IMAGE:
+				{
+					images[id] = BitmapData(data);
 					break;
-				case ".mp3":
-				case ".wav":
-					createLoader(BcLoader.LOADER_SOUND, id, path, onResourceLoaded);
+				}
+				case BcResLoaderFactory.LOADER_XML:
+				{
+					var xml : XML = XML(data);
+					if (id == XML_DEST_ID)
+					{
+						parseDescription(xml);
+					}
+					else
+					{
+						xmls[id] = xml;
+					}
 					break;
-				case ".xml":
-					createLoader(BcLoader.LOADER_XML, id, path, onResourceLoaded);
-					break;
-				default:
-					throw new Error("BcAsset: unknown resource type.");
+				}
+				case BcResLoaderFactory.LOADER_SOUND:
+				{
+					sounds[id] = Sound(data);
 					break;
 			}
+		}
+			
+			releaseLoader();
+		}
+
+		public function resLoadingFailed(loader : BcResLoader) : void
+		{
+			BcDebug.assert(false);
 		}
 	}
 }

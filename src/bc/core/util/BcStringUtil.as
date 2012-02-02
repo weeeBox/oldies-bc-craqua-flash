@@ -33,11 +33,11 @@ package bc.core.util
 			
 			if(args.length > 0)
 			{
-				x = y = parseFloat(args[0]);
+				x = y = parseNumber(args[0]);
 				
 				if(args.length > 1)
 				{
-					y = parseFloat(args[1]);
+					y = parseNumber(args[1]);
 				}
 			}
 			
@@ -105,11 +105,11 @@ package bc.core.util
 			
 			if(args.length > 0)
 			{
-				min = max = parseFloat(args[0]);
+				min = max = parseNumber(args[0]);
 				
 				if(args.length > 1)
 				{
-					max = parseFloat(args[1]);
+					max = parseNumber(args[1]);
 				}
 			}
 			
@@ -126,6 +126,21 @@ package bc.core.util
 		public static function parseBoolean(string:String):Boolean
 		{
 			return (string=="true");
+		}
+		
+		public static function parseNumber(string:String):Number
+		{
+			return parseFloat(string);
+		}
+
+		public static function parseInteger(string:String) : uint
+		{
+			return parseInt(string);
+		}
+		
+		public static function parseUInteger(string:String) : uint
+		{
+			return uint(parseInt(string));
 		}
 	}
 }

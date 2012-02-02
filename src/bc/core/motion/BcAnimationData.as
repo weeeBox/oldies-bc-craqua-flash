@@ -41,7 +41,7 @@ package bc.core.motion
 		
 		public static function register():void
 		{		
-			BcData.register("animation", BcAnimationData, data);
+			BcData.register("animation", new BcAnimationDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcAnimationData

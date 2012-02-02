@@ -1,5 +1,6 @@
 package bc.core.motion 
 {
+	import bc.core.motion.easing.BcEaseFunction;
 	import bc.core.util.BcStringUtil;
 	import bc.core.display.BcModel;
 	import bc.core.math.Vector2;
@@ -16,7 +17,7 @@ package bc.core.motion
 		public var timeBegin:Number = 0;
 		public var timeEnd:Number = 0;
 		public var duration:Number = 0;
-		public var ease:Function = BcEasing.linear;
+		public var ease:BcEaseFunction = BcEasing.linear;
 		public var flags:uint;
 		public var node:String;
 		public var tween:BcITween;
@@ -93,7 +94,7 @@ package bc.core.motion
 				
 				if(target)
 				{
-					tween.apply(ease(progress), target, weight);
+					tween.apply(ease.easing(progress), target, weight);
 				}
 			}
 		}

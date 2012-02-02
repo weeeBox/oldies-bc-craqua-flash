@@ -105,7 +105,7 @@ package bc.core.audio
 		
 		public static function register():void
 		{		
-			BcData.register("sound", BcSound, data);
+			BcData.register("sound", new BcSoundDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcSound

@@ -1,5 +1,11 @@
 package bc.ui
 {
+	import bc.core.boxing.BcNumber;
+	import bc.core.util.BcUtil;
+	import bc.core.ui.UIUpdateCallback;
+	import bc.core.ui.UIMouseClickCallback;
+	import bc.core.ui.UITransitionCallback;
+	import bc.core.motion.easing.BcEaseFunction;
 	import bc.core.audio.BcAudio;
 	import bc.core.audio.BcMusic;
 	import bc.core.device.BcAsset;
@@ -35,7 +41,7 @@ package bc.ui
 	/**
 	 * @author Elias Ku
 	 */
-	public class BcGameUI 
+	public class BcGameUI implements UIMouseClickCallback, UITransitionCallback, UIUpdateCallback
 	{
 		public var oMochiAd:Boolean = false;
 		public var oMochiHS:Boolean = true;
@@ -45,6 +51,13 @@ package bc.ui
 		public var oShowScoresButton:Boolean = false;
 		public var oBestScore:Boolean = false;
 		
+		// UITransition finish codes
+		private static const TRC_LOADING_HIDED:int = 1;
+		private static const TRC_EXIT_PAUSE:int = 2;
+		private static const TRC_GO_GAME:int = 3;
+		private static const TRC_QUIT_WORLD:int = 4;
+		private static const TRC_RESTART:int = 5;
+		private static const TRC_OPEN_MAIN:int = 6;
 		
 		public static var instance:BcGameUI;
 		
@@ -68,6 +81,9 @@ package bc.ui
 		private var mcAd:MovieClip;
 		private var mcSp:MovieClip;
 		private var mcSpFrame:Shape = new Shape();
+
+		private static var easeOpen:BcEaseFunction = new BcEaseOpen();
+		private static var easeClose:BcEaseFunction = new BcEaseClose();		
 
 		public function BcGameUI()
 		{
@@ -179,36 +195,40 @@ package bc.ui
 		
 		
 		
-//		private var stQuality:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_QUALITY_HIGH, text2:BcStrings.UI_QUALITY_LOW, back1:"ui_qb", back2:"ui_qb", body1:"ui_q", body2:"ui_q"});
-//		private var stMusic:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_MUSIC_ON, text2:BcStrings.UI_MUSIC_OFF, back1:"ui_m1b", back2:"ui_m2b", body1:"ui_m1", body2:"ui_m2"});
-//		private var stSound:UIStyle = new UIStyle(UICheckBox.DEFAULT_STYLE, {text1:BcStrings.UI_SFX_ON, text2:BcStrings.UI_SFX_OFF, back1:"ui_s1b", back2:"ui_s2b", body1:"ui_s1", body2:"ui_s2"});
-//		private var stButtonMedium:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.75});
-//		private var stButtonOther:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.85});
-//		private var stButtonSmall:UIStyle = new UIStyle(UIButton.DEFAULT_STYLE, {scale:0.5});
-//		private var stTitle:UIStyle = new UIStyle(UILabel.DEFAULT_STYLE, 
-//			{
-//				font: "main",
-//				textSize: 30,
-//				textColor: 0xffffff,
-//				strokeBlur: 3,
-//				strokeColor: 0x033754,
-//				strokeAlpha: 1,
-//				strokeStrength: 6
-//			});
-//			
-//		private var stInfo:UIStyle = new UIStyle(stTitle, {	textSize: 25 });
-//		private var stInfoSmall:UIStyle = new UIStyle(stTitle, { textSize: 15 });
-
-		private var stQuality:UIStyle = null;
-		private var stMusic:UIStyle = null;
-		private var stSound:UIStyle = null;
-		private var stButtonMedium:UIStyle = null;
-		private var stButtonOther:UIStyle = null;
-		private var stButtonSmall:UIStyle = null;
-		private var stTitle:UIStyle = null; 
-			
-		private var stInfo:UIStyle = null;
-		private var stInfoSmall:UIStyle = null;
+		private var stQuality : UIStyle = new UIStyle(UICheckBox.getDefaultStyle(), BcUtil.createDictionary([
+														"text1", BcStrings.UI_QUALITY_HIGH, 
+														"text2", BcStrings.UI_QUALITY_LOW, 
+														"back1", "ui_qb", 
+														"back2", "ui_qb", 
+														"body1", "ui_q", 
+														"body2", "ui_q"]));
+		private var stMusic : UIStyle = new UIStyle(UICheckBox.getDefaultStyle(), BcUtil.createDictionary(
+														["text1", BcStrings.UI_MUSIC_ON, 
+														"text2", BcStrings.UI_MUSIC_OFF, 
+														"back1", "ui_m1b", 
+														"back2", "ui_m2b", 
+														"body1", "ui_m1", 
+														"body2", "ui_m2"]));
+		private var stSound : UIStyle = new UIStyle(UICheckBox.getDefaultStyle(), BcUtil.createDictionary(
+														["text1", BcStrings.UI_SFX_ON, 
+														"text2", BcStrings.UI_SFX_OFF, 
+														"back1", "ui_s1b", 
+														"back2", "ui_s2b", 
+														"body1", "ui_s1", 
+														"body2", "ui_s2"]));
+		private var stButtonMedium : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.75)]));
+		private var stButtonOther : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.85)]));
+		private var stButtonSmall : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.5)]));
+		private var stTitle : UIStyle = new UIStyle(UILabel.getDefaultStyle(), BcUtil.createDictionary(
+														["font", "main", 
+														"textSize", new BcNumber(30), 
+														"textColor", new BcNumber(0xffffff), 
+														"strokeBlur", new BcNumber(3), 
+														"strokeColor", new BcNumber(0x033754), 
+														"strokeAlpha", new BcNumber(1), 
+														"strokeStrength", new BcNumber(6)]));
+		private var stInfo : UIStyle = new UIStyle(stTitle, BcUtil.createDictionary(["textSize", new BcNumber(25)]));
+		private var stInfoSmall : UIStyle = new UIStyle(stTitle, BcUtil.createDictionary(["textSize", new BcNumber(15)]));
 		
 		private var settingsPanel:UIPanel = new UIPanel(layerOverlay);
 		private var settingsQ:UICheckBox;
@@ -221,7 +241,7 @@ package bc.ui
 			loadingLabel.centerX = 320;
 			loadingLabel.play(transLabelHide, 0.5);
 			loadingProgress.play(transObjectHide, 0.5);
-			loadingPlay = new UIButton(loadingPanel, 320, 435, BcStrings.UI_LOADING_PLAY, null, onButtonClick);
+			loadingPlay = new UIButton(loadingPanel, 320, 435, BcStrings.UI_LOADING_PLAY, null, this);
 			loadingPlay.highlight = true;
 			loadingPlay.play(transButtonShow, 0.5);
 			
@@ -230,17 +250,17 @@ package bc.ui
 			backTitle = new UIGameTitle(backPanel, 320, -165);
 			
 			// MAIN
-			mainNewGame = new UIButton(mainButtons, 510, 182, BcStrings.UI_NEW_GAME, null, onButtonClick);
+			mainNewGame = new UIButton(mainButtons, 510, 182, BcStrings.UI_NEW_GAME, null, this);
 			mainNewGame.highlight = true;
 			mainNewGame.multiline = true;
 			mainNewGame.html = "<p align=\"center\"><font size=\"25\">" + BcStrings.UI_NEW_GAME + "</font></p>";
-			mainContinue = new UIButton(mainButtons, 510, 260, BcStrings.UI_CONTINUE, null, onButtonClick);
+			mainContinue = new UIButton(mainButtons, 510, 260, BcStrings.UI_CONTINUE, null, this);
 			mainContinue.multiline = true;
 			
-			mainInstruction = new UIButton(mainButtons, 250+8, 440, "", stButtonOther, clickInstructions);
+			mainInstruction = new UIButton(mainButtons, 250+8, 440, "", stButtonOther, this);
 			mainInstruction.html = "<font size=\"25\">" + BcStrings.UI_INSTRUCTIONS + "</font>";
 			instructionsPanel = new UIObject(mainPanel, 16-320, 165);
-			instructionsPanel.onUpdate = updateInstructions;
+			instructionsPanel.onUpdate = this;
 			
 			var instructionsLabel:UILabel = new UILabel(instructionsPanel, 0, 0, "", stInfoSmall);
 			instructionsLabel.multiline = true;
@@ -253,7 +273,7 @@ package bc.ui
 			
 			if(oShowScoresButton)
 			{
-				mainHighScores = new UIButton(mainButtons, 510, 360-16-8-2, BcStrings.UI_HIGHSCORES, stButtonOther, onButtonClick);
+				mainHighScores = new UIButton(mainButtons, 510, 360-16-8-2, BcStrings.UI_HIGHSCORES, stButtonOther, this);
 			}
 			else
 			{
@@ -266,15 +286,15 @@ package bc.ui
 			
 			if(!oBestScore && !oShowScoresButton)
 			{
-				mainHelp = new UIButton(mainButtons, 510, 360-24, BcStrings.UI_CREDITS, stButtonOther, onButtonClick);
+				mainHelp = new UIButton(mainButtons, 510, 360-24, BcStrings.UI_CREDITS, stButtonOther, this);
 			}
 			else
 			{
-				mainHelp = new UIButton(mainButtons, 510, 400+2, BcStrings.UI_CREDITS, stButtonOther, onButtonClick);
+				mainHelp = new UIButton(mainButtons, 510, 400+2, BcStrings.UI_CREDITS, stButtonOther, this);
 			}
 			initMainFader();
 			
-			creditsClose = new UIButton(creditsPanel, 320, 420, BcStrings.UI_BACK, null, onButtonClick);
+			creditsClose = new UIButton(creditsPanel, 320, 420, BcStrings.UI_BACK, null, this);
 			var label:UILabel;
 			var image:UIImage;
 			
@@ -335,9 +355,9 @@ package bc.ui
 			
 			/** PAUSE **/
 			(new UILabel(pausePanel, 320, 200, BcStrings.UI_PAUSED, stTitle)).centerX = 320;
-			pauseResume = new UIButton(pausePanel, 320, 300, BcStrings.UI_RESUME, null, onButtonClick);
+			pauseResume = new UIButton(pausePanel, 320, 300, BcStrings.UI_RESUME, null, this);
 			pauseResume.highlight = true;
-			pauseEnd = new UIButton(pausePanel, 320, 400, BcStrings.UI_END_GAME, stButtonSmall, onButtonClick);
+			pauseEnd = new UIButton(pausePanel, 320, 400, BcStrings.UI_END_GAME, stButtonSmall, this);
 			
 			// END
 			endLabel = new UILabel(endPanel, 320, 50-32, "", stTitle);
@@ -347,24 +367,22 @@ package bc.ui
 			
 			initStats();
 
-			endContinue = new UIButton(endPanel, 320, 100+16, BcStrings.UI_CONTINUE, null, onButtonClick);
+			endContinue = new UIButton(endPanel, 320, 100+16, BcStrings.UI_CONTINUE, null, this);
 			endContinue.highlight = true;
-			endSubmit = new UIButton(endPanel, 320, 400+32, "SUBMIT", null, onButtonClick);
+			endSubmit = new UIButton(endPanel, 320, 400+32, "SUBMIT", null, this);
 			endSubmit.multiline = true;
 			endSubmit.html = "<p align=\"center\"><font size=\"25\">" + BcStrings.UI_SUBMIT_SCORES + "</font></p>";
 			
-			endGame = new UIButton(endPanel, 320-232, 100-32, BcStrings.UI_END_GAME, stButtonSmall, onButtonClick);
-			endReplay = new UIButton(endPanel, 320+232, 100-32, BcStrings.UI_REPLAY, stButtonSmall, onButtonClick);
+			endGame = new UIButton(endPanel, 320-232, 100-32, BcStrings.UI_END_GAME, stButtonSmall, this);
+			endReplay = new UIButton(endPanel, 320+232, 100-32, BcStrings.UI_REPLAY, stButtonSmall, this);
 			
 			// SETTINGS
-			settingsQ = new UICheckBox(settingsPanel, 620-527+16, 466-8, stQuality, onSettingClick);
-			settingsS = new UICheckBox(settingsPanel, 584-527+16, 466-8, stSound, onSettingClick);
-			settingsM = new UICheckBox(settingsPanel, 547-527+16, 466-8, stMusic, onSettingClick);
-			
-			playPressed();
+			settingsQ = new UICheckBox(settingsPanel, 620-527+16, 466-8, stQuality, this);
+			settingsS = new UICheckBox(settingsPanel, 584-527+16, 466-8, stSound, this);
+			settingsM = new UICheckBox(settingsPanel, 547-527+16, 466-8, stMusic, this);
 		}
 		
-		private function clickInstructions(o:UIObject):void
+		private function clickInstructions():void
 		{
 			if(showInstructions)
 			{
@@ -376,7 +394,8 @@ package bc.ui
 				instructionsPanel.sprite.visible = true;
 			}
 		}
-		private function updateInstructions(dt:Number):void
+				
+		public function onUpdate(dt:Number):void
 		{
 			var update:Boolean;
 			var t:Number;
@@ -402,7 +421,7 @@ package bc.ui
 			
 			if(update)
 			{
-				t = easeOpen(showInstructionsTime);
+				t = easeOpen.easing(showInstructionsTime);
 				instructionsPanel.x = 16-320 + 320*t;
 			}
 		}
@@ -426,94 +445,91 @@ package bc.ui
 			}
 		}
 		
-		private function onButtonClick(button:UIButton):void
+		public function onMouseClicked(object:UIObject):void
 		{
-			switch(button)
+			if (object == mainNewGame)
 			{
-				case mainNewGame:
 					continueGame = false;
 					closeMain();
-					break;
-				case mainContinue:
+			}
+			else if (object == mainContinue)
+			{
 					continueGame = true;
 					closeMain();
-					break;
-				case mainHelp:
+			}
+			else if (object == mainHelp)
+			{
 					showCredits();
-					break;
-				case mainHighScores:
+			}
+			else if (object == mainHighScores)
+			{
 					showHighscores();
-					break;
-				case loadingSponsor:
+			}
+			else if (object == loadingSponsor)
+			{
 					//navigate("http://www.gimme5games.com/?ref=CRAQUA_SPLASH");
-					break;
-				case loadingPlay:
+			}
+			else if (object == loadingPlay)
+			{
 					//loadingSponsor.play(transObjectHide, 1);
-					loadingPanel.play(transWindowClose, 0.25, loadingHided);
+				loadingPanel.play(transWindowClose, 0.25, this, TRC_LOADING_HIDED);
 					selectMainButtonsLight();
 					mainPanel.play(transWindowOpen, 1);
 					mainButtons.play(transMainButtonsOpen, 1);
-					if(mainSponsor) mainSponsor.play(transMainSponsorOpen, 1);
+				if (mainSponsor != null) mainSponsor.play(transMainSponsorOpen, 1);
 					backTitle.play(transTitleShow, 1);
 					backFader.play(transObjectHide, 1);
 					settingsPanel.play(transWindowOpen, 1);
 					BcMusic.getMusic("menu").play(1);
-					
-					break;
-				case pauseResume:
+			}
+			else if (object == pauseResume)
+			{
 					resumeGame = true;
 					closePause();
-					break;
-				case pauseEnd:
+			}
+			else if (object == pauseEnd)
+			{
 					resumeGame = false;
 					closePause();
-					break;
-				case endGame:
+			}
+			else if (object == endGame)
+			{
 					endClickEnd();
-					break;
-				case endReplay:
+			}
+			else if (object == endReplay)
+			{
 					endClickReplay();
-					break;
-				case endContinue:
+			}
+			else if (object == endContinue)
+			{
 					endClickContinue();
-					break;
-				case endSubmit:
+			}
+			else if (object == endSubmit)
+			{
 					endClickSubmit();
-					break;
-					
-				case creditsClose:
+			}
+			else if (object == creditsClose)
+			{
 					enableMain();
 					creditsPanel.play(transWindowClose, 1);
-					break;
-					
-				case hsBack:
+			}
+			else if (object == hsBack)
+			{
 					//BcDevice.stage.removeChild(g5Hiscores);
 					endPanel.play(transWindowOpen, 0.5);
 					hsPanel.play(transWindowClose, 0);
-					break;
 			}
-			
+			else if (object == mainInstruction)
+			{
+				clickInstructions();
+		        }
+			else if (object == settingsQ || object == settingsM || object == settingsS)
+		        {
+				onSettingClick(UICheckBox(object));
+			}
 		}
 		
-		private function playPressed() : void
-		{
-			trace("play pressed");
-			
-			loadingPanel.play(transWindowClose, 0.25, loadingHided);
-			selectMainButtonsLight();
-			mainPanel.play(transWindowOpen, 1);
-			mainButtons.play(transMainButtonsOpen, 1);
-			if(mainSponsor) mainSponsor.play(transMainSponsorOpen, 1);
-			backTitle.play(transTitleShow, 1);
-			backFader.play(transObjectHide, 1);
-			settingsPanel.play(transWindowOpen, 1);
-			BcMusic.getMusic("menu").play(1);
-			
-			continueGame = false;
-			closeMain();			
-		}
-		
-		private function loadingHided(object:UIObject):void
+		private function loadingHided():void
 		{
 			if(oMochiAd)
 			{
@@ -571,26 +587,20 @@ package bc.ui
 		
 		private function onSettingClick(check:UICheckBox):void
 		{
-			switch(check)
+			if (check == settingsQ)
 			{
-				case settingsQ:
-				
 					if(settingsQ.checked) BcDevice.quality = 0;
 					else BcDevice.quality = 2;
-
-					break;
-				case settingsM:
-				
+			}
+			if (check == settingsM)
+			{
 					if(settingsM.checked) BcMusic.setVolume(0);
 					else BcMusic.setVolume(1);
-					
-					break;
-				case settingsS:
-
+			}
+			if (check == settingsS)
+			{
 					if(settingsS.checked) BcAudio.setSFXVolume(0);
 					else BcAudio.setSFXVolume(1);
-
-					break;
 			}
 		}
 
@@ -612,14 +622,14 @@ package bc.ui
 			mainButtons.play(transMainButtonsClose, 1);
 			if(mainSponsor) mainSponsor.play(transMainSponsorClose, 1);
 			backTitle.play(transTitleHide, 1);
-			backPanel.play(transBackClose, 1, goGame);
+			backPanel.play(transBackClose, 1, this, TRC_GO_GAME);
 			settingsPanel.play(transWindowClose, 1);
 			BcMusic.getMusic("menu").stop(2);
 		}
 		
 		private var continueGame:Boolean;
 		
-		private function goGame(object:UIObject):void
+		private function goGame():void
 		{
 			if(continueGame)
 			{
@@ -659,13 +669,13 @@ package bc.ui
 			else
 			{
 				BcMusic.stopAll(1);
-				gameFader.play(transFaderExit, 1, exitPause);
+				gameFader.play(transFaderExit, 1, this, TRC_EXIT_PAUSE);
 			}
 			pausePanel.play(transWindowClose, 0.25);
 			settingsPanel.play(transWindowClose, 0.25);			
 		}
 		
-		private function exitPause(object:UIObject):void
+		private function exitPause():void
 		{
 			if(!resumeGame)
 			{
@@ -695,12 +705,7 @@ package bc.ui
 			}
 			else
 			{
-				gameFader.play(transFaderOpen, 1,
-					function(o:UIObject):void
-					{
-						BcGameGlobal.game.quitWorld();
-					}
-				);
+				gameFader.play(transFaderOpen, 1, this, TRC_QUIT_WORLD);
 			}
 			
 			if(BcGameGlobal.world.uiBoss || BcGameGlobal.world.uiVictory)
@@ -772,25 +777,13 @@ package bc.ui
 			{
 				BcMusic.getMusic("victory").stop(1);
 				gameFader.play(transFaderExit, 0.5);
-				endPanel.play(transWindowClose, 0.5,
-					function(o:UIObject):void
-					{
-						openMain(false);
-					}
-				);
+				endPanel.play(transWindowClose, 0.5, this, TRC_OPEN_MAIN);
 			}
 			else if(BcGameGlobal.world.uiDeath)
 			{
 				gameFader.play(transFaderExit, 0.5);
 				endPanel.play(transWindowClose, 0.5);
-				settingsPanel.play(transWindowClose, 0.5,
-					function(o:UIObject):void
-					{
-						BcGameGlobal.game.startLastCheckPoint();
-						gameFader.initBack();
-						gameFader.play(transFaderStart, 1);
-					}
-				);
+				settingsPanel.play(transWindowClose, 0.5, this, TRC_RESTART);
 				
 				gamePanel.play(transWindowOpen, 0.5);
 			}
@@ -812,12 +805,7 @@ package bc.ui
 			}
 			
 			gameFader.play(transFaderExit, 0.5);
-			endPanel.play(transWindowClose, 0.5, 
-				function(o:UIObject):void
-				{
-					openMain(false);
-				}
-			);
+			endPanel.play(transWindowClose, 0.5, this, TRC_OPEN_MAIN);
 		}
 		
 		private function endClickReplay():void
@@ -831,108 +819,270 @@ package bc.ui
 			
 			gameFader.play(transFaderExit, 0.5);
 			endPanel.play(transWindowClose, 0.5);
-			settingsPanel.play(transWindowClose, 0.5,
-				function(o:UIObject):void
-				{
+			settingsPanel.play(transWindowClose, 0.5, this, TRC_RESTART);
+		}
+		
+		public function onTransitionComplete(object:UIObject, finishCode:int) : void
+		{
+			switch (finishCode)
+			{
+				case TRC_LOADING_HIDED:
+					loadingHided();
+					break;
+				case TRC_EXIT_PAUSE:
+					exitPause();
+					break;
+				case TRC_GO_GAME:
+					goGame();
+					break;
+				case TRC_QUIT_WORLD:
+					BcGameGlobal.game.quitWorld();			
+					break;
+				case TRC_RESTART:
 					BcGameGlobal.game.startLastCheckPoint();
 					gameFader.initBack();
 					gameFader.play(transFaderStart, 1);
-				}
-			);
+					break;
+				case TRC_OPEN_MAIN:
+					openMain(false);
+					break;
+			}
 		}
 
-		private var transBackStart:UITransition = new UITransition({
-				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
-				});
-		private var transObjectShow:UITransition = new UITransition({
-				a:[0, 1], ease:easeOpen, flags:[UITransition.FLAG_SHOW, 0]
-				});
-		private var transObjectHide:UITransition = new UITransition({
-				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE]
-				});
-		private var transBackOpen:UITransition = new UITransition({
-				color:[0xff000000, 0, 0xffffffff, 0], flags:UITransition.OPEN, ease:easeOpen
-				});
-		private var transBackClose:UITransition = new UITransition({
-				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
-				});
-		private var transWindowOpen:UITransition = new UITransition({
-				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
-				});
-		private var transWindowClose:UITransition = new UITransition({ 
-				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen 
-				});
-				
-		private var transMainButtonsOpen:UITransition = new UITransition({
-				x:[320, 0], ease:easeOpen
-				});
-		private var transMainButtonsClose:UITransition = new UITransition({ 
-				x:[0, 320], ease:easeOpen 
-				});
-				
-		private var transMainSponsorOpen:UITransition = new UITransition({
-				x:[-150, 150], ease:easeOpen
-				});
-		private var transMainSponsorClose:UITransition = new UITransition({ 
-				x:[150, -150], ease:easeOpen 
-				});
-				
-		private var transDisable:UITransition = new UITransition({ 
-				flags:[UITransition.FLAG_DISABLE, 0] 
-				});
-				
-		private var transEnable:UITransition = new UITransition({ 
-				flags:[0, UITransition.FLAG_ENABLE] 
-				});
-			
-		private var transButtonShow:UITransition = new UITransition({ 
-				sx:[0, 1], sy:[0, 1], a:[0, 1], ease:easeOpen 
-				});
-				
-		private var transTitleShow:UITransition = new UITransition({ 
-				y:[-165, 0], ease:easeOpen 
-				});
-				
-		private var transTitleHide:UITransition = new UITransition({ 
-				y:[0, -165], ease:easeOpen 
-				});
-				
-				
-		private var transFaderStart:UITransition = new UITransition({ 
-				a:[1, 0], color:[0xff000000, 0, 0xffffffff, 0], flags:[UITransition.FLAG_ACTIVATE | UITransition.FLAG_SHOW, UITransition.FLAG_DEACTIVATE | UITransition.FLAG_HIDE], ease:easeOpen
-				});
-				
-		private var transFaderOpen:UITransition = new UITransition({ 
-				a:[0, 1], flags:UITransition.OPEN, ease:easeOpen
-				});
-				
-		private var transFaderClose:UITransition = new UITransition({ 
-				a:[1, 0], flags:UITransition.CLOSE, ease:easeOpen
-				});
-				
-		private var transFaderExit:UITransition = new UITransition({ 
-				color:[0xffffffff, 0, 0xff000000, 0], flags:UITransition.CLOSE, ease:easeOpen
-				});
-				
-		private var transLabelHide:UITransition = new UITransition({ 
-				a:[1, 0], ease:easeOpen, flags:[0, UITransition.FLAG_HIDE] 
-				});
-
-		private static function easeOpen(t:Number):Number
-		{
-			const x:Number = 1-t;
-			return 1-x*x*x; 
-		}
-		
-		private static function easeClose(t:Number):Number
-		{
-			return t*t*t; 
-		}
+		private var transBackStart : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			Vector.<uint>([0xff000000, 0, 0xffffffff, 0]), // color
+			Vector.<uint>(UITransition.OPEN), // flags
+			easeOpen // ease
+		);
+		private var transObjectShow : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([0, 1]), // a
+			null, // color
+			Vector.<uint>([UITransition.FLAG_SHOW, 0]), // flags
+			easeOpen // ease
+		);
+		private var transObjectHide : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([1, 0]), // a
+			null, // color
+			Vector.<uint>([0, UITransition.FLAG_HIDE]), // flags
+			easeOpen // ease
+		);
+		private var transBackOpen : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			Vector.<uint>([0xff000000, 0, 0xffffffff, 0]), // color
+			Vector.<uint>(UITransition.OPEN), // flags
+			easeOpen // ease
+		);
+		private var transBackClose : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			Vector.<uint>([0xffffffff, 0, 0xff000000, 0]), // color
+			Vector.<uint>(UITransition.CLOSE), // flags
+			easeOpen // ease
+		);
+		private var transWindowOpen : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([0, 1]), // a
+			null, // color
+			Vector.<uint>(UITransition.OPEN), // flags
+			easeOpen // ease
+		);
+		private var transWindowClose : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([1, 0]), // a
+			null, // color
+			Vector.<uint>(UITransition.CLOSE), // flags
+			easeOpen // ease
+		);
+		private var transMainButtonsOpen : UITransition = new UITransition(
+			Vector.<Number>([320, 0]), // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transMainButtonsClose : UITransition = new UITransition(
+			Vector.<Number>([0, 320]), // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transMainSponsorOpen : UITransition = new UITransition(
+			Vector.<Number>([-150, 150]), // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transMainSponsorClose : UITransition = new UITransition(
+			Vector.<Number>([150, -150]), // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transDisable : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			Vector.<uint>([UITransition.FLAG_DISABLE, 0]), // flags
+			null // ease
+		);
+		private var transEnable : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			Vector.<uint>([0, UITransition.FLAG_ENABLE]), // flags
+			null // ease
+		);
+		private var transButtonShow : UITransition = new UITransition(
+			null, // x
+			null, // y
+			Vector.<Number>([0, 1]), // sx
+			Vector.<Number>([0, 1]), // sy
+			Vector.<Number>([0, 1]), // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transTitleShow : UITransition = new UITransition(
+			null, // x
+			Vector.<Number>([-165, 0]), // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transTitleHide : UITransition = new UITransition(
+			null, // x
+			Vector.<Number>([0, -165]), // y
+			null, // sx
+			null, // sy
+			null, // a
+			null, // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transFaderStart : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([1, 0]), // a
+			Vector.<uint>([0xff000000, 0, 0xffffffff, 0]), // color
+			Vector.<uint>([UITransition.FLAG_ACTIVATE | UITransition.FLAG_SHOW, UITransition.FLAG_DEACTIVATE | UITransition.FLAG_HIDE]), // flags
+			easeOpen // ease
+		);
+		private var transFaderOpen : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([0, 1]), // a
+			null, // color
+			Vector.<uint>(UITransition.OPEN), // flags
+			easeOpen // ease
+		);
+		private var transFaderClose : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([1, 0]), // a
+			null, // color
+			Vector.<uint>(UITransition.CLOSE), // flags
+			easeOpen // ease
+		);
+		private var transFaderExit : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			null, // a
+			Vector.<uint>([0xffffffff, 0, 0xff000000, 0]), // color
+			Vector.<uint>(UITransition.CLOSE), // flags
+			easeOpen // ease
+		);
+		private var transLabelHide : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([1, 0]), // a
+			null, // color
+			Vector.<uint>([0, UITransition.FLAG_HIDE]), // flags
+			easeOpen // ease
+		);
+		private var transStatEnable : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([0.2, 1]), // a
+			Vector.<uint>([0xffffffff, 0xff00ff00, 0, 0]), // color
+			null, // flags
+			easeOpen // ease
+		);
+		private var transStatDisable : UITransition = new UITransition(
+			null, // x
+			null, // y
+			null, // sx
+			null, // sy
+			Vector.<Number>([1, 0.2]), // a
+			Vector.<uint>([0xff00ff00, 0xffffffff, 0, 0]), // color
+			null, // flags
+			easeOpen // ease
+		);
 		
 		private function initBackFader():void
 		{
 			var nbd:BitmapData = new BitmapData(640, 480, false, 0x0);
-
 			nbd.applyFilter(BcAsset.getImage("ui_bg"), new Rectangle(0, 0, 640, 480), new Point(), new BlurFilter(8, 8));
 			var bm:Bitmap = new Bitmap(nbd);
 			bm.transform.colorTransform = new ColorTransform(0.5, 0.5, 0.5);
@@ -1015,16 +1165,5 @@ package bc.ui
 			else
 				descComplete.play(transStatDisable, 3);
 		}
-		
-//		private var transStatEnable:UITransition = new UITransition({ 
-//				a:[0.2, 1], color:[0xffffffff, 0xff00ff00], ease:easeOpen 
-//				});
-//			
-//		private var transStatDisable:UITransition = new UITransition({ 
-//				a:[1, 0.2], color:[0xff00ff00, 0xffffffff], ease:easeOpen 
-//				});
-
-		private var transStatEnable:UITransition = null;			
-		private var transStatDisable:UITransition = null;
 	}
 }

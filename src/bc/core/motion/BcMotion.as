@@ -15,7 +15,7 @@ package bc.core.motion
 		
 		public var time:Number = 0;
 		
-		public var onComplete:Function;
+		public var motionCallback:BcMotionCallback;
 		
 		private var forward:Boolean;
 		

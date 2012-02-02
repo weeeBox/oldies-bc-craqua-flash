@@ -1,5 +1,12 @@
 package bc.core.motion 
 {
+	import bc.core.motion.easing.BcEaseFunction;
+	import bc.core.motion.easing.BcEaseSineInOut;
+	import bc.core.motion.easing.BcEaseSineOut;
+	import bc.core.motion.easing.BcEaseSineIn;
+	import bc.core.motion.easing.BcEaseStepOut;
+	import bc.core.motion.easing.BcEaseStepIn;
+	import bc.core.motion.easing.BcEaseLiner;
 
 	/**
 	 * @author Elias Ku
@@ -7,9 +14,22 @@ package bc.core.motion
 	public class BcEasing
 	{
 		private static var funcs:Object = new Object();
+		public static var linear:BcEaseFunction; 
+		public static var stepIn:BcEaseFunction; 
+		public static var stepOut:BcEaseFunction; 
+		public static var sineIn:BcEaseFunction; 
+		public static var sineOut:BcEaseFunction; 
+		public static var sineInOut:BcEaseFunction; 
 		
 		public static function initialize():void
 		{
+			linear = new BcEaseLiner();
+			stepIn = new BcEaseStepIn();
+			stepOut = new BcEaseStepOut();
+			sineIn = new BcEaseSineIn();
+			sineOut = new BcEaseSineOut();
+			sineInOut = new BcEaseSineInOut();
+
 			funcs["linear"] = linear;
 			funcs["step.in"] = stepIn;
 			funcs["step.out"] = stepOut;
@@ -18,44 +38,9 @@ package bc.core.motion
 			funcs["sine.in.out"] = sineInOut;
 		}
 		
-		public static function getFunction(typeName:String):Function
+		public static function getFunction(typeName:String):BcEaseFunction
 		{
 			return funcs[typeName];
-		}
-		
-		//none
-		public static function linear(t:Number):Number
-		{
-			return t;
-		}
-		
-		public static function stepIn(t:Number):Number
-		{
-			if(t<1) return 0;
-			return 1;
-		}
-		
-		public static function stepOut(t:Number):Number
-		{
-			if(t<1) return 1;
-			return 0;
-		}
-		
-		//sine
-		
-		public static function sineIn(t:Number):Number
-		{
-			return -Math.cos(t * (Math.PI*0.5)) + 1;
-		}
-		
-		public static function sineOut(t:Number):Number
-		{
-			return Math.sin(t * (Math.PI*0.5));
-		}
-		
-		public static function sineInOut(t:Number):Number
-		{
-			return (-0.5)*(Math.cos(Math.PI*t) - 1);
 		}
 	}
 }

@@ -143,7 +143,7 @@ package bc.core.display
 		
 		public static function register():void
 		{		
-			BcData.register("bitmap", BcBitmapData, data);
+			BcData.register("bitmap", new BcBitmapDataCreator(), data);
 		}
 		
 		public static function addData(id:String, bd:BcBitmapData):void

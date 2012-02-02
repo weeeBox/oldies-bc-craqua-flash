@@ -6,12 +6,12 @@ package bc.core.data
 	 */
 	internal class BcDataTypeInfo
 	{
-		public var dataClass:Class;
+		public var dataCreator:BcObjectDataCreator;
 		public var collection:Object;
 		
-		public function BcDataTypeInfo(dataClass:Class, collection:Object)
+		public function BcDataTypeInfo(dataCreator:BcObjectDataCreator, collection:Object)
 		{
-			this.dataClass = dataClass;
+			this.dataCreator = dataCreator;
 			this.collection = collection;
 		}
 	}

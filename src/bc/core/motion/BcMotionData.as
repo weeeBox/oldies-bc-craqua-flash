@@ -148,7 +148,7 @@ package bc.core.motion
 		
 		public static function register():void
 		{		
-			BcData.register("motion", BcMotionData, data);
+			BcData.register("motion", new BcMotionDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcMotionData

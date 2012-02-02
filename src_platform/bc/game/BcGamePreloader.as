@@ -1,8 +1,8 @@
-package bc.game.init 
+package bc.game 
 {
 	import bc.core.data.BcData;
 	import bc.core.device.BcEntryPoint;
-	import bc.core.device.BcPreloader;
+	import bc.core.device.BcGamePreloaderBase;
 	import bc.ui.BcGameUI;
 
 	import flash.display.DisplayObject;
@@ -10,7 +10,7 @@ package bc.game.init
 	/**
 	 * @author Elias Ku
 	 */
-	public class BcGamePreloader extends BcPreloader 
+	public class BcGamePreloader extends BcGamePreloaderBase 
 	{
 
 		public function BcGamePreloader(loaderEntry:BcEntryPoint)

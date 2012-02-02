@@ -16,7 +16,7 @@ package bc.core.audio
 	{
 		private var sound:Sound;
 		private var loop:Boolean;
-		public var onComplete:Function;
+		public var musicCallback:BcMusicCallback;
 		
 		private var channel:SoundChannel;
 		private var transform:SoundTransform = new SoundTransform();
@@ -188,7 +188,7 @@ package bc.core.audio
 		
 		public static function register():void
 		{		
-			BcData.register("music", BcMusic, data);
+			BcData.register("music", new BcMusicDataCreator(), data);
 		}
 		
 		public static function getMusic(id:String):BcMusic

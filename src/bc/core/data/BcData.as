@@ -57,9 +57,9 @@ package bc.core.data
 		private static var ERROR_BAD_XML:String = "BcData: XML not found.";
 		private static var ERROR_BAD_TYPE:String = "BcData: object data type not found.";
 		
-		public static function register(typeName:String, dataClass:Class, collection:Object):void
+		public static function register(typeName:String, dataCreator:BcObjectDataCreator, collection:Object):void
 		{
-			types[typeName] = new BcDataTypeInfo(dataClass, collection);
+			types[typeName] = new BcDataTypeInfo(dataCreator, collection);
 		}
 		
 		private static function preload(xml:XML):void
@@ -74,7 +74,7 @@ package bc.core.data
 					typeInfo = types[ String( node.name() ) ];
 					if(typeInfo)
 					{
-						typeInfo.collection[ String( node.@id ) ] = new (typeInfo.dataClass)();
+						typeInfo.collection[ String( node.@id ) ] = typeInfo.dataCreator.create();
 					}
 					else
 					{

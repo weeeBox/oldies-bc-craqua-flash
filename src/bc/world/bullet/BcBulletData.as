@@ -155,7 +155,7 @@ package bc.world.bullet
 		
 		public static function register():void
 		{		
-			BcData.register("bullet", BcBulletData, data);
+			BcData.register("bullet", new BcBulletDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcBulletData

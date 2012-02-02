@@ -68,7 +68,7 @@ package bc.core.display
 		
 		public static function register():void
 		{		
-			BcData.register("sheet", BcSheetData, data);
+			BcData.register("sheet", new BcSheetDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcSheetData

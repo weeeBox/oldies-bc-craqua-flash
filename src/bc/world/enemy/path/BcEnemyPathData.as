@@ -63,7 +63,7 @@ package bc.world.enemy.path
 		
 		public static function register():void
 		{		
-			BcData.register("enemy_path", BcEnemyPathData, data);
+			BcData.register("enemy_path", new BcEnemyPathDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcEnemyPathData

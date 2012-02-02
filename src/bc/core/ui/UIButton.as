@@ -14,25 +14,7 @@ package bc.core.ui
 	 */
 	public class UIButton extends UIObject 
 	{
-		public static var DEFAULT_STYLE:UIStyle = new UIStyle();
-
-		DEFAULT_STYLE.setProperty("font", "main");
-		DEFAULT_STYLE.setProperty("textSize", 30);
-		DEFAULT_STYLE.setProperty("textColor", 0xffffff);
-		DEFAULT_STYLE.setProperty("strokeBlur", 3);
-		DEFAULT_STYLE.setProperty("strokeColor", 0x033754);
-		DEFAULT_STYLE.setProperty("strokeAlpha", 1);
-		DEFAULT_STYLE.setProperty("strokeStrength", 6);
-		
-		DEFAULT_STYLE.setProperty("back", "ui_btn_back");
-		DEFAULT_STYLE.setProperty("body", "ui_btn");
-		DEFAULT_STYLE.setProperty("normalBackColor", 0xff000000);
-		DEFAULT_STYLE.setProperty("overBackColor", 0xffffffff);
-		DEFAULT_STYLE.setProperty("scale", 1);
-		
-		DEFAULT_STYLE.setProperty("sfxOver", "ui_over");
-		DEFAULT_STYLE.setProperty("sfxClick", "ui_click");
-		DEFAULT_STYLE.setProperty("sfxPress", "ui_click");
+		private static var defaultStyle:UIStyle;
 		
 		protected var _style:UIStyle;
 		
@@ -53,9 +35,10 @@ package bc.core.ui
 		protected var _overSpeed:Number = 6;
 		protected var _overBackSpeed:Number = 2;
 		
-		public function UIButton(layer:UIObject, x:Number = 0, y:Number = 0, text:String = null, style:UIStyle = null, onClick:Function = null, fast:Boolean = true)
+		public function UIButton(layer:UIObject, x:Number = 0, y:Number = 0, text:String = null, style:UIStyle = null, onClick:UIMouseClickCallback = null, fast:Boolean = true)
 		{
 			super(layer, x, y, fast);
+			
 			var image:String;
 			var w:Number = 0;
 			var h:Number = 0;
@@ -68,19 +51,19 @@ package bc.core.ui
 			
 			if(!style)
 			{
-				style = DEFAULT_STYLE;
+				style = getDefaultStyle();
 			}
 			
 			_style = style;
 
-			image = String(style.getProperty("back"));
-			if(image)
+			image = style.getString("back");
+			if(image != null)
 			{
 				_spriteBack.addChild(BcBitmapData.create(image));
 			}
 
-			image = String(style.getProperty("body"));
-			if(image)
+			image = style.getString("body");
+			if(image != null)
 			{
 				_spriteBody.addChild(BcBitmapData.create(image));
 			}
@@ -89,9 +72,9 @@ package bc.core.ui
 			_spriteButton.addChild(_spriteBody);
 			_sprite.addChild(_spriteButton);
 			
-			if(_style.getProperty("scale"))
+			if(_style.hasProperty("scale"))
 			{
-				_baseScale = Number(_style.getProperty("scale"));
+				_baseScale = _style.getNumber("scale");
 			}
 			
 			w = _baseScale*(_spriteButton.width-12);
@@ -109,12 +92,12 @@ package bc.core.ui
 			redraw();
 			
 			var sfx : String;
-			sfx = String(_style.getProperty("sfxOver"));
-			if (sfx) _sfxOver = BcSound.getData(sfx);
-			sfx = String(_style.getProperty("sfxPress"));
-			if (sfx) _sfxPress = BcSound.getData(sfx);
-			sfx = String(_style.getProperty("sfxClick"));
-			if(sfx) _sfxClick = BcSound.getData(sfx);
+			sfx = _style.getString("sfxOver");
+			if(sfx != null) _sfxOver = BcSound.getData(sfx);
+			sfx = _style.getString("sfxPress");
+			if(sfx != null) _sfxPress = BcSound.getData(sfx);
+			sfx = _style.getString("sfxClick");
+			if(sfx != null) _sfxClick = BcSound.getData(sfx);
 		}
 		
 		private function createLabel():void
@@ -240,8 +223,8 @@ package bc.core.ui
 		
 		protected function redraw():void
 		{
-			BcColorTransformUtil.setMultipliersARGB(COLOR_BEGIN, uint(_style.getProperty("normalBackColor")));
-			BcColorTransformUtil.setMultipliersARGB(COLOR_END, uint(_style.getProperty("overBackColor")));
+			BcColorTransformUtil.setMultipliersARGB(COLOR_BEGIN, _style.getUint("normalBackColor"));
+			BcColorTransformUtil.setMultipliersARGB(COLOR_END, _style.getUint("overBackColor"));
 			_spriteBack.transform.colorTransform = BcColorTransformUtil.lerpMult(COLOR, COLOR_BEGIN, COLOR_END, _tweenOver + (1-_tweenOver)*_tweenLight);
 						
 			_spriteButton.scaleX = 
@@ -253,6 +236,32 @@ package bc.core.ui
 			_highlight = value;
 		}
 		
+		public static function getDefaultStyle() : UIStyle
+		{
+			if (defaultStyle == null)
+			{
+				defaultStyle = new UIStyle();
+		
+				defaultStyle.setString("font", "main");
+				defaultStyle.setNumber("textSize", 30);
+				defaultStyle.setNumber("textColor", 0xffffff);
+				defaultStyle.setNumber("strokeBlur", 3);
+				defaultStyle.setNumber("strokeColor", 0x033754);
+				defaultStyle.setNumber("strokeAlpha", 1);
+				defaultStyle.setNumber("strokeStrength", 6);
+				
+				defaultStyle.setString("back", "ui_btn_back");
+				defaultStyle.setString("body", "ui_btn");
+				defaultStyle.setNumber("normalBackColor", 0xff000000);
+				defaultStyle.setNumber("overBackColor", 0xffffffff);
+				defaultStyle.setNumber("scale", 1);
+				
+				defaultStyle.setString("sfxOver", "ui_over");
+				defaultStyle.setString("sfxClick", "ui_click");
+				defaultStyle.setString("sfxPress", "ui_click");				
+			}
+			return defaultStyle;
+		}
 	}
 }
 

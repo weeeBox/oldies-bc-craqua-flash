@@ -419,7 +419,7 @@ package bc.world.enemy
 		
 		public static function register():void
 		{		
-			BcData.register("enemy", BcEnemyData, data);
+			BcData.register("enemy", new BcEnemyDataCreator(), data);
 		}
 		
 		public static function getData(id:String):BcEnemyData

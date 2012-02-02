@@ -6,7 +6,7 @@ package bc.core.device
 	/**
 	 * @author Elias Ku
 	 */
-	public class BcPreloader implements BcIApplication 
+	public class BcGamePreloaderBase implements BcIApplication 
 	{
 		internal var _loaderEntry:BcEntryPoint;
 		private var _mainEntry:String;
@@ -17,7 +17,7 @@ package bc.core.device
 		protected var _progress:Number = 0;
 		protected var _completed:Boolean;
 		
-		public function BcPreloader(loaderEntry:BcEntryPoint, mainEntryClassName:String)
+		public function BcGamePreloaderBase(loaderEntry:BcEntryPoint, mainEntryClassName:String)
 		{
 			_loaderEntry = loaderEntry;
 			_mainEntry = mainEntryClassName;
