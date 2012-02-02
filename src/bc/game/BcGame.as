@@ -1,5 +1,6 @@
 package bc.game 
 {
+	import bc.core.display.BcApplication;
 	import bc.core.audio.BcAudio;
 	import bc.core.data.BcData;
 	import bc.core.device.BcDevice;
@@ -38,8 +39,7 @@ package bc.game
 				BcData.load(Vector.<String>(["music", "prop_bitmaps", "audio_data"]));
 				
 				world = new BcWorld();
-				BcDevice.application = this;
-				
+				BcApplication.sharedApplication = this;				
 				
 				BcGameUI.instance.loadingComplete();
 				

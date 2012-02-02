@@ -1,6 +1,7 @@
 package bc.core.device 
 {
 
+	import bc.core.display.BcApplication;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
 	/**
@@ -26,12 +27,12 @@ package bc.core.device
 		// Стартует прелоадинг
 		protected function start():void
 		{
-			BcDevice.application = this;
+			BcApplication.sharedApplication = this;
 		}
 		
 		protected function finish():void
 		{
-			BcDevice.application = null;
+			BcApplication.sharedApplication = null;
 			_loaderEntry.nextEntryPoint(_mainEntry);
 		}
 		

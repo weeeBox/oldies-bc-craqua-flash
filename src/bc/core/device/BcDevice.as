@@ -61,16 +61,6 @@ package bc.core.device
 			return impl.timer.fps;
 		}
 		
-		public static function get application():BcIApplication
-		{
-			return impl.application;
-		}
-		
-		public static function set application(value:BcIApplication):void
-		{
-			impl.application = value;
-		}
-		
 		public static function get quality():uint
 		{
 			return impl.getStageQuality();
@@ -114,8 +104,7 @@ package bc.core.device
 		
 		// Stage, главный, глобальный
 		private var stage:Stage;
-		
-		private var application:BcIApplication;
+
 //#if CUT_THE_CODE		
 //#		 private var defaultContextMenu:ContextMenu;
 //#endif
@@ -280,6 +269,7 @@ package bc.core.device
 		{
 			const dt:Number = timer.update();
 			
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application && !BcAsset.busy)
 			{
 				application.update(dt);
@@ -302,6 +292,7 @@ package bc.core.device
 		// активация/деактивация окна
 		private function onDeactivate(event:Event):void
 		{
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application)
 			{
 				application.activate(false);
@@ -310,6 +301,7 @@ package bc.core.device
 		
 		private function onActivate(event:Event):void
 		{
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application)
 			{
 				application.activate(true);
@@ -328,6 +320,7 @@ package bc.core.device
 			
 			mouseMessage.processEvent(BcMouseMessage.MOUSE_MOVE, event);
 			
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application)
 			{
 				application.mouseMessage(mouseMessage);
@@ -346,7 +339,8 @@ package bc.core.device
 			}
 			
 			mouseMessage.processEvent(BcMouseMessage.MOUSE_DOWN, event);
-				
+			
+			var application:BcIApplication = BcApplication.sharedApplication;	
 			if(application)
 			{
 				application.mouseMessage(mouseMessage);
@@ -360,6 +354,7 @@ package bc.core.device
 			mousePushed = false;
 			mouseMessage.processEvent(BcMouseMessage.MOUSE_UP, event);
 			
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application)
 			{
 				application.mouseMessage(mouseMessage);
@@ -386,6 +381,7 @@ package bc.core.device
 			
 			keyboardMessage.processEvent(BcKeyboardMessage.KEY_DOWN, repeated, event);
 		
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application)
 			{
 				application.keyboardMessage(keyboardMessage);
@@ -401,6 +397,7 @@ package bc.core.device
 			keysState[code] = false;
 			keyboardMessage.processEvent(BcKeyboardMessage.KEY_UP, false, event);
 			
+			var application:BcIApplication = BcApplication.sharedApplication;
 			if(application)
 			{
 				application.keyboardMessage(keyboardMessage);
