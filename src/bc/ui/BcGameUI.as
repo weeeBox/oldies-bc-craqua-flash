@@ -439,13 +439,15 @@ package bc.ui
 				(BcGameGlobal.world.checkPoint.wave+1) +
 				"</font></p>";
 			
-			if(!oShowScoresButton && oBestScore)
-			{
-				mainBest.html = "<p align=\"center\">" + BcStrings.INFO_YOUR_BEST_SCORE + "<br><font size=\"20\">" + 
-					uint(BcGameGlobal.localStore.best) +
-					"</font></p>";
-				mainBest.centerX = 510;
-			}
+//#if CUT_THE_CODE			
+//#			if(!oShowScoresButton && oBestScore)
+//#			{
+//#				mainBest.html = "<p align=\"center\">" + BcStrings.INFO_YOUR_BEST_SCORE + "<br><font size=\"20\">" + 
+//#					uint(BcGameGlobal.localStore.best) +
+//#					"</font></p>";
+//#				mainBest.centerX = 510;
+//#			}
+//#endif
 		}
 		
 		public function onMouseClicked(object:UIObject):void

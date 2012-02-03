@@ -22,8 +22,8 @@ package bc.core.ui
 		public static const FLAGS_CLOSE_BEGIN:uint = FLAG_DISABLE;
 		public static const FLAGS_CLOSE_END:uint = FLAG_DEACTIVATE | FLAG_HIDE;
 		
-		public static const OPEN:Array = [FLAGS_OPEN_BEGIN, FLAGS_OPEN_END];
-		public static const CLOSE:Array = [FLAGS_CLOSE_BEGIN, FLAGS_CLOSE_END];
+		public static const OPEN:Vector.<uint> = Vector.<uint>([FLAGS_OPEN_BEGIN, FLAGS_OPEN_END]);
+		public static const CLOSE:Vector.<uint> = Vector.<uint>([FLAGS_CLOSE_BEGIN, FLAGS_CLOSE_END]);
 		
 		public var flags:Vector.<uint>;
 		public var x:Vector.<Number>;
