@@ -274,12 +274,11 @@ package bc.world.enemy
 		public function cloneTimers(enemy:BcEnemy):void
 		{
 			var array:Vector.<BcIEnemyTimer>;
-			var timer:BcIEnemyTimer;
 			var clone:BcIEnemyTimer;
 			
 			if(timers)
 			{
-				for each (timer in timers)
+				for each (var timer:BcIEnemyTimer in timers)
 				{
 					clone = null;
 					
