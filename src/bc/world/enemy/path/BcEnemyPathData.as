@@ -1,5 +1,6 @@
 package bc.world.enemy.path 
 {
+	import flash.utils.Dictionary;
 	import bc.core.util.BcStringUtil;
 	import bc.core.math.BcFloatInterval;
 	import bc.core.data.BcData;
@@ -59,7 +60,7 @@ package bc.world.enemy.path
 		
 				
 		//////////////
-		private static var data:Object = new Object();
+		private static var data:Dictionary = new Dictionary();
 		
 		public static function register():void
 		{		

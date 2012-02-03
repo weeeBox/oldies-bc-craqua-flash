@@ -57,7 +57,7 @@ package bc.core.data
 		private static var ERROR_BAD_XML:String = "BcData: XML not found.";
 		private static var ERROR_BAD_TYPE:String = "BcData: object data type not found.";
 		
-		public static function register(typeName:String, dataCreator:BcObjectDataCreator, collection:Object):void
+		public static function register(typeName:String, dataCreator:BcObjectDataCreator, collection:Dictionary):void
 		{
 			types[typeName] = new BcDataTypeInfo(dataCreator, collection);
 		}

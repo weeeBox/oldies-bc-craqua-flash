@@ -1,5 +1,6 @@
 package bc.world.item 
 {
+	import flash.utils.Dictionary;
 	import bc.world.particles.BcParticleData;
 	import bc.core.audio.BcSound;
 	import bc.core.data.BcData;
@@ -132,7 +133,7 @@ package bc.world.item
 		}
 		
 		//////////////
-		private static var data:Object = new Object();
+		private static var data:Dictionary = new Dictionary();
 		
 		public static function register():void
 		{		

@@ -1,5 +1,6 @@
 package bc.core.data 
 {
+	import flash.utils.Dictionary;
 
 	/**
 	 * @author Elias Ku
@@ -7,9 +8,9 @@ package bc.core.data
 	internal class BcDataTypeInfo
 	{
 		public var dataCreator:BcObjectDataCreator;
-		public var collection:Object;
+		public var collection:Dictionary;
 		
-		public function BcDataTypeInfo(dataCreator:BcObjectDataCreator, collection:Object)
+		public function BcDataTypeInfo(dataCreator:BcObjectDataCreator, collection:Dictionary)
 		{
 			this.dataCreator = dataCreator;
 			this.collection = collection;

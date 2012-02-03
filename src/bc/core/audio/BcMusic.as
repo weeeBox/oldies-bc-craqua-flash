@@ -1,5 +1,6 @@
 package bc.core.audio 
 {
+	import flash.utils.Dictionary;
 	import flash.media.SoundTransform;
 	import flash.media.SoundChannel;
 	import bc.core.data.BcData;
@@ -184,7 +185,7 @@ package bc.core.audio
 			}
 		}
 		
-		private static var data:Object = new Object();
+		private static var data:Dictionary = new Dictionary();
 		
 		public static function register():void
 		{		

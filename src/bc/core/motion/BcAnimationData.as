@@ -1,5 +1,6 @@
 package bc.core.motion 
 {
+	import flash.utils.Dictionary;
 	import bc.core.data.BcData;
 	import bc.core.data.BcIObjectData;
 
@@ -37,7 +38,7 @@ package bc.core.motion
 		
 		
 		
-		private static var data:Object = new Object();
+		private static var data:Dictionary = new Dictionary();
 		
 		public static function register():void
 		{		
