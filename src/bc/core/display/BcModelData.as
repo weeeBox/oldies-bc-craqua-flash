@@ -11,7 +11,7 @@ package bc.core.display
 	{
 		public var root:BcModelNode;
 		
-		public var lookup:Object = new Object();
+		public var lookup:Dictionary = new Dictionary();
 		
 		private var index:int;
 		

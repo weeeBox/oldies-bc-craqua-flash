@@ -1,5 +1,6 @@
 package bc.core.motion 
 {
+	import flash.utils.Dictionary;
 	import bc.core.motion.easing.BcEaseFunction;
 	import bc.core.motion.easing.BcEaseSineInOut;
 	import bc.core.motion.easing.BcEaseSineOut;
@@ -13,7 +14,7 @@ package bc.core.motion
 	 */
 	public class BcEasing
 	{
-		private static var funcs:Object = new Object();
+		private static var funcs:Dictionary = new Dictionary();
 		public static var linear:BcEaseFunction; 
 		public static var stepIn:BcEaseFunction; 
 		public static var stepOut:BcEaseFunction; 

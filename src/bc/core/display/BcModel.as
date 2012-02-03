@@ -1,5 +1,6 @@
 package bc.core.display 
 {
+	import flash.utils.Dictionary;
 	import bc.core.util.BcSpriteUtil;
 
 	import flash.display.Bitmap;
@@ -13,7 +14,7 @@ package bc.core.display
 	public class BcModel extends Sprite 
 	{
 		public var data:BcModelData;
-		public var lookup:Object;
+		public var lookup:Dictionary;
 		private var nodes:Vector.<DisplayObject> = new Vector.<DisplayObject>();
 		
 		public function BcModel(data:BcModelData = null)
@@ -28,7 +29,7 @@ package bc.core.display
 		{
 			this.data = data;
 			nodes.length = 0;
-			lookup = new Object();
+			lookup = new Dictionary();
 			
 			while(numChildren>0)
 			{

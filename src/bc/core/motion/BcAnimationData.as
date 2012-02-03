@@ -10,7 +10,7 @@ package bc.core.motion
 	public class BcAnimationData implements BcIObjectData 
 	{
 		public var motions:Vector.<BcMotionData> = new Vector.<BcMotionData>();
-		public var lookup:Object = new Object();
+		public var lookup:Dictionary = new Dictionary();
 		
 		public function parse(xml:XML):void
 		{

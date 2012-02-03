@@ -1,5 +1,6 @@
 package bc.core.device 
 {
+	import flash.utils.Dictionary;
 	import bc.core.debug.BcDebug;
 	import bc.core.resources.loaders.BcResLoaderFactory;
 	import bc.core.resources.loaders.BcResLoader;
@@ -55,9 +56,9 @@ package bc.core.device
 		private static var XML_DEST_ID : String = "__desc";
 		
 		// Коллекции ресурсов, разделены по типам
-		private static var images:Object = new Object();
-		private static var xmls:Object = new Object();
-		private static var sounds:Object = new Object();
+		private static var images:Dictionary = new Dictionary();
+		private static var xmls:Dictionary = new Dictionary();
+		private static var sounds:Dictionary = new Dictionary();
 		
 		private static var instance:BcAsset;
 		
