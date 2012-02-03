@@ -161,16 +161,20 @@ package bc.world.core
 		
 		private function initializeCheckPoint():void
 		{
-			if(BcGameGlobal.localStore.check == null)
-			{
-				checkPoint = 
-				BcGameGlobal.localStore.check = new BcCheckPoint();
-			}
-			else
+//#if CUT_THE_CODE
+//#			if(BcGameGlobal.localStore.check == null)
+//#			{
+//#				checkPoint = 
+//#				BcGameGlobal.localStore.check = new BcCheckPoint();
+//#			}
+//#			else
+//#endif
 			{
 				checkPoint = new BcCheckPoint();
-				checkPoint.copyObject(BcGameGlobal.localStore.check);
-				BcGameGlobal.localStore.check = checkPoint;
+//#if CUT_THE_CODE
+//#				checkPoint.copyObject(BcGameGlobal.localStore.check);
+//#				BcGameGlobal.localStore.check = checkPoint;
+//#endif
 			}
 		}
 		
@@ -425,12 +429,14 @@ package bc.world.core
 		{
 			// просчитать медальки
 			player.calcMedals();
-			if(player.getMoney() > 0 && player.getMoney() > BcGameGlobal.localStore.best)
-			{
-				BcGameGlobal.localStore.best = player.getMoney();
-				uiBest = true;
-			}
-			else
+//#if CUT_THE_CODE			
+//#			if(player.getMoney() > 0 && player.getMoney() > BcGameGlobal.localStore.best)
+//#			{
+//#				BcGameGlobal.localStore.best = player.getMoney();
+//#				uiBest = true;
+//#			}
+//#			else
+//#endif			
 			{
 				uiBest = false;
 			}

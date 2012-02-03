@@ -28,10 +28,10 @@ package bc.world.enemy.actions
 		
 		public function action(enemy:BcEnemy):void
 		{
-			var enemy:BcEnemy = new BcEnemy();
-			enemy.setup(data, path);
-			enemy.fallDown(x);
-			enemy.join();
+			var enemy2:BcEnemy = new BcEnemy();
+			enemy2.setup(data, path);
+			enemy2.fallDown(x);
+			enemy2.join();
 		}
 
 	}

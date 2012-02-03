@@ -427,7 +427,10 @@ package bc.ui
 		}
 		private function selectMainButtonsLight():void
 		{
-			const cont:Boolean = BcGameGlobal.world.checkPoint.wave > 0;
+//#if CUT_THE_CODE			
+//			const cont:Boolean = BcGameGlobal.world.checkPoint.wave > 0;
+//#endif
+			const cont:Boolean = false;			
 			
 			mainNewGame.highlight = !cont;
 			mainContinue.highlight = cont;
