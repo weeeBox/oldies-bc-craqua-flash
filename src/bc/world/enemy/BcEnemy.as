@@ -99,7 +99,6 @@ package bc.world.enemy
 			if(bombNode)
 			{
 				var side:int;
-				var x:Number = 0;
 				
 				if(bombNode.hasOwnProperty("@target"))
 				{
