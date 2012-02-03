@@ -155,28 +155,32 @@ package bc.world.item
 			{
 				while(gemAccum > minGem)
 				{
+					var searchGemItem:BcItemData;
 					for each (var gemItem:BcItemData in BcItemData.gemList)
-					{
+					{	
+						searchGemItem = gemItem;					
 						if(gemAccum >= gemItem.amount)
-						{
+						{							
 							break;
 						}
 					}
-					launch(gemItem, position, caster);
-					gemAccum -= gemItem.amount;
+					launch(searchGemItem, position, caster);
+					gemAccum -= searchGemItem.amount;
 				}
 				
 				while(moneyAccum > minMoney)
 				{
+					var searchMoneyItem:BcItemData;
 					for each (var moneyItem:BcItemData in BcItemData.moneyList)
 					{
+						searchMoneyItem = moneyItem;
 						if(moneyAccum >= moneyItem.amount)
 						{
 							break;
 						}
 					}
-					launch(moneyItem, position, caster);
-					moneyAccum -= moneyItem.amount;
+					launch(searchMoneyItem, position, caster);
+					moneyAccum -= searchMoneyItem.amount;
 				}
 			}
 			
