@@ -106,9 +106,6 @@ package bc.world.enemy
 		
 		public function parse(xml:XML):void
 		{			
-			
-			var subNode:XML;
-				
 			var movingNode:XML = xml.moving[0];
 			if(movingNode)
 			{
@@ -183,17 +180,17 @@ package bc.world.enemy
 				}
 				
 				
-				for each (subNode in hitNode.cap)
+				for each (var subNode:XML in hitNode.cap)
 				{
 					if(!hitCaps) hitCaps = new Vector.<BcEnemyHitCap>();
 					hitCaps.push(new BcEnemyHitCap(subNode));
 				}
 				
-				subNode = hitNode.bonus[0];
-				if(subNode)
+				var subBonusNode:XML = hitNode.bonus[0];
+				if(subBonusNode)
 				{
-					hitBonus = subNode.@damage;
-					hitBonusActions = createActionArray(subNode);
+					hitBonus = subBonusNode.@damage;
+					hitBonusActions = createActionArray(subBonusNode);
 				}
 			}
 			
