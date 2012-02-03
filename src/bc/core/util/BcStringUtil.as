@@ -133,7 +133,7 @@ package bc.core.util
 			return parseFloat(string);
 		}
 
-		public static function parseInteger(string:String) : uint
+		public static function parseInteger(string:String) : int
 		{
 			return parseInt(string);
 		}
