@@ -15,17 +15,17 @@ package bc.core.device
 	{	
 		public static function getImage(id:String):BitmapData
 		{
-			return images[id];
+			return BitmapData(images[id]);
 		}
 		
 		public static function getSound(id:String):Sound
 		{
-			return sounds[id];
+			return Sound(sounds[id]);
 		}
 		
 		public static function getXML(id:String):XML
 		{
-			return xmls[id];
+			return XML(xmls[id]);
 		}
 		
 		public static function removeXML(id:String):void
