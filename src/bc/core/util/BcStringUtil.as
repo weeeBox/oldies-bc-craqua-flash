@@ -10,20 +10,6 @@ package bc.core.util
 	 */
 	public class BcStringUtil 
 	{
-		
-		public static function parseMask(string:String):uint
-		{
-			var mask:uint = 0;
-			var array:Array = string.split(" ");
-			
-			for each (var substring:String in array)
-			{
-				mask |= ( 1 << uint( parseInt(substring) ) );
-			}
-			
-			return mask;
-		}
-		
 		public static function parseVector2(string:String, out:Vector2 = null):Vector2
 		{
 			var args:Array = string.split("; ");

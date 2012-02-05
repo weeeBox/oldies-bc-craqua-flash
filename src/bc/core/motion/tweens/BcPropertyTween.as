@@ -40,7 +40,8 @@ package bc.core.motion.tweens
 				else
 				{
 					const invWeight:Number = 1 - weight;
-					displayObject[property] = displayObject[property]*invWeight + value*weight;
+					var oldValue : Number = displayObject[property];
+					displayObject[property] = oldValue * invWeight + value*weight;
 				}
 			}
 		}
