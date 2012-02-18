@@ -317,13 +317,15 @@ package bc.core.device
 			var event : KeyboardEvent = KeyboardEvent(evt);
 			
 			const code:uint = event.keyCode;
-			const obj:Object = keysState[code];
-			const repeated:Boolean = (obj!=null && obj==true);
-			
-			if(!repeated)
-			{
-				keysState[code] = true;
-			}
+			var repeated : Boolean = false;
+// FIXME
+//			const obj:Object = keysState[code];
+//			const repeated:Boolean = (obj!=null && obj==true);
+//			
+//			if(!repeated)
+//			{
+//				keysState[code] = true;
+//			}
 			
 			keyboardMessage.processEvent(BcKeyboardMessage.KEY_DOWN, repeated, event);
 		
@@ -341,8 +343,8 @@ package bc.core.device
 			var event : KeyboardEvent = KeyboardEvent(evt);
 			
 			const code:uint = event.keyCode;
-					
-			keysState[code] = false;
+// FIXME					
+//			keysState[code] = false;
 			keyboardMessage.processEvent(BcKeyboardMessage.KEY_UP, false, event);
 			
 			var application:BcIApplication = BcApplication.sharedApplication;
