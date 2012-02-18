@@ -186,10 +186,6 @@ package bc.core.device
 //#		}
 //#endif
 	
-		public static function get mouseX():Number {return impl.mouseX;}
-		public static function get mouseY():Number {return impl.mouseY;}
-		public static function get mousePushed():Boolean {return impl.mousePushed;}
-
 		// Позиция мыши на Stage объекте
 		private var mouseX:Number = 0;
 		private var mouseY:Number = 0;
