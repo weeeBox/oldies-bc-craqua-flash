@@ -20,7 +20,6 @@ package bc.world.item
 		private var item:BcItem;
 		
 		private var lighting:Number = 0;
-		private var show:Number = 0;
 		
 		public function BcItemSprite(item:BcItem)
 		{
@@ -45,8 +44,6 @@ package bc.world.item
 			scaleY = data.scale;
 			rotation = 0;
 			 
-			show = 0;
-			
 			alpha = 1;
 			shadow.alpha = 1;
 			

@@ -56,7 +56,7 @@ package bc.core.motion
 			{
 				playback = data.playback;
 				repeats = data.count;
-				endless = !data.count;
+				endless = repeats == 0;
 				if(repeats > 0)
 				{
 					--repeats;

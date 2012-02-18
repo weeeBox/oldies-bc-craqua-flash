@@ -98,8 +98,6 @@ package bc.world.enemy
 		{
 			if(bombNode)
 			{
-				var side:int;
-				
 				if(bombNode.hasOwnProperty("@target"))
 				{
 					BcStringUtil.parseVector2(bombNode.@target, VECTOR);

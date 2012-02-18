@@ -27,14 +27,7 @@ package bc.ui
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
-	import flash.display.MovieClip;
-	import flash.display.Shape;
-	import flash.filters.BlurFilter;
 	import flash.geom.ColorTransform;
-	import flash.geom.Point;
-	import flash.geom.Rectangle;
-	import flash.net.URLRequest;
-	import flash.net.navigateToURL;
 
 	/**
 	 * @author Elias Ku
@@ -83,7 +76,7 @@ package bc.ui
 //#endif
 
 		private static var easeOpen:BcEaseFunction = new BcEaseOpen();
-		private static var easeClose:BcEaseFunction = new BcEaseClose();		
+//		private static var easeClose:BcEaseFunction = new BcEaseClose();		
 
 		public function BcGameUI()
 		{
@@ -168,15 +161,15 @@ package bc.ui
 		
 		private var creditsPanel:UIPanel = new UIPanel(layerMain, 0, 0, false);
 		private var creditsClose:UIButton;
-		private var creditsSponsor:UIButton;
+//		private var creditsSponsor:UIButton;
 		
 		private var hsPanel:UIPanel = new UIPanel(layerMain, 0, 0, false);
 		private var hsBack:UIButton;
-		private var HSMC:MovieClip = new MovieClip();
+//		private var HSMC:MovieClip = new MovieClip();
 		//private var g5Hiscores:ZattikkaHiScores;
 		
 		private var gamePanel:UIPanel = new UIPanel(layerMain, 0, 0, false);
-		private var gameLink:UIButton;
+//		private var gameLink:UIButton;
 		
 		private var gameFader:UIGameEffect = new UIGameEffect(layerBack);
 		
@@ -216,7 +209,7 @@ package bc.ui
 														"back2", "ui_s2b", 
 														"body1", "ui_s1", 
 														"body2", "ui_s2"]));
-		private var stButtonMedium : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.75)]));
+//		private var stButtonMedium : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.75)]));
 		private var stButtonOther : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.85)]));
 		private var stButtonSmall : UIStyle = new UIStyle(UIButton.getDefaultStyle(), BcUtil.createDictionary(["scale", new BcNumber(0.5)]));
 		private var stTitle : UIStyle = new UIStyle(UILabel.getDefaultStyle(), BcUtil.createDictionary(

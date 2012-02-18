@@ -9,7 +9,6 @@ package bc.game
 	import bc.ui.BcGameUI;
 	import bc.world.core.BcWorld;
 
-	import flash.display.MovieClip;
 	import flash.ui.Keyboard;
 	import flash.ui.Mouse;
 
@@ -22,7 +21,7 @@ package bc.game
 //#if CUT_THE_CODE
 //#		private var so:SharedObject;
 //#endif
-		private var mc:MovieClip;
+//		private var mc:MovieClip;
 		
 		public function BcGame()
 		{
