@@ -55,8 +55,10 @@ package bc.core.resources.loaders
 			doFinish(bitmapData);						
 		}
 		
-		private function onError(event : IOErrorEvent) : void
+		private function onError(evt : Event) : void
 		{
+			var event : IOErrorEvent = IOErrorEvent(evt);
+			
 			trace("Bitmap loading failed: " + event.text);
 			
 			loader = null;

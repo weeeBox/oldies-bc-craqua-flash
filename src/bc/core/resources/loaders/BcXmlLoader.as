@@ -43,7 +43,7 @@ package bc.core.resources.loaders
 			doFinish(xml);
 		}
 		
-		private function onError(event : IOErrorEvent) : void
+		private function onError(event : Event) : void
 		{
 			loader = null;
 			doFail();

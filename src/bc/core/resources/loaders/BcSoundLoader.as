@@ -41,7 +41,7 @@ package bc.core.resources.loaders
 			sound = null;
 		}
 		
-		private function onError(event : IOErrorEvent) : void
+		private function onError(event : Event) : void
 		{
 			sound = null;
 			doFail();	

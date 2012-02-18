@@ -51,11 +51,6 @@ package bc.core.device
 			}
 		}
 		
-		private static function get stage():Stage
-		{
-			return impl.stage;
-		}		
-		
 		public static function get fps():int
 		{
 			return impl.timer.fps;
@@ -133,8 +128,10 @@ package bc.core.device
 		
 		private function initialize():void
 		{
-			displaySize.width = stage.stageWidth = BcApplication.width;
-			displaySize.height = stage.stageHeight = BcApplication.height;
+			displaySize.width = BcApplication.width;
+			displaySize.height = BcApplication.height;
+			stage.stageWidth = int(BcApplication.width);
+			stage.stageHeight = int(BcApplication.height);
 
 			stage.frameRate = Number(BcDevice.FRAME_RATE);
 			stage.align = StageAlign.TOP_LEFT;
@@ -169,47 +166,6 @@ package bc.core.device
 //#endif
 			
 			stage.addChildAt(display, 0);
-		}
-		
-		private function getStageQuality():uint
-		{
-			var stageQuality:String = stage.quality;
-			var quality:uint = 2;
-			if(stageQuality == "LOW")
-				quality = 0;
-			else if(stageQuality == "MEDIUM")
-				quality = 1;
-			
-			return quality;
-		}
-		
-		private function setStageQuality(value:uint):void
-		{
-			switch(value)
-			{
-				case 0:
-					stage.quality = StageQuality.LOW;
-					break;
-				case 1:
-					stage.quality = StageQuality.MEDIUM;
-					break;
-				case 2:
-					stage.quality = StageQuality.HIGH;
-					break;
-			}
-		}
-		
-		private function getStageFullscreen():Boolean
-		{
-			return (stage.displayState == StageDisplayState.FULL_SCREEN);
-		}
-		
-		private function setStageFullscreen(value:Boolean):void
-		{
-			if(value)
-				stage.displayState = StageDisplayState.FULL_SCREEN;
-			else
-				stage.displayState = StageDisplayState.NORMAL;
 		}
 
 //#if CUT_THE_CODE				
@@ -288,8 +244,10 @@ package bc.core.device
 			}
 		}
 		
-		private function onMouseMove(event:MouseEvent):void
+		private function onMouseMove(evt:Event):void
 		{
+			var event : MouseEvent = MouseEvent(evt);
+			
 			mouseX = event.stageX;
 			mouseY = event.stageY;
 					
@@ -312,8 +270,10 @@ package bc.core.device
 			UI.mouseMessage(mouseMessage);
 		}
 		
-		private function onMouseDown(event:MouseEvent):void
+		private function onMouseDown(evt:Event):void
 		{
+			var event : MouseEvent = MouseEvent(evt);
+			
 			mousePushed = true;
 			BcApplication.mousePushed = true;
 			
@@ -333,8 +293,10 @@ package bc.core.device
 			UI.mouseMessage(mouseMessage);
 		}
 	
-		private function onMouseUp(event:MouseEvent):void
+		private function onMouseUp(evt:Event):void
 		{
+			var event : MouseEvent = MouseEvent(evt);
+			
 			mousePushed = false;
 			BcApplication.mousePushed = false;
 			
@@ -354,8 +316,10 @@ package bc.core.device
 			mouseLeaved = true;
 		}
 		
-		private function onKeyDown(event:KeyboardEvent):void
+		private function onKeyDown(evt:Event):void
 		{
+			var event : KeyboardEvent = KeyboardEvent(evt);
+			
 			const code:uint = event.keyCode;
 			const obj:Object = keysState[code];
 			const repeated:Boolean = (obj!=null && obj==true);
@@ -376,8 +340,10 @@ package bc.core.device
 			UI.keyboardMessage(keyboardMessage);
 		}
 		
-		private function onKeyUp(event:KeyboardEvent):void
+		private function onKeyUp(evt:Event):void
 		{
+			var event : KeyboardEvent = KeyboardEvent(evt);
+			
 			const code:uint = event.keyCode;
 					
 			keysState[code] = false;
