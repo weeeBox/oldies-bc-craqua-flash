@@ -1,9 +1,9 @@
 package bc.game.init 
 {
-	import bc.core.resources.loaders.BcFlashResLoaderFactory;
 	import bc.core.device.BcAssetCallback;
 	import bc.core.device.BcDevice;
 	import bc.core.device.BcEntryPoint;
+	import bc.core.resources.loaders.BcFlashResLoaderFactory;
 	import bc.game.BcGamePreloader;
 	import bc.game.asset.BcPreloaderAsset;
 
