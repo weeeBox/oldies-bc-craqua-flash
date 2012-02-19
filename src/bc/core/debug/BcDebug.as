@@ -3,6 +3,7 @@ package bc.core.debug
 	/**
 	 * @author weee
 	 */
+	[ConvertOnce]
 	public class BcDebug
 	{
 		public static function assert(condition : Boolean, message : String = null) : void

@@ -36,12 +36,13 @@ package bc.core.resources.loaders
 			try
 			{			
 				loader = new Loader();
-				loader.load(request);
 				loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
 				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onImageComplete, false, 0, true);
+				loader.load(request);				
 			}
 			catch (error : Error)
 			{
+				trace("Unable to load bitmap: " + error);
 				loader = null;
 				doFail();
 			}

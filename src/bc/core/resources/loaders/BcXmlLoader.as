@@ -25,12 +25,13 @@ package bc.core.resources.loaders
 			try
 			{			
 				loader = new URLLoader();
-				loader.load(request);
 				loader.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
 				loader.addEventListener(Event.COMPLETE, onXMLComplete, false, 0, true);
+				loader.load(request);				
 			}
 			catch (error : Error)
 			{
+				trace("Unable to load xml: " + error)
 				loader = null;
 				doFail();
 			}

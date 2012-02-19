@@ -24,12 +24,13 @@ package bc.core.resources.loaders
 			try
 			{			
 				sound = new Sound();
-				sound.load(request);
 				sound.addEventListener(IOErrorEvent.IO_ERROR, onError, false, 0, true);
 				sound.addEventListener(Event.COMPLETE, onSoundComplete, false, 0, true);
+				sound.load(request);				
 			}
 			catch (error : Error)
 			{
+				trace("Unable to load sound: " + error);
 				sound = null;
 				doFail();
 			}

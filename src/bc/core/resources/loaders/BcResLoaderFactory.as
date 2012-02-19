@@ -31,9 +31,17 @@ package bc.core.resources.loaders
 		}
 		
 		public function createLoader(id : String, path : String, listener : BcResLoaderListener) : BcResLoader
-		{			
-			BcDebug.assert(false, "This should be overriden in platform-specific subclass");		
-			return null;
+		{
+			var type : String = extractType(path);
+			
+			if (type == TYPE_IMAGE_PNG || type == TYPE_IMAGE_JPG)
+				return new BcBitmapLoader(id, path, listener);
+			if (type == TYPE_SOUND_WAV || type == TYPE_SOUND_MP3)			
+				return new BcSoundLoader(id, path, listener);
+			if (type == TYPE_XML)
+				return new BcXmlLoader(id, path, listener);
+			
+			throw new ArgumentError("Unknown loader type: " + type);
 		}
 
 		protected function extractType(path : String) : String
