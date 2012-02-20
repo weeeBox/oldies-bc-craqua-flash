@@ -80,8 +80,9 @@ package bc.core.device
 		public function load(path:String, loadingCallback:BcAssetCallback):void
 		{
 			this.loadingCallback = loadingCallback;
-			createLoader(XML_DEST_ID, path, this);
+			var loader:BcResLoader = createLoader(XML_DEST_ID, path, this);
 			busyCounter++;
+			loader.load();
 		}
 
 		private function createLoader(id:String, path:String, listener:BcResLoaderListener):BcResLoader
@@ -90,8 +91,6 @@ package bc.core.device
 			
 			loaders.push(loader);
 			++activeLoaders;
-			
-			loader.load();
 			
 			return loader;
 		}
@@ -136,7 +135,7 @@ package bc.core.device
 			
 			id = removePathSeparators(id);
 		
-			createLoader(id, path, this);
+			createLoader(id, path, this).load();			
 		}
 			
 		private function removePathSeparators(id : String) : String

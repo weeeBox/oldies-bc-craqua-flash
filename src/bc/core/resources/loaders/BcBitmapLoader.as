@@ -50,10 +50,9 @@ package bc.core.resources.loaders
 		
 		private function onImageComplete(event : Event) : void
 		{
-			var bitmap : Bitmap = Bitmap(loader.content);
-			var bitmapData : BitmapData = processBitmapData(bitmap.bitmapData, hasAlpha);
+			var bitmap : Bitmap = Bitmap(loader.content);			
 			loader = null;
-			doFinish(bitmapData);						
+			doFinish(bitmap.bitmapData);						
 		}
 		
 		private function onError(evt : Event) : void
@@ -66,7 +65,7 @@ package bc.core.resources.loaders
 			doFail();	
 		}
 		
-		private function processBitmapData(bitmapData:BitmapData, alpha:Boolean):BitmapData
+		/*private function processBitmapData(bitmapData:BitmapData, alpha:Boolean):BitmapData
 		{
 			var bd:BitmapData = bitmapData;
 			var temp:BitmapData;
@@ -82,5 +81,6 @@ package bc.core.resources.loaders
 			
 			return bd;
 		}
+		*/
 	}
 }
