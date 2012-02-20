@@ -1,6 +1,5 @@
 package bc.core.display 
 {
-	import flash.utils.Dictionary;
 	import bc.core.data.BcData;
 	import bc.core.data.BcIObjectData;
 	import bc.core.device.BcAsset;
@@ -11,6 +10,7 @@ package bc.core.display
 	import flash.display.BitmapData;
 	import flash.display.PixelSnapping;
 	import flash.geom.ColorTransform;
+	import flash.utils.Dictionary;
 
 	/**
 	 * @author Elias Ku
