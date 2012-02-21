@@ -4,6 +4,7 @@ package bc.core.util
 	/**
 	 * @author weee
 	 */
+	[ConvertOnce]
 	public class BcUtil
 	{
 		public static function createDictionary(data : Array) : Dictionary

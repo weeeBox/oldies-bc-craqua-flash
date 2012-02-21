@@ -102,8 +102,8 @@
 	
 	<resource path="level/data.xml"/>
 	<resource path="level/level.xml"/>
-	<resource path="level/sea_back_.jpg"/>
-	<resource path="level/sea_back_night_.jpg"/>
+	<resource path="level/sea_back.jpg"/>
+	<resource path="level/sea_back_night.jpg"/>
 	<resource path="level/stick.png"/>
 	<resource path="level/bottom.png"/>
 	<resource path="level/bottom_night.png"/>

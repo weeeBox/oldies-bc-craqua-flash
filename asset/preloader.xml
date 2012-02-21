@@ -1,5 +1,5 @@
 <asset path="../asset/preloader/">
-	<resource path="ui/bg_.jpg"/>
+	<resource path="ui/bg.jpg"/>
 	<resource path="data.xml"/>
 	<resource path="sponsor/logo_back.png"/>
 	<resource path="sponsor/logo.png"/>
