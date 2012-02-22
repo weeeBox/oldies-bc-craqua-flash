@@ -370,9 +370,9 @@ package bc.ui
 			endReplay = new UIButton(endPanel, 320+232, 100-32, BcStrings.UI_REPLAY, stButtonSmall, this);
 			
 			// SETTINGS
-			settingsQ = new UICheckBox(settingsPanel, 620-527+16, 466-8, stQuality, this);
-			settingsS = new UICheckBox(settingsPanel, 584-527+16, 466-8, stSound, this);
-			settingsM = new UICheckBox(settingsPanel, 547-527+16, 466-8, stMusic, this);
+//			settingsQ = new UICheckBox(settingsPanel, 620-527+16, 466-8, stQuality, this);
+//			settingsS = new UICheckBox(settingsPanel, 584-527+16, 466-8, stSound, this);
+//			settingsM = new UICheckBox(settingsPanel, 547-527+16, 466-8, stMusic, this);
 		}
 		
 		private function clickInstructions():void

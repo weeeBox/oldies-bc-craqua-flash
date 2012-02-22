@@ -30,7 +30,7 @@ package bc.core.ui
 		protected var _bmBack2:Bitmap;
 		protected var _bmBody2:Bitmap;
 		
-		protected var _checked:Boolean;
+		protected var mChecked:Boolean;
 		
 		protected var _tweenOver:Number = 0;
 		protected var _tweenPush:Number = 0;
@@ -206,7 +206,7 @@ package bc.core.ui
 		
 		public function set checked(value:Boolean):void
 		{	
-			_checked = value;
+			mChecked = value;
 			
 			_bmBody1.visible = !value;
 			_bmBack1.visible = !value;
@@ -227,12 +227,12 @@ package bc.core.ui
 		
 		public function get checked():Boolean
 		{
-			return _checked;
+			return mChecked;
 		}
 		
 		protected override function mouseClick():void
 		{
-			checked = !_checked;
+			checked = !mChecked;
 					
 			super.mouseClick();
 		}
