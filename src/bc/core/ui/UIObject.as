@@ -432,5 +432,15 @@ package bc.core.ui
 				_enabled = false;
 			}
 		}
+		
+		public function set name(value : String) : void
+		{
+			_sprite.name = value;
+		}
+		
+		public function get name() : String
+		{
+			return _sprite.name;
+		}
 	}
 }

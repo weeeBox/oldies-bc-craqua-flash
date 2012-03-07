@@ -11,10 +11,11 @@ package bc.core.ui
 	 */
 	public class UILayer extends UIObject
 	{
-		public function UILayer()
+		public function UILayer(name : String = null)
 		{
 			super(null, 0, 0, false);
 			
+			if (name != null) _sprite.name = name;
 			_sprite.scrollRect = new Rectangle(0, 0, BcApplication.width, BcApplication.height);
 		}
 		

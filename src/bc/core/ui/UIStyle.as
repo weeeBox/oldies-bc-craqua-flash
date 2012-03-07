@@ -46,7 +46,8 @@ package bc.core.ui
 			var style:UIStyle = this;
 			while(style != null)
 			{
-				if (style.properties.hasOwnProperty(name))
+				var propValue : Object = style.properties[name];
+				if (propValue != null)
 				{
 					return style.properties[name];
 				}
@@ -64,8 +65,19 @@ package bc.core.ui
 		
 		public function getString(name:String):String
 		{
-			var value : Object = getObject(name);
-			return value == null ? null : String(value);
+			var style:UIStyle = this;
+			while(style != null)
+			{
+				var propValue : String = style.properties[name];
+				if (propValue != null)
+				{
+					return propValue;
+				}
+								
+				style = style.baseStyle;
+			}
+			
+			return null;
 		}
 		
 		public function getBoolean(name:String):Boolean
