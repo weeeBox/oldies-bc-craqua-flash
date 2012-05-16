@@ -4,7 +4,6 @@ package bc.core.util
 	/**
 	 * @author weee
 	 */
-	[ConvertOnce]
 	public class BcUtil
 	{
 		public static function createDictionary(data : Array) : Dictionary
@@ -15,9 +14,7 @@ package bc.core.util
 			for (var i : int = 0; i < length; i += 2)
 			{
 				var key : String = String(data[i]);
-				var value : Object = data[i + 1];
-				
-				dictionary[key] = value;	
+				dictionary[key] = data[i + 1];	
 			}
 			
 			return dictionary;
