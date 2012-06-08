@@ -45,6 +45,8 @@ package bc.world.core
 		public var arbiter:BcArbiter;
 		
 		public var input:BcInput;
+		public var playerInput:BcPlayerInput;
+		public var editorInput:BcEditorInput;
 		
 		public var particles:BcParticleList = new BcParticleList();
 		public var player:BcPlayer;
@@ -54,6 +56,7 @@ package bc.world.core
 
 		public var level:BcLevel;
 		
+		public var editorActive:Boolean;
 	
 		public var sprite:Sprite = new Sprite();
 
@@ -82,6 +85,8 @@ package bc.world.core
 
 				level = new BcLevel();
 				
+				editorActive = false;
+				
 				particles.initializePool(300);
 				bullets.initializePool(200);
 				items.initializePool(100);
@@ -93,10 +98,16 @@ package bc.world.core
 				
 				player = new BcPlayer("data_player_init");
 				
-				input = new BcInput(player);
-				input.bounds.x = input.bounds.y = 8;
-				input.bounds.width = width;
-				input.bounds.height = height;
+				playerInput = new BcPlayerInput(player);
+				editorInput = new BcEditorInput(this);
+				
+				playerInput.bounds.x = playerInput.bounds.y = 8;
+				playerInput.bounds.width = width;
+				playerInput.bounds.height = height;
+				
+				editorInput.bounds = playerInput.bounds;
+				
+				input = playerInput;
 				
 				BcSpriteUtil.setupFast(sprite);
 				//BcSpriteUtil.setupFast(debugLayer);
@@ -235,7 +246,7 @@ package bc.world.core
 		
 		public function update(dt:Number):void
 		{
-			if(!_pause)
+			if(!_pause && !editorActive)
 			{
 				if(halfDeltaTime) dt*=0.5;
 				this.dt = dt;
@@ -262,11 +273,6 @@ package bc.world.core
 				level.update(dt);
 				hud.update(dt);
 				
-				//sprDebug.graphics.clear();
-				//grid.draw(sprDebug.graphics);
-				
-				//checkGameOver();
-				
 				if(gameOverTimer > 0)
 				{
 					gameOverTimer -= dt;
@@ -275,6 +281,10 @@ package bc.world.core
 						BcGameUI.instance.goEnd();
 					}
 				}
+			}
+			else if (editorActive)
+			{
+				editorInput.update(dt);
 			}
 		}
 		

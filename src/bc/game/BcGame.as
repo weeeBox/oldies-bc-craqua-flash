@@ -92,6 +92,26 @@ package bc.game
 			}
 		}
 		
+		public function startEditing():void
+		{
+			if (!world.editorActive)
+			{
+				world.editorActive = true;
+				world.editorInput.activate(true);
+				world.input = world.editorInput;
+			}
+		}
+		
+		public function stopEditing():void
+		{
+			if (world.editorActive)
+			{
+				world.editorActive = false;
+				world.editorInput.activate(false);
+				world.input = world.playerInput;
+			}
+		}
+		
 		public function quitWorld():void
 		{
 			world.exit();

@@ -176,6 +176,7 @@ package bc.ui
 		private var pausePanel:UIPanel = new UIPanel(layerMain);
 		private var pauseEnd:UIButton;
 		private var pauseResume:UIButton;
+		private var pauseEditor:UIButton;
 		
 		private var endPanel:UIPanel = new UIPanel(layerMain);
 		private var endLabel:UILabel;
@@ -184,7 +185,7 @@ package bc.ui
 		private var endContinue:UIButton;
 		private var endSubmit:UIButton;
 		private var endGame:UIButton;
-		private var endReplay:UIButton;
+		private var endReplay:UIButton;		
 		
 		
 		
@@ -348,9 +349,10 @@ package bc.ui
 			
 			/** PAUSE **/
 			(new UILabel(pausePanel, 320, 200, BcStrings.UI_PAUSED, stTitle)).centerX = 320;
+			pauseEditor = new UIButton(pausePanel, 320, 100, "Edit level", null, this);
 			pauseResume = new UIButton(pausePanel, 320, 300, BcStrings.UI_RESUME, null, this);
 			pauseResume.highlight = true;
-			pauseEnd = new UIButton(pausePanel, 320, 400, BcStrings.UI_END_GAME, stButtonSmall, this);
+			pauseEnd = new UIButton(pausePanel, 320, 400, BcStrings.UI_END_GAME, stButtonSmall, this);			
 			
 			// END
 			endLabel = new UILabel(endPanel, 320, 50-32, "", stTitle);
@@ -368,6 +370,7 @@ package bc.ui
 			
 			endGame = new UIButton(endPanel, 320-232, 100-32, BcStrings.UI_END_GAME, stButtonSmall, this);
 			endReplay = new UIButton(endPanel, 320+232, 100-32, BcStrings.UI_REPLAY, stButtonSmall, this);
+						
 			
 			// SETTINGS
 //			settingsQ = new UICheckBox(settingsPanel, 620-527+16, 466-8, stQuality, this);
@@ -493,6 +496,12 @@ package bc.ui
 			else if (object == endGame)
 			{
 					endClickEnd();
+			}
+			else if (object == pauseEditor)
+			{
+					resumeGame = true;
+					closePause();
+					startEditor();
 			}
 			else if (object == endReplay)
 			{
@@ -671,6 +680,11 @@ package bc.ui
 			}
 			pausePanel.play(transWindowClose, 0.25);
 			settingsPanel.play(transWindowClose, 0.25);			
+		}
+		
+		private function startEditor():void
+		{
+			BcGameGlobal.game.startEditing();
 		}
 		
 		private function exitPause():void
