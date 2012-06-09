@@ -1,5 +1,7 @@
 package bc.core.device 
 {
+	import bc.core.device.messages.BcGamePadMessage;
+	import bc.flash.events.GamePadEvent;
 	import bc.core.display.BcApplication;
 	import bc.core.audio.BcAudio;
 	import bc.core.audio.BcMusic;
@@ -75,6 +77,8 @@ package bc.core.device
 		// messages
 		private var mouseMessage:BcMouseMessage = new BcMouseMessage();
 		private var keyboardMessage:BcKeyboardMessage = new BcKeyboardMessage();
+		private var gamePadMessage:BcGamePadMessage = new BcGamePadMessage();
+		
 		private var keysState:Dictionary = new Dictionary();
 		
 		// Stage, главный, глобальный
@@ -150,6 +154,10 @@ package bc.core.device
 			// События клавиатуры
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			
+			// GamePad
+			stage.addEventListener(GamePadEvent.BUTTON_DOWN, onButtonDown);
+			stage.addEventListener(GamePadEvent.BUTTON_UP, onButtonUp);
 			
 			// деактивация окна
 			stage.addEventListener(Event.DEACTIVATE, onDeactivate);
@@ -355,7 +363,36 @@ package bc.core.device
 			
 			UI.keyboardMessage(keyboardMessage);
 		}
+		
+		private function onButtonDown(evt:Event):void
+		{
+			var event : GamePadEvent = GamePadEvent(evt);
 			
+			gamePadMessage.processEvent(BcGamePadMessage.BUTTON_DOWN, event);
+		
+			var application:BcIApplication = BcApplication.sharedApplication;
+			if(application)
+			{
+				application.gamePadMessage(gamePadMessage);
+			}
+			
+			UI.gamePadMessage(gamePadMessage);
+		}			
+		
+		private function onButtonUp(evt:Event):void
+		{
+			var event : GamePadEvent = GamePadEvent(evt);
+			
+			gamePadMessage.processEvent(BcGamePadMessage.BUTTON_UP, event);
+		
+			var application:BcIApplication = BcApplication.sharedApplication;
+			if(application)
+			{
+				application.gamePadMessage(gamePadMessage);
+			}
+			
+			UI.gamePadMessage(gamePadMessage);
+		}
 	}
 }
 

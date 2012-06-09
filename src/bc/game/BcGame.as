@@ -1,5 +1,6 @@
 package bc.game 
 {
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.display.BcApplication;
 	import bc.core.audio.BcAudio;
 	import bc.core.data.BcData;
@@ -146,6 +147,14 @@ package bc.game
 			}
 		}
 		
+		public function gamePadMessage(message : BcGamePadMessage) : void
+		{
+			if (world.playing)
+			{
+				world.gamePadMessage(message);
+			}
+		}
+		
 		private function initializeLocalStore():void
 		{
 //#if CUT_THE_CODE
@@ -166,7 +175,6 @@ package bc.game
 				BcGameGlobal.localStore = new Object();
 			}
 		}
-		
 	}
 }
 

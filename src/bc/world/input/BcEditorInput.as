@@ -1,10 +1,11 @@
-package bc.world.core 
+package bc.world.input 
 {
-	import bc.world.enemy.BcEnemy;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
-
+	import bc.world.core.BcWorld;
+	import bc.world.enemy.BcEnemy;
 	import flash.ui.Mouse;
+
 
 	/**
 	 * @author weee

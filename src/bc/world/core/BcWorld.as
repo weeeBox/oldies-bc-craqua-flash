@@ -1,15 +1,16 @@
 package bc.world.core 
 {
-	import bc.core.display.BcApplication;
-	import bc.game.BcGame;
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.audio.BcAudio;
 	import bc.core.audio.BcMusic;
 	import bc.core.data.BcData;
 	import bc.core.device.BcAsset;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
+	import bc.core.display.BcApplication;
 	import bc.core.util.BcColorTransformUtil;
 	import bc.core.util.BcSpriteUtil;
+	import bc.game.BcGame;
 	import bc.game.BcGameGlobal;
 	import bc.ui.BcGameUI;
 	import bc.world.bullet.BcBulletData;
@@ -21,15 +22,18 @@ package bc.world.core
 	import bc.world.enemy.BcEnemyList;
 	import bc.world.enemy.path.BcEnemyPathData;
 	import bc.world.hud.BcHud;
+	import bc.world.input.BcEditorInput;
+	import bc.world.input.BcInput;
+	import bc.world.input.BcPlayerInput;
 	import bc.world.item.BcItemData;
 	import bc.world.item.BcItemList;
 	import bc.world.particles.BcParticleData;
 	import bc.world.particles.BcParticleList;
 	import bc.world.player.BcPlayer;
-
 	import flash.display.Sprite;
 	import flash.geom.ColorTransform;
 	import flash.geom.Rectangle;
+
 
 	/**
 	 * @author Elias Ku
@@ -335,7 +339,14 @@ package bc.world.core
 			input.mouse(message);
 		}
 		
-		
+		public function gamePadMessage(message:BcGamePadMessage):void
+		{
+			if(!_pause)
+			{
+				
+			}
+			input.gamepad(message);
+		}
 		
 		private var flashProgress:Number = 0;
 		private var flashBackgroundColor:ColorTransform = new ColorTransform();

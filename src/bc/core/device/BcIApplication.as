@@ -1,6 +1,7 @@
 package bc.core.device 
 {
 
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
 	/**
@@ -13,6 +14,7 @@ package bc.core.device
 		
 		function mouseMessage(message:BcMouseMessage):void;
 		function keyboardMessage(message:BcKeyboardMessage):void;
+		function gamePadMessage(message:BcGamePadMessage):void;
 		
 		function contextMenu():void;
 	}

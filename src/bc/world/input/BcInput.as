@@ -1,5 +1,6 @@
-package bc.world.core 
+package bc.world.input 
 {
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
 	import bc.core.math.Vector2;
@@ -36,6 +37,11 @@ package bc.world.core
 		{			
 			mouseX = message.x - bounds.x;
 			mouseY = message.y - bounds.y;
+		}
+		
+		public function gamepad(message:BcGamePadMessage):void
+		{
+			
 		}
 		
 		public function activate(value:Boolean):void

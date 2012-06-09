@@ -1,5 +1,6 @@
 package bc.core.ui 
 {
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.display.BcApplication;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
@@ -58,5 +59,9 @@ package bc.core.ui
 			}
 		}
 		
+		internal function gamepadMessage(message:BcGamePadMessage):void
+		{
+			
+		}
 	}
 }

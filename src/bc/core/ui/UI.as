@@ -1,5 +1,6 @@
 package bc.core.ui 
 {
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.display.BcApplication;
 	import bc.core.device.messages.BcKeyboardMessage;
 	import bc.core.device.messages.BcMouseMessage;
@@ -37,6 +38,17 @@ package bc.core.ui
 			while(iter)
 			{
 				iter.keyboardMessage(message);
+				iter = UILayer(iter.next);
+			}
+		}
+		
+		public static function gamePadMessage(message:BcGamePadMessage):void
+		{
+			var iter:UILayer = _layers;
+			
+			while(iter)
+			{
+				iter.gamepadMessage(message);
 				iter = UILayer(iter.next);
 			}
 		}

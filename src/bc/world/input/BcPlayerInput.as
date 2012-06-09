@@ -1,5 +1,8 @@
-package bc.world.core
+package bc.world.input
 {
+	import bc.flash.events.GamePadEvent;
+	import bc.flash.input.GamePad;
+	import bc.core.device.messages.BcGamePadMessage;
 	import bc.core.device.messages.BcMouseMessage;
 	import flash.ui.Keyboard;
 	import bc.core.device.messages.BcKeyboardMessage;
@@ -12,6 +15,9 @@ package bc.world.core
 	 */
 	public class BcPlayerInput extends BcInput
 	{
+		public static const STICK_SPEED_X:Number = 7.5;
+		public static const STICK_SPEED_Y:Number = -7.5;
+		
 		public var direction:Vector2 = new Vector2();
 		
 		public var player:BcPlayer;
@@ -25,6 +31,9 @@ package bc.world.core
 		
 		public override function update(dt:Number):void
 		{
+			mouseX += GamePad.player(0).leftStick.x * STICK_SPEED_X;
+			mouseY += GamePad.player(0).leftStick.y * STICK_SPEED_Y;
+			
 			var mx:Number = mouseX;
 			var my:Number = mouseY;
 			
@@ -82,6 +91,25 @@ package bc.world.core
 			}
 			mouseX = message.x - bounds.x;
 			mouseY = message.y - bounds.y;
+		}
+		
+		public override function gamepad(message:BcGamePadMessage):void
+		{
+			switch(message.event)
+			{
+				case BcGamePadMessage.BUTTON_DOWN:
+					if (message.code == GamePadEvent.A)
+					{
+						player.shotTrigger = true;
+					}
+					break;
+				case BcGamePadMessage.BUTTON_UP:
+					if (message.code == GamePadEvent.A)
+					{
+						player.shotTrigger = false;
+					}
+					break;
+			}
 		}
 		
 		public override function activate(value:Boolean):void
