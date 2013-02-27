@@ -2,6 +2,8 @@
 
 <project name="bc-craqua" default="run">
 
+	<import file="prepare_build.xml" />
+	
 	<property name="playerVersion" value="11.1" />
 	<property name="project.name" value="${ant.project.name}" />
 
@@ -9,15 +11,12 @@
 	<property name="dir.src" value="${basedir}/src" />	
 	<property name="dir.src.platform" value="${basedir}/src_platform" />
 	
-	<property name="dir.parser" value="c:/Users/weee/Development/java/workspaces/bcspace/bc-as3converter/FlexAscParser" />
-	<property name="dir.platform.src" value="${dir.parser}/bc-platform/src" />	
-	<property name="dir.api.src" value="${dir.parser}/bc-api/src" />	
+	<property name="dir.platform.src" value="${PARSER_HOME}/bc-platform/src" />	
+	<property name="dir.api.src" value="${PARSER_HOME}/bc-api/src" />	
 	
 	<property name="dir.build" value="out" />
 
 	<property name="project.main.class" value="bc/game/init/BitCaptains" />
-
-	<import file="prepare_build.xml" />
 
 	<!-- Targets for use -->
 
