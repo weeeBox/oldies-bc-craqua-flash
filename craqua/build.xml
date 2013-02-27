@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="bc-craqua" default="debug">
+<project name="bc-craqua" default="run">
 
 	<property name="playerVersion" value="11.1" />
 	<property name="project.name" value="${ant.project.name}" />
 
 	<!-- Source set -->
-	<property name="dir.src" value="src" />	
-	<property name="dir.src.platform" value="src_platform" />	
-	<property name="dir.api.src" value="../bc-api/src" />	
+	<property name="dir.src" value="${basedir}/src" />	
+	<property name="dir.src.platform" value="${basedir}/src_platform" />
+	
+	<property name="dir.parser" value="c:/Users/weee/Development/java/workspaces/bcspace/bc-as3converter/FlexAscParser" />
+	<property name="dir.platform.src" value="${dir.parser}/bc-platform/src" />	
+	<property name="dir.api.src" value="${dir.parser}/bc-api/src" />	
 	
 	<property name="dir.build" value="out" />
 
@@ -28,11 +31,17 @@
 	<target name="compile" depends="compile_buildsystem">
 		<mkdir dir="${dir.build}" />
 
-		<mxmlc file="${dir.scr.platform}/${project.main.class}.as" output="${dir.build}/${project.name}.swf" fork="false" static-link-runtime-shared-libraries="true" actionscript-file-encoding="UTF-8">
+		<mxmlc file="${dir.src.platform}/${project.main.class}.as" 
+			output="${dir.build}/${project.name}.swf" 
+			fork="false" 
+			static-link-runtime-shared-libraries="true" 
+			actionscript-file-encoding="UTF-8">
+			
 			<!--<classpath refid="flexLibs" />-->
 			<!-- As3 source path -->
 			<source-path path-element="${dir.src}" />
 			<source-path path-element="${dir.src.platform}" />
+			<source-path path-element="${dir.platform.src}" />
 			<source-path path-element="${dir.api.src}" />
 
 			<!-- System libraries -->
@@ -46,7 +55,6 @@
 			<!-- Runtime params -->
 			<debug>true</debug>
 			<use-network>false</use-network>
-			<target-player>10.1</target-player>
 			<default-frame-rate>24</default-frame-rate>
 			<default-size width="640" height="480" />
 			<optimize>true</optimize>
